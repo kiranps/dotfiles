@@ -39,6 +39,7 @@ Plugin 'tpope/vim-surround'
 "Plugin 'EasyMotion'
 Plugin 'bling/vim-airline'
 Plugin 'othree/html5.vim'
+Plugin 'jade.vim'
 "Plugin 'Valloric/YouCompleteMe'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -70,7 +71,7 @@ set term=xterm-256color
 "set line number color
 hi LineNr ctermfg=grey
 
-hi VertSplit ctermbg=red
+hi VertSplit ctermfg=black
 
 ""Use Source Code Pro for the font
 "set guifont=Source\ Code\ Pro\ For\ PowerlineSymbols:h16
@@ -141,6 +142,8 @@ vmap <Leader>y "+y
 "Open visual mode
 nmap <Leader><Leader> V
 
+"switch split pane
+nmap <Leader>s <C-w><C-w>
 
 "correct indentation
 vmap <Leader>i =
@@ -221,3 +224,6 @@ let g:airline_right_sep=''
 "YouCompleteMe configuration
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_key_invoke_completion = '<C-TAB>'
+
+"NerdTree
+
