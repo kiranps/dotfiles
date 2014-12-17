@@ -1,30 +1,49 @@
 XTerm*faceName: monospace
-UXTerm*faceName: Monaco\ for\ Powerline:regular:size=10
 xterm*faceSize: 10
 xterm*vt100*geometry: 80x24
 xterm*saveLines: 16384
 XTerm*pointerShape: left_ptr
 
+!TURQUOISE #1ABC9C 
+!GREEN SEA #16A085
+!SUN FLOWER #F1C40F
+!ORANGE #F39C12 
+!EMERALD #2ECC71 
+!NEPHRITIS #27AE60
+!CARROT #E67E22 
+!PUMPKIN #D35400
+!PETER RIVER #3498DB
+!BELIZE HOLE #2980B9
+!ALIZARIN #E74C3C
+!POMEGRANATE #C0392B
+!AMETHYST #9B59B6
+!WISTERIA #8E44AD
+!CLOUDS #ECF0F1
+!SILVER #BDC3C7
+!WET ASPHALT #34495E
+!MIDNIGHT BLUE #2C3E50
+!CONCRETE #95A5A6
+!ASBESTOS #7F8C8D
 
 !BLK Cursor
 #define _color0        #000d18
 #define _color8        #000d18
 
-!RED Tag
-#define _color1        #e89393
-#define _color9        #e89393
+!RED Tag POMEGRANATE
+#define _color1        #C0392B
+#define _color9        #C0392B
 
-!GRN SpecialKey
-#define _color2        #9ece9e
-#define _color10       #9ece9e
+!GRN SpecialKey 
+#define _color2        #16A085
+#define _color10       #7F8C8D
 
-!YEL Keyword
-#define _color3        #f0dfaf
-#define _color11       #f0dfaf
+!YEL Keyword SUN FLOWER
+#define _color3        #F1C40F
+#define _color11       #F1C40F
 
-!BLU Number
-#define _color4        #8cd0d3
-#define _color12       #8cd0d3
+!BLU Number PETER RIVER
+#define _color4        #3498DB
+#define _color12       #3498DB
 
 !MAG Precondit
 #define _color5        #c0bed1
@@ -44,32 +63,10 @@ XTerm*pointerShape: left_ptr
 #define _colorIT       #80d4aa
 
 !TXT Normal, Normal, Cursor
-#define _foreground    #dcdccc
-#define _background    #1f1f1f
+#define _foreground    #ECF0F1
+#define _background    #121212
 #define _cursorColor   #8faf9f
 
-URxvt*color0         : _color0
-URxvt*color1         : _color1
-URxvt*color2         : _color2
-URxvt*color3         : _color3
-URxvt*color4         : _color4
-URxvt*color5         : _color5
-URxvt*color6         : _color6
-URxvt*color7         : _color7
-URxvt*color8         : _color8
-URxvt*color9         : _color9
-URxvt*color10        : _color10
-URxvt*color11        : _color11
-URxvt*color12        : _color12
-URxvt*color13        : _color13
-URxvt*color14        : _color14
-URxvt*color15        : _color15
-URxvt*colorBD        : _colorBD
-URxvt*colorIT        : _colorIT
-URxvt*colorUL        : _colorUL
-URxvt*foreground     : _foreground
-URxvt*background     : _background
-URxvt*cursorColor    : _cursorColor
 
 XTerm*color0         : _color0
 XTerm*color1         : _color1

@@ -7,6 +7,14 @@ export PATH="$PATH:$HOME/.rvm/bin:\
 /home/kiran/apps/genymotion/genymotion:\
 /home/kiran/bin:"
 
+#256 color
+export TERM=xterm-256color
+
+# Save history
+HISTFILE=$HOME/.zhistory # where the file will be saved
+HISTSIZE=1000 # the size in bytes it can grow up to
+SAVEHIST=1000 # thr maximum number of commands to save I guess
+
 # Shell prompt
 autoload -U colors && colors
 #export PS1="%~$ "
@@ -43,9 +51,21 @@ function mkcd
   command mkdir $1 && cd $1
 }
 
+
+# find shorthand
+function f() {
+find . -name "$1"
+}
+
 # function end
 
-## Aliases
+# Aliases
+
+# list files
+alias l='ls'
+
+# open vim
+alias v='vim'
 
 # Start python server
 alias pyserver='python -m SimpleHTTPServer'
@@ -53,33 +73,33 @@ alias pyserver='python -m SimpleHTTPServer'
 # Clear console
 alias c='clear'
 
-# Colorize the ls output ##
+# Colorize the ls output #
 alias ls='ls --color=auto'
 
-# Use a long listing format ##
+# Use a long listing format #
 alias ll='ls -la'
 
-# Show hidden files ##
+# Show hidden files #
 alias l.='ls -d .* --color=auto'
 
 # Create parent directories on demand
 alias mkdir='mkdir -pv'
 
-# pass options to free ## 
+# pass options to free # 
 alias meminfo='free -m -l -t'
  
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
  
-# get top process eating cpu ##
+# get top process eating cpu #
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
  
-# Get server cpu info ##
+# Get server cpu info #
 alias cpuinfo='lscpu'
  
-## get GPU ram on desktop / laptop## 
+# get GPU ram on desktop / laptop# 
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
 # if user is not root, pass all commands via sudo #
@@ -92,7 +112,7 @@ if [ $UID -ne 0 ]; then
     alias s='sudo shutdown -c'
 fi
 
-## a quick way to get out of current directory ##
+# a quick way to get out of current directory #
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -100,27 +120,31 @@ alias .....='cd ../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
-## copy with progress bar
+# copy with progress bar
 alias cp='gcp'
 
 # End of aliases
 
-## tree custom recursively
+# tree custom recursively
 alias t3='tree -L 3'
 alias t2='tree -L 2'
 alias t1='tree -L 1'
 
-## view txt file
-alias l='less'
-
-## cordova
+# cordova
 alias corr='cordova run'
 alias corc='cordova create'
 alias corpa='cordova platform add android'
 
+# file size
+alias du='du -hs'
 
-# Str tmux If not running interactively, do not do anything
+# mount iso
+alias mountiso='mount -o loop'
+
+#tmux color
+#alias tmux="tmux -2"
+
+
+#Str tmux If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux -2
-
-xrdb -merge ~/.Xresources
