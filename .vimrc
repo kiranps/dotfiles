@@ -19,7 +19,7 @@ Plugin 'Buffergator'
 "Plugin 'SuperTab'
 Plugin 'ctrlp.vim'
 Plugin 'The-NERD-Commenter'
-plugin 'snipmate'
+Plugin 'snipMate'
 Plugin 'bling/vim-airline'
 Plugin 'jade.vim'
 Bundle "mattn/emmet-vim"
@@ -40,6 +40,7 @@ syntax on
 syntax enable
 set ignorecase
 set term=xterm-256color
+colorscheme molotov
 
 "set line number color
 hi LineNr ctermfg=grey
@@ -51,12 +52,19 @@ hi VertSplit ctermfg=black
 "set leader key as space
 let mapleader = "\<Space>"
 
-set encoding=utf-8
+set encoding=utf-8 nobomb " BOM often causes trouble
 set number
-set backspace=indent,eol,start " Allow backspace in insert mode
 set showcmd " Show incomplete cmds down the bottom
 set autoread " Reload files changed outside vim
-
+set scrolloff=3 " Start scrolling three lines before horizontal border of window.
+set hlsearch " Highlight searches
+set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
+set ignorecase " Ignore case of searches.
+set incsearch " Highlight dynamically as pattern is typed.
+set nowrap " Do not wrap lines.
+set shiftwidth=2 " The # of spaces for indenting.
+set ttyfast " Send more characters at a given time.
+set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 
 " Turn Off Swap Files
 " ===================
@@ -79,12 +87,7 @@ set expandtab
 set list listchars=tab:\ \ ,trail:· " Display tabs and trailing spaces visually
 set nowrap " Don't wrap lines
 
-" Folds
-" =====
-set foldmethod=indent " Fold based on indent
-set foldnestmax=3 " Deepest fold is 3 levels
-set nofoldenable " Don't fold by default
-
+"command mode
 imap jk <esc>
 
 "move to end of line
