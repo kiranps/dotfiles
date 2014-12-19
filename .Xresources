@@ -46,8 +46,8 @@ XTerm*pointerShape: left_ptr
 #define _color12       #3498DB
 
 !MAG Precondit
-#define _color5        #c0bed1
-#define _color13       #c0bed1
+#define _color5        #8E44AD
+#define _color13       #8E44AD
 
 !CYN Float
 #define _color6        #dfaf8f

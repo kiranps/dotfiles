@@ -1,32 +1,31 @@
 " Vim Configuration
 " ===========
-
+            
 " Use vim rather than vi settings
 set nocompatible
-
+            
 "Setup Vundle For Package Management
-
 "Vundle begins here, turn off filetype temporarily
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" Plugins 
+" ==============
+
 Plugin 'gmarik/vundle'
-
-
-"My plugins
-
-Plugin 'Buffergator'
-"Plugin 'SuperTab'
-Plugin 'ctrlp.vim'
-Plugin 'The-NERD-Commenter'
-Plugin 'snipMate'
 Plugin 'bling/vim-airline'
-Plugin 'jade.vim'
 Bundle "mattn/emmet-vim"
 Bundle 'edkolev/tmuxline.vim'
-Plugin 'The-NERD-tree'
-
-"End Vundle
+Plugin 'scrooloose/nerdtree'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'marcweber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 call vundle#end()
 "Vundle ended so reenable filetypes
 filetype plugin indent on
@@ -34,44 +33,45 @@ filetype plugin indent on
 " Appearance
 " ==========
 
-"We want syntax highlighting in 256 colors
+"Syntax highlighting
 set t_Co=256
 syntax on
 syntax enable
-set ignorecase
-set term=xterm-256color
 colorscheme molotov
+set term=xterm-256color
 
-"set line number color
+"Colorscheme custom
 hi LineNr ctermfg=grey
 hi VertSplit ctermfg=black
 
+"splitbar
+set fillchars+=vert:\ 
+
+
 " General Config
 " ==============
-
-"set leader key as space
-let mapleader = "\<Space>"
 
 set encoding=utf-8 nobomb " BOM often causes trouble
 set number
 set showcmd " Show incomplete cmds down the bottom
 set autoread " Reload files changed outside vim
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
-set hlsearch " Highlight searches
-set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
-set ignorecase " Ignore case of searches.
-set incsearch " Highlight dynamically as pattern is typed.
-set nowrap " Do not wrap lines.
-set shiftwidth=2 " The # of spaces for indenting.
 set ttyfast " Send more characters at a given time.
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
+set nolist " list disables linebreak
+       
+" Search / replace
+set gdefault " By default add g flag to search/replace. Add g to toggle.
+set ignorecase " Ignore case of searches.
+set hlsearch " Highlight searches
+set incsearch " Highlight dynamically as pattern is typed.
+set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
 
 " Turn Off Swap Files
 " ===================
 set noswapfile
 set nobackup
 set nowritebackup
-
 
 " Indentation and Display
 " =======================
@@ -84,8 +84,9 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-set list listchars=tab:\ \ ,trail:· " Display tabs and trailing spaces visually
-set nowrap " Don't wrap lines
+
+"set leader key as space
+let mapleader = "\<Space>"
 
 "command mode
 imap jk <esc>
@@ -93,12 +94,13 @@ imap jk <esc>
 "move to end of line
 nmap E $
 
-""move to begining of line
+"move to begining of line
 nmap B ^
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
+"cut copy paste
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -147,23 +149,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-"tabspaces
-" size of a hard tabstop
-set tabstop=4
-
-" size of an "indent"
-set shiftwidth=4
-
-" a combination of spaces and tabs are used to simulate tab stops at a width
-" other than the (hard)tabstop
-set softtabstop=4
-
 "emmet only for html css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-
-"splitbar
-:set fillchars+=vert:\ 
 
 "airline
 set laststatus=2
@@ -180,3 +168,7 @@ let g:tmuxline_powerline_separators = 0
 "airline separator
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
+"snipmate trigger key
+imap ss <Plug>snipMateNextOrTrigger
+imap SS <Plug>snipMateBack 
