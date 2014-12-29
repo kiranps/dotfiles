@@ -15,8 +15,8 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
-Bundle "mattn/emmet-vim"
-Bundle 'edkolev/tmuxline.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kien/ctrlp.vim'
@@ -26,6 +26,13 @@ Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+"Plugin 'skammer/vim-css-color'
+Plugin 'ervandew/supertab'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'chrisgillis/vim-bootstrap3-snippets'
+Plugin 'hail2u/vim-css3-syntax'
 call vundle#end()
 "Vundle ended so reenable filetypes
 filetype plugin indent on
@@ -37,7 +44,7 @@ filetype plugin indent on
 set t_Co=256
 syntax on
 syntax enable
-colorscheme molotov
+colorscheme material
 set term=xterm-256color
 
 "Colorscheme custom
@@ -90,6 +97,7 @@ let mapleader = "\<Space>"
 
 "command mode
 imap jk <esc>
+vmap q <esc>
 
 "move to end of line
 nmap E $
@@ -97,16 +105,23 @@ nmap E $
 "move to begining of line
 nmap B ^
 
+"refresh vimrc
+nmap <Leader>[ :so $MYVIMRC<CR>
+
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
+"code folding
+vmap <Leader>f zf
+vmap <Leader>F zo
+
 "cut copy paste
 vmap <Leader>y "+y
+nmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
-vmap <Leader>y "+y
 
 
 "Open visual mode
@@ -114,6 +129,12 @@ nmap <Leader><Leader> V
 
 "switch split pane
 nmap <Leader>s <C-w><C-w>
+
+"page up
+nmap <C-k> <C-u>
+
+"page down
+nmap <C-j> <C-d>
 
 "correct indentation
 vmap <Leader>i =
@@ -128,6 +149,7 @@ nmap <Leader>j :NERDTreeToggle<CR>
 
 "next buffer
 nmap <Leader>m :bn<CR>
+
 "previous buffer
 nmap <Leader>n :bp<CR>
 
@@ -135,7 +157,7 @@ nmap <Leader>n :bp<CR>
 nmap <Leader>d :bd<CR>
 
 "open config file
-nmap <leader>rr :e ~/.vimrc<CR>  
+nmap <leader>r :e ~/.vimrc<CR>
 
 imap hh <C-y>,
 
@@ -144,10 +166,10 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 
 "window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+"map <C-h> <C-w>h
+"map <C-j> <C-w>j
+"map <C-k> <C-w>k
+"map <C-l> <C-w>l
 
 "emmet only for html css
 let g:user_emmet_install_global = 0

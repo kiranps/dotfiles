@@ -88,13 +88,14 @@ let s:mlc.sunflower      = ['F1C40F', 220]
 let s:mlc.dirtyblonde    = ['F4CF86', 229]
 let s:mlc.alizarin       = ['E74C3C', 160]
 let s:mlc.emerald        = ['2ECC71',  47]
-let s:mlc.peter_river    = ['3498DB',  33]
+let s:mlc.peter_river    = ['348DB', 33]
 let s:mlc.orange         = ['F39C12', 208]
 let s:mlc.waspyellow     = ['FCB82B', 214]
 let s:mlc.turqoise       = ['1ABC9C',  36]
 let s:mlc.pumpkin        = ['D35400', 202]
 let s:mlc.pomegranate    = ['C0392B', 196]
 let s:mlc.greensea       = ['16A085',  29]
+let s:mlc.amethyst       = ['9B59B6',  5]
 
 " Local colors (NOTE: Enable if you're using Molotov.itermcolors)
 " let s:mlc.alizarin       = ['E74C3C',   5]
@@ -443,7 +444,8 @@ call s:HL('htmlEndTag', 'snow', 'bg', 'none')
 " Tag names
 call s:HL('htmlTagName',        'pomegranate', '', 'bold')
 call s:HL('htmlSpecialTagName', 'pomegranate', '', 'bold')
-call s:HL('htmlSpecialChar',    'waspyellow',   '', 'none')
+"call s:HL('htmlSpecialChar',    'waspyellow',   '', 'none')
+call s:HL('htmlSpecialChar',    'pomegranate',   '', 'none')
 
 " Attributes
 call s:HL('htmlArg', 'emerald', '', 'none')
@@ -587,6 +589,13 @@ call s:HL('VimNotation',     'turqoise',       '', 'none')
 call s:HL('VimBracket',      'turqoise',       '', 'none')
 
 " }}}
+
+" Javascript {{{
+
+call s:HL('jsFuncName', 'peter_river', '', '')
+
+" }}}
+
 
 " }}}
 
