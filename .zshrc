@@ -1,11 +1,11 @@
 # Set PATH variable
 export PATH="$PATH:$HOME/.rvm/bin:\
-/opt/adt-bundle-linux-x86_64-20140321/sdk/tools:\
-/home/kiran/lib/google_appengine:\
-/home/kiran/lib/phantomjs:\
-/home/kiran/apps/mongodb/mongodb-linux-x86_64-2.6.5/bin:\
-/home/kiran/apps/genymotion/genymotion:\
-/home/kiran/bin:"
+    /opt/adt-bundle-linux-x86_64-20140321/sdk/tools:\
+    /home/kiran/lib/google_appengine:\
+    /home/kiran/lib/phantomjs:\
+    /home/kiran/apps/mongodb/mongodb-linux-x86_64-2.6.5/bin:\
+    /home/kiran/apps/genymotion/genymotion:\
+    /home/kiran/bin:"
 
 #256 color
 export TERM=xterm-256color
@@ -19,38 +19,41 @@ SAVEHIST=1000 # thr maximum number of commands to save I guess
 autoload -U colors && colors
 #export PS1="%~$ "
 #PS1=$'\n'"%/"$'\n$ '
-PROMPT=$'\n'"%{$fg_bold[red]%}%/%{$reset_color%}"$'\n$ '
+#PROMPT=$'\n'"%{$fg_bold[red]%}%/%{$reset_color%}"$'\n$ '
+PROMPT=$'\n'"%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}"$'\n$ '
+#RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 # Blinking line cursor
 echo -e -n "\x1b[\x35 q"
 
 # function start
 # set proxy
+
+
 function gecproxy(){
-    export http_proxy="http://etamech037:toxicchemz12345@10.29.1.2:3128"
-    export https_proxy="https://etamech037:toxicchemz12345@10.29.1.2:3128"
-    export ftp_proxy="ftp://etamech037:toxicchemz12345@10.29.1.2:3128"
-    sudo cp /etc/apt/apt.conf.gec /etc/apt/apt.conf
-    mv /home/kiran/.npmrc.bak /home/kiran/.npmrc
-    mv /home/kiran/.bowerrc.bak /home/kiran/.bowerrc
+export http_proxy="http://etamech037:toxicchemz12345@10.29.1.2:3128"
+export https_proxy="https://etamech037:toxicchemz12345@10.29.1.2:3128"
+export ftp_proxy="ftp://etamech037:toxicchemz12345@10.29.1.2:3128"
+sudo cp /etc/apt/apt.conf.gec /etc/apt/apt.conf
+mv /home/kiran/.npmrc.bak /home/kiran/.npmrc
+mv /home/kiran/.bowerrc.bak /home/kiran/.bowerrc
 }
 
 # Unset proxy
 function noproxy(){ 
-    export http_proxy=""
-    export https_proxy=""
-    export ftp_proxy=""
-    sudo rm /etc/apt/apt.conf
-    mv /home/kiran/.npmrc /home/kiran/.npmrc.bak
-    mv /home/kiran/.bowerrc /home/kiran/.bowerrc.bak
+export http_proxy=""
+export https_proxy=""
+export ftp_proxy=""
+sudo rm /etc/apt/apt.conf
+mv /home/kiran/.npmrc /home/kiran/.npmrc.bak
+mv /home/kiran/.bowerrc /home/kiran/.bowerrc.bak
 }
 
 # Make a new dir and move in to it
 function mkcd
 {
-  command mkdir $1 && cd $1
+    command mkdir $1 && cd $1
 }
-
 
 # find shorthand
 function f() {
@@ -87,18 +90,18 @@ alias mkdir='mkdir -pv'
 
 # pass options to free # 
 alias meminfo='free -m -l -t'
- 
+
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
- 
+
 # get top process eating cpu #
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
- 
+
 # Get server cpu info #
 alias cpuinfo='lscpu'
- 
+
 # get GPU ram on desktop / laptop# 
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 
@@ -144,7 +147,8 @@ alias mountiso='mount -o loop'
 #tmux color
 #alias tmux="tmux -2"
 
-
 #Str tmux If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux -2
+
+eval $(dircolors ~/.dircolors)
