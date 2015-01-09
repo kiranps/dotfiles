@@ -33,6 +33,8 @@ Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'chrisgillis/vim-bootstrap3-snippets'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'elzr/vim-json'
 call vundle#end()
 "Vundle ended so reenable filetypes
 filetype plugin indent on
@@ -50,6 +52,7 @@ set term=xterm-256color
 "Colorscheme custom
 hi LineNr ctermfg=grey
 hi VertSplit ctermfg=black
+hi nonText ctermbg=NONE
 
 "splitbar
 set fillchars+=vert:\ 
@@ -123,6 +126,8 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 
+"easy motion Leaderkey binding
+map <Leader>e <Plug>(easymotion-prefix)
 
 "Open visual mode
 nmap <Leader><Leader> V
