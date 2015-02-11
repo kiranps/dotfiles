@@ -16,7 +16,7 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
-Plugin 'edkolev/tmuxline.vim'
+"Plugin 'edkolev/tmuxline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kien/ctrlp.vim'
@@ -51,11 +51,11 @@ set term=xterm-256color
 
 "Colorscheme custom
 hi LineNr ctermfg=grey
-hi VertSplit ctermfg=black
+hi VertSplit ctermfg=237 ctermbg=NONE
 hi nonText ctermbg=NONE
 
 "splitbar
-set fillchars+=vert:\ 
+"set fillchars+=vert:
 
 
 " General Config
@@ -94,19 +94,18 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
 
 "set leader key as space
 let mapleader = "\<Space>"
-
-"command mode
-imap jk <esc>
-vmap q <esc>
-
-"move to end of line
-nmap E $
-
-"move to begining of line
-nmap B ^
 
 "refresh vimrc
 nmap <Leader>[ :so $MYVIMRC<CR>
@@ -135,12 +134,6 @@ nmap <Leader><Leader> V
 "switch split pane
 nmap <Leader>s <C-w><C-w>
 
-"page up
-nmap <C-k> <C-u>
-
-"page down
-nmap <C-j> <C-d>
-
 "correct indentation
 vmap <Leader>i =
 
@@ -164,17 +157,28 @@ nmap <Leader>d :bd<CR>
 "open config file
 nmap <leader>r :e ~/.vimrc<CR>
 
+"command mode
+imap jk <esc>
+vmap q <esc>
+
+"move to end of line
+nmap E $
+
+"move to begining of line
+nmap B ^
+
+"page up
+nmap <C-k> <C-u>
+
+"page down
+nmap <C-j> <C-d>
+
 imap hh <C-y>,
 
 "tabbing visual selection
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-"window navigation
-"map <C-h> <C-w>h
-"map <C-j> <C-w>j
-"map <C-k> <C-w>k
-"map <C-l> <C-w>l
 
 "emmet only for html css
 let g:user_emmet_install_global = 0
@@ -186,16 +190,18 @@ set laststatus=2
 "airline tabline
 let g:airline#extensions#tabline#enabled = 1
 
+"let g:airline#extensions#tmuxline#enabled = 0
+
 "airline theme
 let g:airline_theme="bubblegum"
 
 "tmuxline
-let g:tmuxline_powerline_separators = 0
+"let g:tmuxline_powerline_separators = 0
 
 "airline separator
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 "snipmate trigger key
-imap ss <Plug>snipMateNextOrTrigger
-imap SS <Plug>snipMateBack 
+imap kk <Plug>snipMateNextOrTrigger
+imap KK <Plug>snipMateBack 

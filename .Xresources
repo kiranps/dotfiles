@@ -21,7 +21,6 @@ XTerm*pointerShape: left_ptr
 #define _color14       #009688
 #define _color15       #FF5722
 
-
 #define _colorBD       #2ECC71
 #define _colorUL       #2ECC71
 #define _colorIT       #27AE60
