@@ -1,9 +1,10 @@
 " Vim Configuration
 " ===========
-            
+
 " Use vim rather than vi settings
+" ===========
 set nocompatible
-            
+
 "Setup Vundle For Package Management
 "Vundle begins here, turn off filetype temporarily
 filetype off
@@ -35,6 +36,8 @@ Plugin 'chrisgillis/vim-bootstrap3-snippets'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
+"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 "Vundle ended so reenable filetypes
 filetype plugin indent on
@@ -43,6 +46,7 @@ filetype plugin indent on
 " ==========
 
 "Syntax highlighting
+" ==============
 set t_Co=256
 syntax on
 syntax enable
@@ -50,27 +54,24 @@ colorscheme material
 set term=xterm-256color
 
 "Colorscheme custom
+" ==============
 hi LineNr ctermfg=grey
 hi VertSplit ctermfg=237 ctermbg=NONE
 hi nonText ctermbg=NONE
 
-"splitbar
-"set fillchars+=vert:
-
-
 " General Config
 " ==============
-
 set encoding=utf-8 nobomb " BOM often causes trouble
-set number
+set number "line numbers
 set showcmd " Show incomplete cmds down the bottom
 set autoread " Reload files changed outside vim
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
 set ttyfast " Send more characters at a given time.
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set nolist " list disables linebreak
-       
+
 " Search / replace
+" ==============
 set gdefault " By default add g flag to search/replace. Add g to toggle.
 set ignorecase " Ignore case of searches.
 set hlsearch " Highlight searches
@@ -85,7 +86,6 @@ set nowritebackup
 
 " Indentation and Display
 " =======================
-" We want to replace tabs with spaces and have 4 space width indentation
 set autoindent
 set smartindent
 set smarttab
@@ -98,9 +98,9 @@ set expandtab
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
 endif
 
 
@@ -181,6 +181,7 @@ vmap <S-Tab> <gv
 
 
 "emmet only for html css
+" ==============
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
@@ -195,9 +196,6 @@ let g:airline#extensions#tabline#enabled = 1
 "airline theme
 let g:airline_theme="bubblegum"
 
-"tmuxline
-"let g:tmuxline_powerline_separators = 0
-
 "airline separator
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -205,3 +203,7 @@ let g:airline_right_sep=''
 "snipmate trigger key
 imap kk <Plug>snipMateNextOrTrigger
 imap KK <Plug>snipMateBack 
+
+"indentation lines
+let g:indentLine_color_term = 236
+let g:indentLine_char = '|'
