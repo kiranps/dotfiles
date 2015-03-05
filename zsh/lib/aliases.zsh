@@ -67,14 +67,8 @@ alias t3='tree -L 3'
 alias t2='tree -L 2'
 alias t1='tree -L 1'
 
-# file size
-alias du='du -hs'
-
-# Add todo config
-alias t='todo -d ~/bin/todo.cfg'
-alias tadd='todo add'
-alias tdel='todo del'
-alias tlis='todo list'
-
 # services
 alias restart_net='sudo service network-manager restart'
+
+#tasks
+alias t='python ~/tasks/t.py --task-dir ~/tasks --list tasks'
