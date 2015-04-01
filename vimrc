@@ -38,6 +38,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Yggdroot/indentLine'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 call vundle#end()
 "Vundle ended so reenable filetypes
 filetype plugin indent on
