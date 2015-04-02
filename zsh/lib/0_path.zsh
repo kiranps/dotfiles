@@ -9,5 +9,6 @@ path=(
     $HOME/apps/libwebp-0.4.1/bin
     /opt/android-sdk-linux/tools
     /opt/android-sdk-linux/platform-tools
-    /home/kiru/apps/nw-v0.8.6
+    $HOME/apps/nw-v0.8.6
+    $HOME/.tmuxifier/bin
 )

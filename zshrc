@@ -36,5 +36,8 @@ source ~/.nvm/nvm.sh
 # Set colors for ls
 eval $(dircolors ~/.dircolors)
 
+#set up tmmuxifier
+eval "$(tmuxifier init -)"
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source /home/kiru/.rvm/scripts/rvm

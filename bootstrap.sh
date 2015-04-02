@@ -19,3 +19,6 @@ ln -s ${BASEDIR}/Xresources ~/.Xresources
 
 # dircolors
 ln -s ${BASEDIR}/dircolors ~/.dircolors
+
+#tmuxifier
+ln -s ${BASEDIR}/tmuxifier ~/.tmuxifier
