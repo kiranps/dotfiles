@@ -1,25 +1,27 @@
-XTerm*faceName: monospace
+XTerm*faceName: Monaco 
 xterm*faceSize: 10
-xterm*vt100*geometry: 80x24
+xterm*vt101*geometry: 80x24
 xterm*saveLines: 16384
 XTerm*pointerShape: left_ptr
 
-#define _color0        #3F51B5
-#define _color1        #F44336
-#define _color2        #4CAF50
-#define _color3        #FFEB3B
-#define _color4        #2196F3
-#define _color5        #9C27B0
-#define _color6        #00BCD4
-#define _color7        #795548
-#define _color8        #E91E63
-#define _color9        #C0392B
-#define _color10       #16A085
-#define _color11       #F1C40F
-#define _color12       #CDDC39
-#define _color13       #D35400
-#define _color14       #009688
-#define _color15       #FF5722
+#define _color0        #000000
+#define _color1        #C0392B 
+#define _color2        #1b5e20  
+#define _color3        #F1C40F  
+#define _color4        #9C27B0
+!#define _color4        #0d47a1
+#define _color5        #c51162
+#define _color6        #0097a7
+#define _color7        #bdc3c7
+#define _color8        #212121
+#define _color9        #F44336
+#define _color10       #4CAF50
+#define _color11       #FFEB3B 
+#define _color12       #AB47BC
+!#define _color12       #2196F3
+#define _color13       #e91e63
+#define _color14       #66D9EF
+#define _color15       #ecf0f1
 
 #define _colorBD       #2ECC71
 #define _colorUL       #2ECC71

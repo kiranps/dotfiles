@@ -25,6 +25,8 @@ alias v='vim'
 # google-chrome
 alias g="google-chrome"
 
+alias f="firefox"
+
 # Start python server
 alias pyserver='python -m SimpleHTTPServer'
 
@@ -54,7 +56,7 @@ if [ $UID -ne 0 ]; then
     alias shutdown='sudo shutdown -h now'
     alias reboot='sudo reboot'
     alias ad='sudo apt-get update'
-    alias ag='sudo apt-get update && sudo apt-get upgrade'
+    alias ag='sudo apt-get upgrade'
     alias ai='sudo apt-get install'
     alias s='sudo shutdown -c'
 fi

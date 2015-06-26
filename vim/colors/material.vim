@@ -40,7 +40,7 @@ let s:mlc.indigo             = ['3F51B5', 0]
 let s:mlc.red                = ['F44336', 1]
 let s:mlc.green              = ['4CAF50', 2]
 let s:mlc.yellow             = ['FFEB3B', 3]
-let s:mlc.blue               = ['2196F3', 4]
+let s:mlc.blue2               = ['8BC34A', 4]
 let s:mlc.purple             = ['9C27B0', 5]
 let s:mlc.cyan               = ['00BCD4', 6]
 let s:mlc.brown              = ['795548', 7]
@@ -104,7 +104,6 @@ endfunction
 " }}}
 " Configuration Options {{{
 
-" None, you bitches!
 
 " }}}
 
@@ -113,7 +112,7 @@ endfunction
 
 " General/UI {{{
 
-call s:HL('Normal',       'white',        'blackgravel')
+call s:HL('Normal',       'white',        'blackgravel', "")
 
 call s:HL('Folded',       'mediumgravel', 'bg',          'none')
 
@@ -125,7 +124,7 @@ call s:HL('ColorColumn',  '',             'darkgravel')
 
 call s:HL('TabLine',      'white',        'blackgravel', 'none')
 call s:HL('TabLineFill',  'white',        'blackgravel', 'none')
-call s:HL('TabLineSel',   'black',         'blue',      'none')
+call s:HL('TabLineSel',   'black',         'blue2',      'none')
 
 call s:HL('MatchParen',   'amber',    'darkgravel',  'bold')
 
@@ -136,11 +135,11 @@ call s:HL('Visual',       '',             'deepgravel')
 call s:HL('VisualNOS',    '',             'deepgravel')
 
 call s:HL('Search',       'black',         'amber',   'bold')
-call s:HL('IncSearch',    'black',         'blue',      'bold')
+call s:HL('IncSearch',    'black',         'blue2',      'bold')
 
 call s:HL('Underlined',   'fg',           '',            'underline')
 
-call s:HL('StatusLine',   'black',         'blue',      'bold')
+call s:HL('StatusLine',   'black',         'blue2',      'bold')
 call s:HL('StatusLineNC', 'white',         'deepgravel',  'bold')
 
 call s:HL('Directory',    'orange',  '',            'bold')
@@ -169,9 +168,9 @@ call s:HL('FoldColumn', 'mediumgravel', 'blackgravel')
 " }}}
 " Cursor {{{
 
-call s:HL('Cursor',  'black', 'blue', 'bold')
-call s:HL('vCursor', 'black', 'blue', 'bold')
-call s:HL('iCursor', 'black', 'blue', 'none')
+call s:HL('Cursor',  'black', 'blue2', 'bold')
+call s:HL('vCursor', 'black', 'blue2', 'bold')
+call s:HL('iCursor', 'black', 'blue2', 'none')
 
 " }}}
 " Syntax highlighting {{{
@@ -191,13 +190,13 @@ call s:HL('String', 'orange')
 call s:HL('Statement',   'red', '', 'bold')
 call s:HL('Keyword',     'red', '', 'bold')
 call s:HL('Conditional', 'red', '', 'bold')
-call s:HL('Operator',    'red', '', 'none')
-call s:HL('Label',       'red', '', 'none')
-call s:HL('Repeat',      'red', '', 'none')
+call s:HL('Operator',    'red', '', 'bold')
+call s:HL('Label',       'red', '', 'bold')
+call s:HL('Repeat',      'red', '', 'bold')
 
 " Functions and variable declarations are orange, because white looks weird.
-call s:HL('Identifier', 'orange', '', 'none')
-call s:HL('Function',   'orange', '', 'none')
+call s:HL('Identifier', 'orange', '', 'bold')
+call s:HL('Function',   'orange', '', 'bold')
 
 " Preprocessor stuff is yellow, to make it pop.
 "
@@ -205,9 +204,9 @@ call s:HL('Function',   'orange', '', 'none')
 " grouped together at the beginning of a file.  If they're in the middle of some
 " other code they should stand out, because something tricky is
 " probably going on.
-call s:HL('PreProc',   'yellow', '', 'none')
-call s:HL('Macro',     'yellow', '', 'none')
-call s:HL('Define',    'yellow', '', 'none')
+call s:HL('PreProc',   'yellow', '', 'bold')
+call s:HL('Macro',     'yellow', '', 'bold')
+call s:HL('Define',    'yellow', '', 'bold')
 call s:HL('PreCondit', 'yellow', '', 'bold')
 
 " Constants of all kinds are colored together.
@@ -222,9 +221,9 @@ call s:HL('Float',     'deeporange', '', 'bold')
 " Not sure what 'special character in a constant' means, but let's make it pop.
 call s:HL('SpecialChar', 'teal', '', 'bold')
 
-call s:HL('Type',         'teal', '', 'none')
-call s:HL('StorageClass', 'red', '', 'none')
-call s:HL('Structure',    'red', '', 'none')
+call s:HL('Type',         'teal', '', 'bold')
+call s:HL('StorageClass', 'red', '', 'bold')
+call s:HL('Structure',    'red', '', 'bold')
 call s:HL('Typedef',      'red', '', 'bold')
 
 " Make try/catch blocks stand out.
@@ -233,13 +232,13 @@ call s:HL('Exception', 'yellow', '', 'bold')
 " Misc
 call s:HL('Error',  'white',   'red', 'bold')
 call s:HL('Debug',  'white',   '',      'bold')
-call s:HL('Ignore', 'gravel', '',      '')
+call s:HL('Ignore', 'gravel', '',      'bold')
 
 " }}}
 " Completion Menu {{{
 
 call s:HL('Pmenu',      'white',        'deepergravel')
-call s:HL('PmenuSel',   'black',         'blue',       'bold')
+call s:HL('PmenuSel',   'black',         'blue2',       'bold')
 call s:HL('PmenuSbar',  '',             'deepergravel')
 call s:HL('PmenuThumb', 'brightgravel')
 
@@ -284,16 +283,16 @@ endif
   call s:HL('CtrlPPrtText', 'white', 'bg', 'none')
 
   " the prompt’s cursor when moving over the text
-  call s:HL('CtrlPPrtCursor', 'black', 'blue', 'bold')
+  call s:HL('CtrlPPrtCursor', 'black', 'blue2', 'bold')
 
   " 'prt' or 'win', also for 'regex'
-  call s:HL('CtrlPMode1', 'black', 'blue', 'bold')
+  call s:HL('CtrlPMode1', 'black', 'blue2', 'bold')
 
   " 'file' or 'path', also for the local working dir
-  call s:HL('CtrlPMode2', 'black', 'blue', 'bold')
+  call s:HL('CtrlPMode2', 'black', 'blue2', 'bold')
 
   " the scanning status
-  call s:HL('CtrlPStats', 'black', 'blue', 'bold')
+  call s:HL('CtrlPStats', 'black', 'blue2', 'bold')
 
   " TODO: CtrlP extensions.
   " CtrlPTabExtra  : the part of each line that’s not matched against (Comment)
@@ -305,7 +304,7 @@ endif
 " }}}
 " EasyMotion {{{
 
-call s:HL('EasyMotionTarget', 'blue',     'bg', 'bold')
+call s:HL('EasyMotionTarget', 'blue2',     'bg', 'bold')
 call s:HL('EasyMotionShade',  'deepgravel', 'bg')
 
 " }}}
@@ -322,43 +321,9 @@ call s:HL('InterestingWord6', 'black', 'red')
 
 
 " }}}
-" Makegreen {{{
 
-" hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=black guibg=#9edf1c
-" hi RedBar   term=reverse ctermfg=white ctermbg=red guifg=white guibg=#C50048
-
-" }}}
-" ShowMarks {{{
-
-call s:HL('ShowMarksHLl', 'blue', 'blackgravel')
-call s:HL('ShowMarksHLu', 'blue', 'blackgravel')
-call s:HL('ShowMarksHLo', 'blue', 'blackgravel')
-call s:HL('ShowMarksHLm', 'blue', 'blackgravel')
-
-" }}}
-
-" }}}
 " Filetype-specific {{{
 
-" Clojure {{{
-
-call s:HL('clojureSpecial',  'red',       '', '')
-call s:HL('clojureDefn',     'red',       '', '')
-call s:HL('clojureDefMacro', 'red',       '', '')
-call s:HL('clojureDefine',   'red',       '', '')
-call s:HL('clojureMacro',    'red',       '', '')
-call s:HL('clojureCond',     'red',       '', '')
-
-call s:HL('clojureKeyword',  'orange',      '', 'none')
-
-call s:HL('clojureFunc',     'teal',       '', 'none')
-call s:HL('clojureRepeat',   'teal',       '', 'none')
-
-call s:HL('clojureParen0',   'lightgravel', '', 'none')
-
-call s:HL('clojureAnonArg',  'white',        '', 'bold')
-
-" }}}
 " CSS {{{
 
 call s:HL('cssColorProp',            'orange', '', 'none')
@@ -377,134 +342,39 @@ call s:HL('cssClassName',            'orange',      '', 'none')
 " Diff {{{
 
 call s:HL('gitDiff',     'lightgravel', '',)
-
 call s:HL('diffRemoved', 'teal',       '',)
 call s:HL('diffAdded',   'yellow',        '',)
 call s:HL('diffFile',    'black',        'red',  'bold')
 call s:HL('diffNewFile', 'black',        'red',  'bold')
-
 call s:HL('diffLine',    'black',        'orange', 'bold')
 call s:HL('diffSubname', 'orange',      '',       'none')
 
 " }}}
-" Django Templates {{{
 
-call s:HL('djangoArgument', 'orange', '',)
-call s:HL('djangoTagBlock', 'orange',      '')
-call s:HL('djangoVarBlock', 'orange',      '')
-" hi djangoStatement guifg=#ff3853 gui=bold
-" hi djangoVarBlock guifg=#f4cf86
-
-" }}}
 " HTML {{{
 
 " Punctuation
 call s:HL('htmlTag',    'white', 'bg', 'none')
 call s:HL('htmlEndTag', 'white', 'bg', 'none')
-
 " Tag names
-call s:HL('htmlTagName',        'pink', '', 'bold')
-call s:HL('htmlSpecialTagName', 'pink', '', 'bold')
+call s:HL('htmlTagName',        'red', '', 'bold')
+call s:HL('htmlSpecialTagName', 'red', '', 'bold')
 "call s:HL('htmlSpecialChar',    'yellow',   '', 'none')
 call s:HL('htmlSpecialChar',    'pink',   '', 'none')
-
 " Attributes
 call s:HL('htmlArg', 'green', '', 'none')
-
 " Stuff inside an <a> tag
-
-call s:HL('htmlLink', 'blue', '', 'underline')
-
+call s:HL('htmlLink', 'blue2', '', 'underline')
 " }}}
-" Java {{{
 
+" Java {{{
 call s:HL('javaClassDecl',    'red',     '', 'bold')
 call s:HL('javaScopeDecl',    'red',     '', 'bold')
 call s:HL('javaCommentTitle', 'gravel',    '')
 call s:HL('javaDocTags',      'white',      '', 'none')
 call s:HL('javaDocParam',     'amber', '', '')
-
 " }}}
-" LaTeX {{{
 
-call s:HL('texStatement',   'blue',       '', 'none')
-call s:HL('texMathZoneX',   'orange',       '', 'none')
-call s:HL('texMathZoneA',   'orange',       '', 'none')
-call s:HL('texMathZoneB',   'orange',       '', 'none')
-call s:HL('texMathZoneC',   'orange',       '', 'none')
-call s:HL('texMathZoneD',   'orange',       '', 'none')
-call s:HL('texMathZoneE',   'orange',       '', 'none')
-call s:HL('texMathZoneV',   'orange',       '', 'none')
-call s:HL('texMathZoneX',   'orange',       '', 'none')
-call s:HL('texMath',        'orange',       '', 'none')
-call s:HL('texMathMatcher', 'orange',       '', 'none')
-call s:HL('texRefLabel',    'orange',  '', 'none')
-call s:HL('texRefZone',     'yellow',         '', 'none')
-call s:HL('texComment',     'light_green',    '', 'none')
-call s:HL('texDelimiter',   'orange',       '', 'none')
-call s:HL('texZone',        'brightgravel', '', 'none')
-
-augroup badwolf_tex
-  au!
-
-  au BufRead,BufNewFile *.tex syn region texMathZoneV start="\\(" end="\\)\|%stopzone\>" keepend contains=@texMathZoneGroup
-  au BufRead,BufNewFile *.tex syn region texMathZoneX start="\$" skip="\\\\\|\\\$" end="\$\|%stopzone\>" keepend contains=@texMathZoneGroup
-augroup END
-
-" }}}
-" LessCSS {{{
-
-call s:HL('lessVariable', 'yellow', '', 'none')
-
-" }}}
-" Lispyscript {{{
-
-call s:HL('lispyscriptDefMacro', 'yellow',  '', '')
-call s:HL('lispyscriptRepeat',   'teal', '', 'none')
-
-" }}}
-" Mail {{{
-
-call s:HL('mailSubject',     'orange',      '', 'bold')
-call s:HL('mailHeader',      'lightgravel', '', '')
-call s:HL('mailHeaderKey',   'lightgravel', '', '')
-call s:HL('mailHeaderEmail', 'white',        '', '')
-call s:HL('mailURL',         'deeporange',      '', 'underline')
-call s:HL('mailSignature',   'gravel',      '', 'none')
-
-call s:HL('mailQuoted1',     'gravel',      '', 'none')
-call s:HL('mailQuoted2',     'teal',       '', 'none')
-call s:HL('mailQuoted3',     'orange', '', 'none')
-call s:HL('mailQuoted4',     'orange',      '', 'none')
-call s:HL('mailQuoted5',     'yellow',        '', 'none')
-
-" }}}
-" Markdown {{{
-
-call s:HL('markdownHeadingRule',       'lightgravel', '', 'bold')
-call s:HL('markdownHeadingDelimiter',  'lightgravel', '', 'bold')
-call s:HL('markdownOrderedListMarker', 'lightgravel', '', 'bold')
-call s:HL('markdownListMarker',        'lightgravel', '', 'bold')
-call s:HL('markdownItalic',            'white',        '', 'bold')
-call s:HL('markdownBold',              'white',        '', 'bold')
-call s:HL('markdownH1',                'orange',      '', 'bold')
-call s:HL('markdownH2',                'yellow',        '', 'bold')
-call s:HL('markdownH3',                'yellow',        '', 'none')
-call s:HL('markdownH4',                'yellow',        '', 'none')
-call s:HL('markdownH5',                'yellow',        '', 'none')
-call s:HL('markdownH6',                'yellow',        '', 'none')
-call s:HL('markdownLinkText',          'deeporange',      '', 'underline')
-call s:HL('markdownIdDeclaration',     'deeporange')
-call s:HL('markdownAutomaticLink',     'deeporange',      '', 'bold')
-call s:HL('markdownUrl',               'deeporange',      '', 'bold')
-call s:HL('markdownUrldelimiter',      'lightgravel', '', 'bold')
-call s:HL('markdownLinkDelimiter',     'lightgravel', '', 'bold')
-call s:HL('markdownLinkTextDelimiter', 'lightgravel', '', 'bold')
-call s:HL('markdownCodeDelimiter',     'orange', '', 'bold')
-call s:HL('markdownCode',              'orange', '', 'none')
-call s:HL('markdownCodeBlock',         'orange', '', 'none')
-
-" }}}
 " MySQL {{{
 
 call s:HL('mysqlSpecial', 'teal', '', 'bold')
@@ -525,46 +395,138 @@ call s:HL('pythonRun',         'gravel', '', 'bold')
 call s:HL('pythonCoding',      'gravel', '', 'bold')
 
 " }}}
-" SLIMV {{{
 
-" Rainbow parentheses
-call s:HL('hlLevel0', 'gravel')
-call s:HL('hlLevel1', 'orange')
-call s:HL('hlLevel2', 'green')
-call s:HL('hlLevel3', 'teal')
-call s:HL('hlLevel4', 'pink')
-call s:HL('hlLevel5', 'orange')
-call s:HL('hlLevel6', 'orange')
-call s:HL('hlLevel7', 'green')
-call s:HL('hlLevel8', 'teal')
-call s:HL('hlLevel9', 'pink')
-
-" }}}
 " Vim {{{
-
 call s:HL('VimCommentTitle', 'lightgravel', '', 'bold')
-
 call s:HL('VimMapMod',       'teal',       '', 'none')
 call s:HL('VimMapModKey',    'teal',       '', 'none')
 call s:HL('VimNotation',     'teal',       '', 'none')
 call s:HL('VimBracket',      'teal',       '', 'none')
-
 " }}}
 
 " Javascript {{{
-
 call s:HL('jsKeyword', 'cyan', '', '')
 call s:HL('jsFuncName', 'lime', '', '')
-call s:HL('jsFunction', 'blue', '', '')
+call s:HL('jsFunction', 'blue2', '', '')
 call s:HL('jsFuncCall', 'cyan', '', '')
 call s:HL('jsStringS', 'amber', '', '')
 call s:HL('jsStringD', 'amber', '', '')
 call s:HL('jsBooleanTrue', 'purple', '', '')
 call s:HL('jsBooleanFalse', 'purple', '', '')
 call s:HL('jsOperator', 'red', '', '')
-call s:HL('jsConditional', 'pink', '', '')
+call s:HL('jsConditional', 'red', '', 'bold')
 call s:HL('jsNull', 'lime', '', '')
 " }}}
 
+
+
+" Ruby {{{
+call s:HL('rubyInclude', 'red', '', 'bold') " require
+call s:HL('rubyClass', 'red', '', 'bold') " class
+call s:HL('rubyConditional', 'red', '', 'bold')
+call s:HL('rubyDefine', 'red', '', 'bold') " def end
+call s:HL('rubyControl', 'red', '', 'bold') "do loop while end
+
+call s:HL('rubyString', 'yellow', '', 'bold') " string 
+call s:HL('rubySymbol', 'blue2', '', 'bold')
+call s:HL('rubyFunction', 'brown', '', 'bold') "function name
+call s:HL('rubyIdentifier', 'orange', '', 'bold') " key value
+call s:HL('rubyInstanceVariable', 'orange', '', 'bold') "@name
+call s:HL('rubyGlobalVariable', 'orange', '', 'bold') " $CURRENT_PATH
+call s:HL('rubyConstant', 'teal', '', 'bold') "class name
+
+call s:HL('rubyComment', 'gravel', '', '')
+call s:HL('rubyMultilineComment', 'gravel', '', '')
+
+"call s:HL('rubyExceptional', 'lime', '', 'bold')
+"call s:HL('rubyMethodExceptional', 'lime', '', 'bold')
+"call s:HL('rubyTodo', 'lime', '', 'bold')
+"call s:HL('rubyStringEscape', 'lime', '', 'bold')
+"call s:HL('rubyQuoteEscape', 'lime', '', 'bold')
+"call s:HL('rubyInterpolationDelimiter', 'lime', '', 'bold')
+"call s:HL('rubyInterpolation', 'lime', '', 'bold')
+"call s:HL('rubyClassVariable', 'green', '', 'bold')
+"call s:HL('rubyPredefinedVariable', 'lime', '', 'bold')
+"call s:HL('rubyInvalidVariable', 'lime', '', 'bold')
+"call s:HL('rubyNoInterpolation', 'lime', '', 'bold')
+"call s:HL('rubyDelimEscape', 'lime', '', 'bold')
+"
+"call s:HL('rubyNestedParentheses', 'lime', '', 'bold')
+"call s:HL('rubyNestedCurlyBraces', 'lime', '', 'bold')
+"call s:HL('rubyNestedAngleBrackets', 'lime', '', 'bold')
+"call s:HL('rubyNestedSquareBrackets', 'lime', '', 'bold')
+"
+"call s:HL('rubyRegexpSpecial', 'lime', '', 'bold')
+"call s:HL('rubyRegexpComment', 'lime', '', 'bold')
+"call s:HL('rubyRegexpParens', 'lime', '', 'bold')
+"call s:HL('rubyRegexpCharClass', 'lime', '', 'bold')
+"call s:HL('rubyRegexpEscape', 'lime', '', 'bold')
+"call s:HL('rubyRegexpBrackets', 'lime', '', 'bold')
+"call s:HL('rubyRegexpQuantifier', 'lime', '', 'bold')
+"call s:HL('rubyRegexpAnchor', 'lime', '', 'bold')
+"call s:HL('rubyRegexpDot', 'lime', '', 'bold')
+"
+"call s:HL('rubyASCIICode', 'lime', '', 'bold')
+"
+"call s:HL('rubyInteger', 'lime', '', 'bold')
+"call s:HL('rubyFloat', 'lime', '', 'bold')
+"call s:HL('rubyLocalVariableOrMethod', 'lime', '', 'bold')
+"call s:HL('rubyBlockArgument', 'lime', '', 'bold')
+
+"call s:HL('rubyCapitalizedMethod', 'lime', '', 'bold')
+"call s:HL('rubyBlockParameter', 'lime', '', 'bold')
+"call s:HL('rubyBlockParameterList', 'lime', '', 'bold')
+"call s:HL('rubyPredefinedConstant', 'lime', '', 'bold')
+"call s:HL('rubyRegexpDelimiter', 'lime', '', 'bold')
+"call s:HL('rubyRegexp', 'lime', '', 'bold')
+"call s:HL('rubyStringDelimiter', 'lime', '', 'bold')
+"call s:HL('rubySymbolDelimiter', 'lime', '', 'bold')
+"call s:HL('rubyHeredocStart', 'lime', '', 'bold')
+"call s:HL('rubyHeredoc', 'lime', '', 'bold')
+"call s:HL('rubyAliasDeclaration2', 'lime', '', 'bold')
+"call s:HL('rubyAliasDeclaration', 'lime', '', 'bold')
+"call s:HL('rubyBoolean', 'lime', '', 'bold')
+"call s:HL('rubyPseudoVariable', 'lime', '', 'bold')
+"call s:HL('rubyMethodDeclaration', 'lime', '', 'bold')
+"call s:HL('rubyClassDeclaration', 'lime', '', 'bold')
+"call s:HL('rubyModuleDeclaration', 'lime', '', 'bold')
+"call s:HL('rubyKeyword', 'lime', '', 'bold')
+"call s:HL('rubyBeginEnd', 'lime', '', 'bold')
+"call s:HL('rubyModule', 'lime', '', 'bold')
+"
+"call s:HL('rubyMethodBlock', 'lime', '', 'bold')
+"call s:hl('rubyblock', 'lime', '', 'bold')
+"call s:HL('rubyConditionalModifier', 'lime', '', 'bold')
+"call s:HL('rubyRepeatModifier', 'lime', '', 'bold')
+"call s:HL('rubyDoBlock', 'lime', '', 'bold')
+"call s:HL('rubyCurlyBlockDelimiter', 'lime', '', 'bold')
+"call s:HL('rubyCurlyBlock', 'lime', '', 'bold')
+"call s:HL('rubyArrayDelimiter', 'lime', '', 'bold')
+"call s:HL('rubyArrayLiteral', 'lime', '', 'bold')
+"call s:HL('rubyBlockExpression', 'lime', '', 'bold')
+"call s:HL('rubyCaseExpression', 'lime', '', 'bold')
+"call s:HL('rubyConditionalExpression', 'lime', '', 'bold')
+"call s:HL('rubyRepeat', 'lime', '', 'bold')
+"
+"call s:HL('rubyOptionalDo', 'lime', '', 'bold')
+"call s:HL('rubyOptionalDoLine', 'lime', '', 'bold')
+"call s:HL('rubyRepeatExpression', 'lime', '', 'bold')
+"call s:HL('rubyAccess', 'lime', '', 'bold')
+"call s:HL('rubyAttribute', 'lime', '', 'bold')
+"call s:HL('rubyEval', 'lime', '', 'bold')
+"call s:HL('rubyException', 'lime', '', 'bold')
+"call s:HL('rubySharpBang', 'lime', '', 'bold')
+"call s:HL('rubySpaceError', 'lime', '', 'bold')
+"call s:HL('rubyDocumentation', 'lime', '', 'bold')
+"call s:HL('rubyKeywordAsMethod', 'lime', '', 'bold')
+"call s:HL('rubyDataDirective', 'lime', '', 'bold')
+"call s:HL('rubyData', 'lime', '', 'bold')
+"call s:HL('rubyPredefinedIdentifier', 'lime', '', 'bold')
+"call s:HL('rubyError', 'lime', '', 'bold')
+
+" }}}
+
+
+" }}}
 
 " }}}

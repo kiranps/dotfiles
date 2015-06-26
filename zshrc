@@ -1,5 +1,5 @@
 # Export PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:$PATH
 
 # Path to your zsh folder
 export ZSH=$HOME/.zsh
@@ -13,7 +13,7 @@ autoload -U colors && colors
 source $ZSH/prompt.zsh
 
 # Blinking line cursor
-echo -e -n "\x1b[\x35 q"
+# echo -e -n "\x1b[\x35 q"
 
 # Save history
 HISTFILE=$HOME/.zhistory # where the file will be saved
@@ -21,13 +21,12 @@ HISTSIZE=1000 # the size in bytes it can grow up to
 SAVEHIST=1000 # thr maximum number of commands to save I guess
 
 # Zsh Plugins
-plugins=(git)
+plugins=(git ruby)
 
 # Run zsh configurations
 source $ZSH/zsh.sh
 
-# Configure nvm
-source ~/.nvm/nvm.sh
+bindkey '^R' history-incremental-search-backward
 
 # Start tmux If not running interactively, do not do anything
 [[ $- != *i* ]] && return
@@ -36,8 +35,8 @@ source ~/.nvm/nvm.sh
 # Set colors for ls
 eval $(dircolors ~/.dircolors)
 
-#set up tmmuxifier
-eval "$(tmuxifier init -)"
+# export nvm
+. /usr/local/nvm/nvm.sh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source /home/kiru/.rvm/scripts/rvm
+# setup tmuxifier
+eval "$(tmuxifier init -)"

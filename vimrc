@@ -19,10 +19,10 @@ Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 "Plugin 'edkolev/tmuxline.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'jeetsukumaran/vim-buffergator'
+"Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'digitaltoad/vim-jade'
+"Plugin 'digitaltoad/vim-jade'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
@@ -32,14 +32,20 @@ Plugin 'tpope/vim-surround'
 Plugin 'ervandew/supertab'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'chrisgillis/vim-bootstrap3-snippets'
-Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'chrisgillis/vim-bootstrap3-snippets'
+"Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
 "Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'szw/vim-tags'
+"Plugin 'chase/vim-ansible-yaml'
 call vundle#end()
 "Vundle ended so reenable filetypes
 filetype plugin indent on
@@ -57,9 +63,12 @@ set term=xterm-256color
 
 "Colorscheme custom
 " ==============
+"hi LineNr ctermfg=grey ctermbg=8
 hi LineNr ctermfg=grey
 hi VertSplit ctermfg=237 ctermbg=NONE
 hi nonText ctermbg=NONE
+hi MyGroup cterm=bold
+match MyGroup /./
 
 " General Config
 " ==============
@@ -159,6 +168,9 @@ nmap <Leader>d :bd<CR>
 "open config file
 nmap <leader>r :e ~/.vimrc<CR>
 
+"Vim + Ctags + Ctrlp
+nmap <leader>. :CtrlPTag<cr>
+
 "command mode
 imap jk <esc>
 vmap q <esc>
@@ -180,7 +192,6 @@ imap hh <C-y>,
 "tabbing visual selection
 vmap <Tab> >gv
 vmap <S-Tab> <gv
-
 
 "emmet only for html css
 " ==============
