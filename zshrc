@@ -1,5 +1,7 @@
 # Export PATH
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:$PATH
+#
+export SCALA_HOME=/usr/local/share/scala
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:/opt/android-sdk/tools:/opt/android-sdk/platform-tools:$SCALA_HOME/bin:$PATH
 
 # Path to your zsh folder
 export ZSH=$HOME/.zsh
@@ -27,10 +29,11 @@ plugins=(git ruby)
 source $ZSH/zsh.sh
 
 bindkey '^R' history-incremental-search-backward
+bindkey 'jk' vi-cmd-mode
 
 # Start tmux If not running interactively, do not do anything
 [[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux -2
+[[ -z "$TMUX" ]] && exec tmux -u -2 
 
 # Set colors for ls
 eval $(dircolors ~/.dircolors)
@@ -40,3 +43,7 @@ eval $(dircolors ~/.dircolors)
 
 # setup tmuxifier
 eval "$(tmuxifier init -)"
+
+# setup autojump
+. /usr/share/autojump/autojump.zsh
+

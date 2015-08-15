@@ -19,7 +19,7 @@ Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 "Plugin 'edkolev/tmuxline.vim'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'digitaltoad/vim-jade'
@@ -45,6 +45,7 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'szw/vim-tags'
+Plugin 'ryanoasis/vim-webdevicons'
 "Plugin 'chase/vim-ansible-yaml'
 call vundle#end()
 "Vundle ended so reenable filetypes
@@ -60,15 +61,18 @@ syntax on
 syntax enable
 colorscheme material
 set term=xterm-256color
+let g:webdevicons_enable = 1
 
 "Colorscheme custom
 " ==============
 "hi LineNr ctermfg=grey ctermbg=8
 hi LineNr ctermfg=grey
+hi LineNr ctermbg=8
 hi VertSplit ctermfg=237 ctermbg=NONE
 hi nonText ctermbg=NONE
 hi MyGroup cterm=bold
 match MyGroup /./
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
 " General Config
 " ==============
@@ -121,8 +125,10 @@ let mapleader = "\<Space>"
 "refresh vimrc
 nmap <Leader>[ :so $MYVIMRC<CR>
 
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
+nmap <Leader>o <C-]>
+nmap <Leader>t <C-t>
+
+nmap <Leader>w :w<CR>
 
 "code folding
 vmap <Leader>f zf
@@ -138,6 +144,17 @@ vmap <Leader>p "+p
 
 "easy motion Leaderkey binding
 map <Leader>e <Plug>(easymotion-prefix)
+
+"quote word under cursor
+nmap <Leader>" ciw"<C-r>""
+nmap <Leader>' ciw'<C-r>"'
+imap <Leader>" ciw"<C-r>""
+imap <Leader>' ciw'<C-r>"'
+
+"quote selected text
+vmap <Leader>" di"<C-r>""
+vmap <Leader>' di'<C-r>"'
+
 
 "Open visual mode
 nmap <Leader><Leader> V
@@ -171,7 +188,6 @@ nmap <leader>r :e ~/.vimrc<CR>
 "Vim + Ctags + Ctrlp
 nmap <leader>. :CtrlPTag<cr>
 
-"command mode
 imap jk <esc>
 vmap q <esc>
 
@@ -192,6 +208,8 @@ imap hh <C-y>,
 "tabbing visual selection
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+
 
 "emmet only for html css
 " ==============

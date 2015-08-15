@@ -74,3 +74,6 @@ alias restart_net='sudo service network-manager restart'
 
 #tasks
 alias t='python ~/tasks/t.py --task-dir ~/tasks --list tasks'
+
+# open gists
+alias gist="vim '+Gist -l'"

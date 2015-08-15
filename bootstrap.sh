@@ -14,8 +14,8 @@ ln -s ${BASEDIR}/zsh ~/.zsh
 ln -s ${BASEDIR}/tmux.conf ~/.tmux.conf
 ln -s ${BASEDIR}/tmux ~/.tmux
 
-# Xresources
-ln -s ${BASEDIR}/Xresources ~/.Xresources
+# xfce terminal config 
+ln -s ${BASEDIR}/terminalrc ~/.config/xfce4/terminal/terminalrc 
 
 # dircolors
 ln -s ${BASEDIR}/dircolors ~/.dircolors

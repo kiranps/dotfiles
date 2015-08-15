@@ -4,52 +4,23 @@ xterm*vt101*geometry: 80x24
 xterm*saveLines: 16384
 XTerm*pointerShape: left_ptr
 
-#define _color0        #000000
-#define _color1        #C0392B 
-#define _color2        #1b5e20  
-#define _color3        #F1C40F  
-#define _color4        #9C27B0
-!#define _color4        #0d47a1
-#define _color5        #c51162
-#define _color6        #0097a7
-#define _color7        #bdc3c7
-#define _color8        #212121
-#define _color9        #F44336
-#define _color10       #4CAF50
-#define _color11       #FFEB3B 
-#define _color12       #AB47BC
-!#define _color12       #2196F3
-#define _color13       #e91e63
-#define _color14       #66D9EF
-#define _color15       #ecf0f1
+*color0:#2c3e50
+*color1:#c0392b
+*color2:#27ae60
+*color3:#f39c12
+*color4:#2980b9
+*color5:#8e44ad
+*color6:#16a085
+*color7:#bdc3c7
 
-#define _colorBD       #2ECC71
-#define _colorUL       #2ECC71
-#define _colorIT       #27AE60
+*color8:#34495e
+*color9:#e74c3c
+*color10:#2ecc71
+*color11:#f1c40f
+*color12:#3498db
+*color13:#9b59b6
+*color14:#2AA198
+*color15:#ecf0f1
 
-#define _foreground    #BDC3C7
-#define _background    #121212
-#define _cursorColor   #8faf9f
-
-XTerm*color0         : _color0
-XTerm*color1         : _color1
-XTerm*color2         : _color2
-XTerm*color3         : _color3
-XTerm*color4         : _color4
-XTerm*color5         : _color5
-XTerm*color6         : _color6
-XTerm*color7         : _color7
-XTerm*color8         : _color8
-XTerm*color9         : _color9
-XTerm*color10        : _color10
-XTerm*color11        : _color11
-XTerm*color12        : _color12
-XTerm*color13        : _color13
-XTerm*color14        : _color14
-XTerm*color15        : _color15
-XTerm*colorBD        : _colorBD
-XTerm*colorIT        : _colorIT
-XTerm*colorUL        : _colorUL
-XTerm*foreground     : _foreground
-XTerm*background     : _background
-XTerm*cursorColor    : _cursorColor
+*background:#1F2D3A 
+*foreground:#1abc9c 

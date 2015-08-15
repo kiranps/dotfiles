@@ -112,7 +112,7 @@ endfunction
 
 " General/UI {{{
 
-call s:HL('Normal',       'white',        'blackgravel', "")
+call s:HL('Normal',       'white',        'pink', "")
 
 call s:HL('Folded',       'mediumgravel', 'bg',          'none')
 
@@ -428,12 +428,12 @@ call s:HL('rubyDefine', 'red', '', 'bold') " def end
 call s:HL('rubyControl', 'red', '', 'bold') "do loop while end
 
 call s:HL('rubyString', 'yellow', '', 'bold') " string 
-call s:HL('rubySymbol', 'blue2', '', 'bold')
+call s:HL('rubySymbol', 'purple', '', 'bold')
 call s:HL('rubyFunction', 'brown', '', 'bold') "function name
 call s:HL('rubyIdentifier', 'orange', '', 'bold') " key value
 call s:HL('rubyInstanceVariable', 'orange', '', 'bold') "@name
 call s:HL('rubyGlobalVariable', 'orange', '', 'bold') " $CURRENT_PATH
-call s:HL('rubyConstant', 'teal', '', 'bold') "class name
+call s:HL('rubyConstant', 'blue2', '', 'bold') "class name
 
 call s:HL('rubyComment', 'gravel', '', '')
 call s:HL('rubyMultilineComment', 'gravel', '', '')
