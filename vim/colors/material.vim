@@ -530,3 +530,17 @@ call s:HL('rubyMultilineComment', 'gravel', '', '')
 " }}}
 
 " }}}
+
+
+function! NERDTreeHighlightDevIcons(extension, fg, bg, guifg, guibg)
+    exec 'autocmd FileType nerdtree highlight ' . 'NERDTree' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+endfunction
+
+" NERDTreeDevWebDevIcons {{{
+
+call NERDTreeHighlightDevIcons('html', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightDevIcons('js', 'cyan', 'none', 'green', '#151515')
+call NERDTreeHighlightDevIcons('css', 'yellow', 'none', 'green', '#151515')
+call NERDTreeHighlightDevIcons('rb', 'red', 'none', 'green', '#151515')
+
+" }}}
