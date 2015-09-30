@@ -36,3 +36,7 @@ extract () {
     fi
 }
 
+# awesome window manager autostart applications only once
+run_once() {
+    pgrep $@ > /dev/null || ($@ &)
+}

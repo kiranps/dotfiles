@@ -15,6 +15,7 @@ alias .5='cd ../../../../..'
 
 # List direcory contents
 alias lsa='ls -lah'
+alias lsl='ls -ltrh'
 alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
@@ -54,6 +55,7 @@ alias rmd="rm -rf"
 # if user is not root, pass all commands via sudo #
 if [ $UID -ne 0 ]; then
     alias shutdown='sudo shutdown -h now'
+    alias suspend='sudo pm-suspend'
     alias reboot='sudo reboot'
     alias ad='sudo apt-get update'
     alias ag='sudo apt-get upgrade'
@@ -77,3 +79,7 @@ alias t='python ~/tasks/t.py --task-dir ~/tasks --list tasks'
 
 # open gists
 alias gist="vim '+Gist -l'"
+
+# awesome nautilus
+alias nautilus='nautilus --no-desktop'
+

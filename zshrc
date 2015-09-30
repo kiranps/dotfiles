@@ -23,7 +23,7 @@ HISTSIZE=1000 # the size in bytes it can grow up to
 SAVEHIST=1000 # thr maximum number of commands to save I guess
 
 # Zsh Plugins
-plugins=(git ruby)
+plugins=(git ruby rvm)
 
 # Run zsh configurations
 source $ZSH/zsh.sh

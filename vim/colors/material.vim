@@ -40,11 +40,11 @@ let s:mlc.indigo             = ['3F51B5', 0]
 let s:mlc.red                = ['F44336', 1]
 let s:mlc.green              = ['4CAF50', 2]
 let s:mlc.yellow             = ['FFEB3B', 3]
-let s:mlc.blue2               = ['8BC34A', 4]
+let s:mlc.blue2              = ['8BC34A', 4]
 let s:mlc.purple             = ['9C27B0', 5]
 let s:mlc.cyan               = ['00BCD4', 6]
 let s:mlc.brown              = ['795548', 7]
-let s:mlc.pink               = ['E91E63', 8]
+let s:mlc.pink               = ['E91E63', 252]
 let s:mlc.bluegrey           = ['607D8B', 9]
 let s:mlc.light_green        = ['8BC34A', 10]
 let s:mlc.amber              = ['FFC107', 11]
@@ -354,8 +354,8 @@ call s:HL('diffSubname', 'orange',      '',       'none')
 " HTML {{{
 
 " Punctuation
-call s:HL('htmlTag',    'white', 'bg', 'none')
-call s:HL('htmlEndTag', 'white', 'bg', 'none')
+call s:HL('htmlTag',    'white', '', 'none')
+call s:HL('htmlEndTag', 'white', '', 'none')
 " Tag names
 call s:HL('htmlTagName',        'red', '', 'bold')
 call s:HL('htmlSpecialTagName', 'red', '', 'bold')
@@ -406,8 +406,8 @@ call s:HL('VimBracket',      'teal',       '', 'none')
 
 " Javascript {{{
 call s:HL('jsKeyword', 'cyan', '', '')
-call s:HL('jsFuncName', 'lime', '', '')
-call s:HL('jsFunction', 'blue2', '', '')
+call s:HL('jsFuncName', 'purple', '', '')
+call s:HL('jsFunction', 'lime', '', '')
 call s:HL('jsFuncCall', 'cyan', '', '')
 call s:HL('jsStringS', 'amber', '', '')
 call s:HL('jsStringD', 'amber', '', '')
@@ -532,15 +532,15 @@ call s:HL('rubyMultilineComment', 'gravel', '', '')
 " }}}
 
 
-function! NERDTreeHighlightDevIcons(extension, fg, bg, guifg, guibg)
-    exec 'autocmd FileType nerdtree highlight ' . 'NERDTree' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-endfunction
+"function! NERDTreeHighlightDevIcons(extension, fg, bg, guifg, guibg)
+    "exec 'autocmd FileType nerdtree highlight ' . 'NERDTree' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+"endfunction
 
-" NERDTreeDevWebDevIcons {{{
+"" NERDTreeDevWebDevIcons {{{
 
-call NERDTreeHighlightDevIcons('html', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightDevIcons('js', 'cyan', 'none', 'green', '#151515')
-call NERDTreeHighlightDevIcons('css', 'yellow', 'none', 'green', '#151515')
-call NERDTreeHighlightDevIcons('rb', 'red', 'none', 'green', '#151515')
+"call NERDTreeHighlightDevIcons('html', 'green', 'none', 'green', '#151515')
+"call NERDTreeHighlightDevIcons('js', 'cyan', 'none', 'green', '#151515')
+"call NERDTreeHighlightDevIcons('css', 'yellow', 'none', 'green', '#151515')
+"call NERDTreeHighlightDevIcons('rb', 'red', 'none', 'green', '#151515')
 
 " }}}
