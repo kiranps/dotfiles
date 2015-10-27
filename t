@@ -3,8 +3,6 @@
     email = kiran.ps@mobme.in
 [github]
     user = kiranps
-[core]
-    pager = strip_diff_leading_symbols | less -r
 [color]
     ui = auto
 [color "branch"]
@@ -12,13 +10,13 @@
     local = yellow
     remote = green
 [color "diff"]
-    meta = yellow
-    frag = magenta
-    old = red
-    new = green
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
     added = yellow
     changed = green
     untracked = cyan
 [alias]
-	lg = log --color --pretty=format:'%C(red)%h%Creset %C(yellow)%<(10)%an%Creset - %C(blue)%s%Creset %C(green)(%cr) ' --abbrev-commit
+	lg = log --color --pretty=format:'%C(red bold)%h%Creset %C(bold blue)%<(10)%an%Creset - %C(white bold)%s%Creset %C(green bold)(%cr) ' --abbrev-commit

@@ -1,4 +1,3 @@
-
 " Use vim rather than vi settings
 " ===========
 set nocompatible
@@ -15,26 +14,20 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
-"Plugin 'edkolev/tmuxline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'digitaltoad/vim-jade'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-surround'
-"Plugin 'skammer/vim-css-color'
 Plugin 'ervandew/supertab'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'chrisgillis/vim-bootstrap3-snippets'
-"Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
-"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
@@ -46,6 +39,13 @@ Plugin 'szw/vim-tags'
 Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'dkprice/vim-easygrep'
+"Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'edkolev/tmuxline.vim'
+"Plugin 'digitaltoad/vim-jade'
+"Plugin 'skammer/vim-css-color'
+"Plugin 'chrisgillis/vim-bootstrap3-snippets'
+"Plugin 'hail2u/vim-css3-syntax'
 "Plugin 'chase/vim-ansible-yaml'
 call vundle#end()
 "Vundle ended so reenable filetypes
@@ -53,7 +53,6 @@ filetype plugin indent on
 
 " Appearance
 " ==========
-
 "Syntax highlighting
 " ==============
 set t_Co=256
@@ -61,16 +60,23 @@ syntax on
 syntax enable
 set term=xterm-256color
 let g:webdevicons_enable = 1
-colorscheme material
+"colorscheme material
+colorscheme interstellar1
+let g:airline_theme="interstellar"
+
+set textwidth=80
+set columns=100
+let &colorcolumn="120,".join(range(120,335),",")
+
 
 "Colorscheme custom
 " ==============
-hi LineNr ctermfg=grey ctermbg=NONE
-hi Normal ctermbg=NONE ctermfg=NONE
-hi CursorLineNr ctermfg=grey ctermbg=235
-hi VertSplit ctermfg=237 ctermbg=NONE
-hi nonText ctermbg=NONE
-hi Folded ctermfg=238 ctermbg=NONE
+"hi Normal ctermbg=NONE ctermfg=NONE
+"hi LineNr ctermfg=grey ctermbg=NONE
+"hi CursorLineNr ctermfg=grey ctermbg=235
+"hi VertSplit ctermfg=237 ctermbg=NONE
+"hi nonText ctermbg=NONE
+"hi Folded ctermfg=238 ctermbg=NONE
 
 " General Config
 " ==============
@@ -89,7 +95,7 @@ set hidden " hidden buffer helps to switch buffer without saving
 " ==============
 set gdefault " By default add g flag to search/replace. Add g to toggle.
 set ignorecase " Ignore case of searches.
-set hlsearch " Highlight searches
+set nohlsearch " Highlight searches
 set incsearch " Highlight dynamically as pattern is typed.
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
 
@@ -101,6 +107,8 @@ set nowritebackup
 
 " Indentation and Display
 " =======================
+"set foldmethod=syntax
+"set foldlevel=1
 set autoindent
 set smartindent
 set smarttab
@@ -119,8 +127,10 @@ if has('persistent_undo')
 endif
 
 
+
 "set leader key as space
 let mapleader = "\<Space>"
+let maplocalleader = ","
 
 "refresh vimrc
 nmap <Leader>[ :so $MYVIMRC<CR>
@@ -175,6 +185,15 @@ nmap <Leader>n :bp<CR>
 "close buffer
 nmap <Leader>d :bd<CR>
 
+"next tab   
+nmap <Leader>M :tabNext<CR>
+
+"previous tab
+nmap <Leader>N :tabprevious<CR>
+
+"close tab
+nmap <Leader>D :tabclose<CR>
+
 "open config file
 nmap <leader>r :e ~/.vimrc<CR>
 
@@ -184,6 +203,7 @@ nmap <leader>. :CtrlPTag<cr>
 nmap s <Plug>(easymotion-s)
 
 imap jk <esc>
+imap kj <esc>
 vmap q <esc>
 
 "move to end of line
@@ -206,6 +226,12 @@ vmap <S-Tab> <gv
 
 "nnoremap <C-n> :call NumberToggle()<cr>
 
+" remap arrow keys
+nnoremap <Left> :tabnext<CR>
+nnoremap <Right> :tabprev<CR>
+
+nnoremap L :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 
 "emmet only for html css
 " ==============
@@ -218,14 +244,20 @@ set laststatus=2
 "airline tabline
 let g:airline#extensions#tabline#enabled = 1
 
-"let g:airline#extensions#tmuxline#enabled = 0
-
 "airline theme
-let g:airline_theme="bubblegum"
+"let g:airline_theme="bubblegum"
 
 "airline separator
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+"
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep='⮀'
+let g:airline_right_sep='⮂'
+"let g:airline_symbols.branch = '⭠'
+
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
 
 "snipmate trigger key
 imap kk <Plug>snipMateNextOrTrigger
@@ -235,25 +267,28 @@ imap KK <Plug>snipMateBack
 let g:indentLine_color_term = 236
 let g:indentLine_char = '|'
 
+"vertical spit symbol
+set fillchars=vert:\│
+
 "NERDTree File highlighting
-hi NERDTreePart ctermfg=8
-hi NERDTreePartFile ctermfg=8
-hi NERDTreeDirSlash ctermfg=8
-hi NERDTreeFile ctermfg=250
-hi NERDTreeDir ctermfg=250
-hi NERDTreeOpenable ctermfg=240
-hi NERDTreeClosable ctermfg=240
-hi NERDTreeUp ctermfg=240
-hi NERDTreeHelpKey ctermfg=240
-hi NERDTreeHelpTitle ctermfg=240
-hi NERDTreeHelpCommand ctermfg=240
-hi NERDTreeHelp ctermfg=240
-hi NERDTreeRO ctermfg=250
-hi NERDTreeExecFile ctermfg=250
-hi NERDTreeLink ctermfg=250
-hi NERDTreeLinkDir ctermfg=250
-hi NERDTreeCWD ctermfg=7
-hi NERDTreeCurrentNode ctermbg=1 ctermfg=1
+"hi NERDTreePart ctermfg=8
+"hi NERDTreePartFile ctermfg=8
+"hi NERDTreeDirSlash ctermfg=8
+"hi NERDTreeFile ctermfg=250
+"hi NERDTreeDir ctermfg=250
+"hi NERDTreeOpenable ctermfg=240
+"hi NERDTreeClosable ctermfg=240
+"hi NERDTreeUp ctermfg=240
+"hi NERDTreeHelpKey ctermfg=240
+"hi NERDTreeHelpTitle ctermfg=240
+"hi NERDTreeHelpCommand ctermfg=240
+"hi NERDTreeHelp ctermfg=240
+"hi NERDTreeRO ctermfg=250
+"hi NERDTreeExecFile ctermfg=250
+"hi NERDTreeLink ctermfg=250
+"hi NERDTreeLinkDir ctermfg=250
+"hi NERDTreeCWD ctermfg=7
+"hi NERDTreeCurrentNode ctermbg=1 ctermfg=1
 
 "NERDTree custom glyph/icon 
 let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
@@ -280,3 +315,13 @@ endfunc
   "endif
 "endfunc
 
+"set statusline = 
+"set statusline +=%1*\ %n\ %*            "buffer number
+"set statusline +=%5*%{&ff}%*            "file format
+"set statusline +=%3*%y%*                "file type
+"set statusline +=%4*\ %<%F%*            "full path
+"set statusline +=%2*%m%*                "modified flag
+"set statusline +=%1*%=%5l%*             "current line
+"set statusline +=%2*/%L%*               "total lines
+"set statusline +=%1*%4v\ %*             "virtual column number
+"set statusline +=%2*0x%04B\ %*          "character under cursor
