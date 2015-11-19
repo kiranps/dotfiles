@@ -47,3 +47,4 @@ eval "$(tmuxifier init -)"
 # setup autojump
 . /usr/share/autojump/autojump.zsh
 
+eval $(thefuck --alias)

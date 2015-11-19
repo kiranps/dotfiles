@@ -63,7 +63,7 @@ hi TabLine           ctermfg=250     ctermbg=236
 hi TabLineSel        ctermfg=236     ctermbg=250
 hi TabLineFill                       ctermbg=236
 
-hi Boolean           ctermfg=4       ctermbg=bg
+hi Boolean           ctermfg=5       ctermbg=bg
 hi Character         ctermfg=1       ctermbg=bg
 hi Comment           ctermfg=242     ctermbg=bg
 hi Conditional       ctermfg=9       ctermbg=bg
@@ -74,7 +74,7 @@ hi Delimiter         ctermfg=fg      ctermbg=bg
 hi Error             ctermfg=fg      ctermbg=1
 hi Exception         ctermfg=1       ctermbg=bg
 hi Float             ctermfg=5       ctermbg=bg
-hi Function          ctermfg=fg      ctermbg=bg
+hi Function          ctermfg=6       ctermbg=bg
 hi Identifier        ctermfg=6       ctermbg=bg
 hi Ignore            ctermfg=1       ctermbg=bg
 hi Include           ctermfg=9       ctermbg=bg
@@ -107,8 +107,8 @@ hi NERDTreePartFile        ctermfg=bg
 hi NERDTreeDirSlash        ctermfg=bg
 hi NERDTreeFile            ctermfg=250
 hi NERDTreeDir             ctermfg=250
-hi NERDTreeOpenable        ctermfg=250
-hi NERDTreeClosable        ctermfg=250
+hi NERDTreeOpenable        ctermfg=bg
+hi NERDTreeClosable        ctermfg=bg
 hi NERDTreeUp              ctermfg=250
 hi NERDTreeHelpKey         ctermfg=250
 hi NERDTreeHelpTitle       ctermfg=250
@@ -123,7 +123,10 @@ hi NERDTreeCurrentNode     ctermfg=1     ctermbg=1
 "}}}
 
 " Ruby"{{{
-hi rubyLocalVariableOrMethod    ctermfg=12      ctermbg=bg
+"hi rubyLocalVariableOrMethod    ctermfg=12      ctermbg=bg
+"hi rubyBlock ctermfg=12      ctermbg=bg
+"hi rubyCurlyBlock ctermfg=12      ctermbg=bg
+"hi rubyConditionalExpression ctermfg=7       ctermbg=bg
 "}}}
 
 

@@ -58,7 +58,6 @@ if [ $UID -ne 0 ]; then
     alias suspend='sudo pm-suspend'
     alias reboot='sudo reboot'
     alias ad='sudo apt-get update'
-    alias ag='sudo apt-get upgrade'
     alias ai='sudo apt-get install'
     alias s='sudo shutdown -c'
 fi

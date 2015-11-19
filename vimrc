@@ -40,6 +40,8 @@ Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'dkprice/vim-easygrep'
+Plugin 'junegunn/limelight.vim'
+"Plugin 'itchyny/lightline.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'edkolev/tmuxline.vim'
 "Plugin 'digitaltoad/vim-jade'
@@ -63,10 +65,13 @@ let g:webdevicons_enable = 1
 "colorscheme material
 colorscheme interstellar1
 let g:airline_theme="interstellar"
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
-set textwidth=80
-set columns=100
-let &colorcolumn="120,".join(range(120,335),",")
+"set textwidth=80
+"set columns=100
+"let &colorcolumn="120,".join(range(120,335),",")
 
 
 "Colorscheme custom
@@ -249,6 +254,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 "airline separator
 "
+"
+"
+let g:airline#extensions#whitespace#enabled = 0
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
@@ -270,28 +278,9 @@ let g:indentLine_char = '|'
 "vertical spit symbol
 set fillchars=vert:\│
 
-"NERDTree File highlighting
-"hi NERDTreePart ctermfg=8
-"hi NERDTreePartFile ctermfg=8
-"hi NERDTreeDirSlash ctermfg=8
-"hi NERDTreeFile ctermfg=250
-"hi NERDTreeDir ctermfg=250
-"hi NERDTreeOpenable ctermfg=240
-"hi NERDTreeClosable ctermfg=240
-"hi NERDTreeUp ctermfg=240
-"hi NERDTreeHelpKey ctermfg=240
-"hi NERDTreeHelpTitle ctermfg=240
-"hi NERDTreeHelpCommand ctermfg=240
-"hi NERDTreeHelp ctermfg=240
-"hi NERDTreeRO ctermfg=250
-"hi NERDTreeExecFile ctermfg=250
-"hi NERDTreeLink ctermfg=250
-"hi NERDTreeLinkDir ctermfg=250
-"hi NERDTreeCWD ctermfg=7
-"hi NERDTreeCurrentNode ctermbg=1 ctermfg=1
-
 "NERDTree custom glyph/icon 
 let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 "Issues after re-sourcing vimrc
@@ -306,22 +295,3 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
-"function! NumberToggle()
-  "if(&relativenumber == 1)
-    "set number
-  "else
-    "set relativenumber
-  "endif
-"endfunc
-
-"set statusline = 
-"set statusline +=%1*\ %n\ %*            "buffer number
-"set statusline +=%5*%{&ff}%*            "file format
-"set statusline +=%3*%y%*                "file type
-"set statusline +=%4*\ %<%F%*            "full path
-"set statusline +=%2*%m%*                "modified flag
-"set statusline +=%1*%=%5l%*             "current line
-"set statusline +=%2*/%L%*               "total lines
-"set statusline +=%1*%4v\ %*             "virtual column number
-"set statusline +=%2*0x%04B\ %*          "character under cursor
