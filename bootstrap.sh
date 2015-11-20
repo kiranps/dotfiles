@@ -25,3 +25,6 @@ ln -s ${BASEDIR}/tmuxifier ~/.tmuxifier
 
 #gitconfig
 ln -s ${BASEDIR}/gitconfig ~/.gitconfig
+
+#awesome
+ln -s ${BASEDIR}/awesome ~/.config/awesome
