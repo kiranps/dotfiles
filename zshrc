@@ -1,7 +1,7 @@
 # Export PATH
 #
 export SCALA_HOME=/usr/local/share/scala
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:/opt/android-sdk/tools:/opt/android-sdk/platform-tools:$SCALA_HOME/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:/opt/jdk1.8.0_65/bin:/opt/android-sdk/tools:/opt/VSCode-linux-x64:/opt/android-sdk/platform-tools:$SCALA_HOME/bin:$PATH
 
 # Path to your zsh folder
 export ZSH=$HOME/.zsh
@@ -39,12 +39,14 @@ bindkey 'jk' vi-cmd-mode
 eval $(dircolors ~/.dircolors)
 
 # export nvm
-. /usr/local/nvm/nvm.sh
+. ~/.nvm/nvm.sh
 
 # setup tmuxifier
-eval "$(tmuxifier init -)"
+#eval "$(tmuxifier init -)"
 
 # setup autojump
 . /usr/share/autojump/autojump.zsh
 
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -16,7 +16,7 @@ Plugin 'bling/vim-airline'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -41,6 +41,13 @@ Plugin 'guns/xterm-color-table.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'junegunn/limelight.vim'
+Plugin 'terryma/vim-expand-region'
+Plugin 'tpope/vim-endwise'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'icholy/typescript-tools.git'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'itchyny/lightline.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'edkolev/tmuxline.vim'
@@ -260,8 +267,8 @@ let g:airline#extensions#whitespace#enabled = 0
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
-let g:airline_left_sep='⮀'
-let g:airline_right_sep='⮂'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 "let g:airline_symbols.branch = '⭠'
 
 "let g:airline_left_sep=''
@@ -295,3 +302,14 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+au BufRead,BufNewFile *.ts  setlocal filetype=typescript
+
+if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+set completeopt-=preview

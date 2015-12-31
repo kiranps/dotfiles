@@ -82,3 +82,6 @@ alias gist="vim '+Gist -l'"
 # awesome nautilus
 alias nautilus='nautilus --no-desktop'
 
+# range cli file manager
+alias r='ranger'
+
