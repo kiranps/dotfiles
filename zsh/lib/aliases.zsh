@@ -84,4 +84,3 @@ alias nautilus='nautilus --no-desktop'
 
 # range cli file manager
 alias r='ranger'
-

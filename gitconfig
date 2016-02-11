@@ -3,6 +3,7 @@
     email = kiran.ps@mobme.in
 [github]
     user = kiranps
+    email = pskirann@gmail.com
 [core]
     pager = strip_diff_leading_symbols | less -r
 [color]

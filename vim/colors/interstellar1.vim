@@ -128,6 +128,21 @@ hi NERDTreeCurrentNode     ctermfg=1     ctermbg=1
 "hi rubyCurlyBlock ctermfg=12      ctermbg=bg
 "hi rubyConditionalExpression ctermfg=7       ctermbg=bg
 "}}}
+"
+" JSON {{{
+hi jsonNoQuotes ctermfg=fg  ctermbg=bg
+hi jsonStringSQ ctermfg=fg  ctermbg=bg
+hi jsonBoolean  ctermfg=4  
+hi jsonBraces   ctermfg=11
+hi jsonString   ctermfg=15
+
+hi jsonEscape   ctermfg=1
+hi jsonNumber   ctermfg=1
+hi jsonNumError ctermfg=1
+hi jsonNull     ctermfg=1
+
+"}}}
+
 
 
 " vim:foldmethod=marker

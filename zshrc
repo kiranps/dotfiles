@@ -1,7 +1,8 @@
 # Export PATH
 #
 export SCALA_HOME=/usr/local/share/scala
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:/opt/jdk1.8.0_65/bin:/opt/android-sdk/tools:/opt/VSCode-linux-x64:/opt/android-sdk/platform-tools:$SCALA_HOME/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:/opt/jdk1.8.0_65/bin:/opt/google/android-sdk-linux/tools:/opt/VSCode-linux-x64:/opt/google/android-sdk-linux/platform-tools:$SCALA_HOME/bin:$PATH
+export ANDROID_HOME=/opt/google/android-sdk-linux/
 
 # Path to your zsh folder
 export ZSH=$HOME/.zsh

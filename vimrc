@@ -48,6 +48,7 @@ Plugin 'icholy/typescript-tools.git'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mxw/vim-jsx'
 "Plugin 'itchyny/lightline.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'edkolev/tmuxline.vim'
@@ -183,8 +184,6 @@ vmap <Leader>i =
 "select all
 nmap <Leader>a ggVG
 
-nmap <Leader>q :q!<CR>
-
 "open nerd tree
 nmap <Leader>j :NERDTreeToggle<CR>
 
@@ -211,6 +210,9 @@ nmap <leader>r :e ~/.vimrc<CR>
 
 "Vim + Ctags + Ctrlp
 nmap <leader>. :CtrlPTag<cr>
+
+"Toggle QuickFix
+nmap <leader>q :call QuickfixToggle()<cr>
 
 nmap s <Plug>(easymotion-s)
 
@@ -313,3 +315,20 @@ if !exists("g:ycm_semantic_triggers")
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 set completeopt-=preview
+
+
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+    else
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+let g:NERDTreeWinSize=40
+
+let g:jsx_ext_required = 1 " Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
