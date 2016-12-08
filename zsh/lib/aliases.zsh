@@ -84,3 +84,5 @@ alias nautilus='nautilus --no-desktop'
 
 # range cli file manager
 alias r='ranger'
+
+# tmux rename window to current folder

@@ -1,9 +1,8 @@
 [user]
-    name = Kiran PS
-    email = kiran.ps@mobme.in
+	name = Kiran
+	email = kiran.ps@geckolyst.com
 [github]
     user = kiranps
-    email = pskirann@gmail.com
 [core]
     pager = strip_diff_leading_symbols | less -r
 [color]
@@ -23,3 +22,5 @@
     untracked = cyan
 [alias]
 	lg = log --color --pretty=format:'%C(red)%h%Creset %C(yellow)%<(10)%an%Creset - %C(blue)%s%Creset %C(green)(%cr) ' --abbrev-commit
+[push]
+	default = simple

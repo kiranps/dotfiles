@@ -49,6 +49,8 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mxw/vim-jsx'
+Plugin 'elixir-lang/vim-elixir'
+"Plugin 'salomvary/vim-eslint-compiler'
 "Plugin 'itchyny/lightline.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'edkolev/tmuxline.vim'
@@ -73,9 +75,6 @@ let g:webdevicons_enable = 1
 "colorscheme material
 colorscheme interstellar1
 let g:airline_theme="interstellar"
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
 
 "set textwidth=80
 "set columns=100
@@ -196,6 +195,9 @@ nmap <Leader>n :bp<CR>
 "close buffer
 nmap <Leader>d :bd<CR>
 
+"open file under cursor
+nmap <Leader>o gf
+
 "next tab   
 nmap <Leader>M :tabNext<CR>
 
@@ -209,10 +211,13 @@ nmap <Leader>D :tabclose<CR>
 nmap <leader>r :e ~/.vimrc<CR>
 
 "Vim + Ctags + Ctrlp
-nmap <leader>. :CtrlPTag<cr>
+nmap <leader>. :CtrlPTag<CR>
 
 "Toggle QuickFix
-nmap <leader>q :call QuickfixToggle()<cr>
+nmap <leader>q :call QuickfixToggle()<CR>
+
+"git status
+nmap <leader>gs :Gstatus<CR>
 
 nmap s <Plug>(easymotion-s)
 
@@ -244,10 +249,8 @@ vmap <S-Tab> <gv
 nnoremap <Left> :tabnext<CR>
 nnoremap <Right> :tabprev<CR>
 
-nnoremap L :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+"nnoremap L :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-
-"emmet only for html css
 " ==============
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
@@ -330,5 +333,6 @@ endfunction
 
 let g:NERDTreeWinSize=40
 
-let g:jsx_ext_required = 1 " Allow JSX in normal JS files
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
 let g:syntastic_javascript_checkers = ['eslint']

@@ -1,8 +1,16 @@
 # Export PATH
 #
 export SCALA_HOME=/usr/local/share/scala
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.tmuxifier/bin:/opt/jdk1.8.0_65/bin:/opt/google/android-sdk-linux/tools:/opt/VSCode-linux-x64:/opt/google/android-sdk-linux/platform-tools:$SCALA_HOME/bin:$PATH
+export GOPATH="/opt/gopkg" 
+export GOROOT="/opt/go"
+
+export PATH=$HOME/bin:/usr/local/bin:/opt/jdk1.8.0_65/bin:/opt/google/android-sdk-linux/tools:/opt/VSCode-linux-x64:/opt/google/android-sdk-linux/platform-tools:$SCALA_HOME/bin:$PATH
+
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin 
+
 export ANDROID_HOME=/opt/google/android-sdk-linux/
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
 
 # Path to your zsh folder
 export ZSH=$HOME/.zsh
@@ -24,7 +32,7 @@ HISTSIZE=1000 # the size in bytes it can grow up to
 SAVEHIST=1000 # thr maximum number of commands to save I guess
 
 # Zsh Plugins
-plugins=(git ruby rvm)
+plugins=(git ruby rvm aws)
 
 # Run zsh configurations
 source $ZSH/zsh.sh
