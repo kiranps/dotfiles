@@ -4,12 +4,16 @@ export SCALA_HOME=/usr/local/share/scala
 export GOPATH="/opt/gopkg" 
 export GOROOT="/opt/go"
 
-export PATH=$HOME/bin:/usr/local/bin:/opt/jdk1.8.0_65/bin:/opt/google/android-sdk-linux/tools:/opt/VSCode-linux-x64:/opt/google/android-sdk-linux/platform-tools:$SCALA_HOME/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/opt/jdk1.8.0_65/bin:/opt/VSCode-linux-x64:$SCALA_HOME/bin:$PATH
 
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin 
 
-export ANDROID_HOME=/opt/google/android-sdk-linux/
+#export ANDROID_HOME=/opt/google/android-sdk-linux/
 export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+export ANDROID_HOME=/d/android/android-sdk-linux/
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 
 # Path to your zsh folder
@@ -28,8 +32,8 @@ source $ZSH/prompt.zsh
 
 # Save history
 HISTFILE=$HOME/.zhistory # where the file will be saved
-HISTSIZE=1000 # the size in bytes it can grow up to
-SAVEHIST=1000 # thr maximum number of commands to save I guess
+HISTSIZE=100000000000 # the size in bytes it can grow up to
+SAVEHIST=100000000000 # thr maximum number of commands to save I guess
 
 # Zsh Plugins
 plugins=(git ruby rvm aws)

@@ -37,19 +37,20 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'szw/vim-tags'
 Plugin 'ryanoasis/vim-webdevicons'
-Plugin 'guns/xterm-color-table.vim'
+"Plugin 'guns/xterm-color-table.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'junegunn/limelight.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-endwise'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'icholy/typescript-tools.git'
+"Plugin 'leafgarland/typescript-vim'
+"Plugin 'icholy/typescript-tools.git'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mxw/vim-jsx'
-Plugin 'elixir-lang/vim-elixir'
+Plugin 'solarnz/thrift.vim'
+"Plugin 'elixir-lang/vim-elixir'
 "Plugin 'salomvary/vim-eslint-compiler'
 "Plugin 'itchyny/lightline.vim'
 "Plugin 'nathanaelkane/vim-indent-guides'
@@ -184,7 +185,10 @@ vmap <Leader>i =
 nmap <Leader>a ggVG
 
 "open nerd tree
-nmap <Leader>j :NERDTreeToggle<CR>
+nmap <Leader>k :NERDTreeToggle<CR>
+
+"open CtrlP
+nmap <Leader>j :CtrlP<CR>
 
 "next buffer
 nmap <Leader>m :bn<CR>
@@ -211,7 +215,7 @@ nmap <Leader>D :tabclose<CR>
 nmap <leader>r :e ~/.vimrc<CR>
 
 "Vim + Ctags + Ctrlp
-nmap <leader>. :CtrlPTag<CR>
+"nmap <leader>. :CtrlPTag<CR>
 
 "Toggle QuickFix
 nmap <leader>q :call QuickfixToggle()<CR>
@@ -336,3 +340,12 @@ let g:NERDTreeWinSize=40
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
+set backspace=indent,eol,start
+
+let g:vimrubocop_keymap = 0
+nmap <Leader>0 :RuboCop<CR>
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+autocmd FileType javascript set formatprg=prettier\ --stdin

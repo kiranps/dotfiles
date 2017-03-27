@@ -22,6 +22,7 @@ alias la='ls -lAh'
 
 # open vim
 alias v='vim'
+alias e='emacs -nw'
 
 # google-chrome
 alias g="google-chrome"
@@ -84,5 +85,8 @@ alias nautilus='nautilus --no-desktop'
 
 # range cli file manager
 alias r='ranger'
+
+# go docker 
+alias go='docker run golang go'
 
 # tmux rename window to current folder
