@@ -12,45 +12,74 @@ call vundle#begin()
 " ==============
 
 Plugin 'gmarik/vundle'
-Plugin 'bling/vim-airline'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'marcweber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+
+"Explorer
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'szw/vim-tags'
+"Plugin 'dkprice/vim-easygrep'
+"Plugin 'Lokaltog/vim-easymotion'
+
+"Snippet library
+Plugin 'marcweber/vim-addon-mw-utils' "Snipmate dependency
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'ervandew/supertab'
+
+
+"Git
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'terryma/vim-multiple-cursors'
+
+"Airline
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+"Theme
+Plugin 'ryanoasis/vim-webdevicons'
+
+"Syntax highligting
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+
+"AutoComplete
+Plugin 'tpope/vim-surround'
+Plugin 'mattn/emmet-vim'
+Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim' "Python autocompletion
+
+"Code Format
 Plugin 'Yggdroot/indentLine'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'szw/vim-tags'
-Plugin 'ryanoasis/vim-webdevicons'
+Plugin 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+"I don't know
+"Plugin 'Shougo/vimproc.vim'
+"Plugin 'Quramy/tsuquyomi' "Typescript
+
+"Gist
+"Plugin 'mattn/webapi-vim'
+"Plugin 'mattn/gist-vim'
+
+"Ruby plugins
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'ngmy/vim-rubocop'
+"Plugin 'tpope/vim-rails'
+"Plugin 'tpope/vim-endwise'
+
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'junegunn/limelight.vim'
+"Plugin 'terryma/vim-expand-region'
+"Plugin 'jeetsukumaran/vim-buffergator'
+"Plugin 'solarnz/thrift.vim'
 "Plugin 'guns/xterm-color-table.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'junegunn/limelight.vim'
-Plugin 'terryma/vim-expand-region'
-Plugin 'tpope/vim-endwise'
-Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'leafgarland/typescript-vim'
 "Plugin 'icholy/typescript-tools.git'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'mxw/vim-jsx'
-Plugin 'solarnz/thrift.vim'
 "Plugin 'elixir-lang/vim-elixir'
 "Plugin 'salomvary/vim-eslint-compiler'
 "Plugin 'itchyny/lightline.vim'
@@ -61,11 +90,10 @@ Plugin 'solarnz/thrift.vim'
 "Plugin 'chrisgillis/vim-bootstrap3-snippets'
 "Plugin 'hail2u/vim-css3-syntax'
 "Plugin 'chase/vim-ansible-yaml'
-"
-Plugin 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+
 call vundle#end()
+
 "Vundle ended so reenable filetypes
 filetype plugin indent on
 
@@ -152,16 +180,10 @@ let mapleader = "\<Space>"
 let maplocalleader = ","
 
 "refresh vimrc
-nmap <Leader>[ :so $MYVIMRC<CR>
+nmap <Leader>[ :so ~/.config/nvim/init.vim<CR>
 
-nmap <Leader>o <C-]>
 nmap <Leader>t <C-t>
-
 nmap <Leader>w :w<CR>
-
-"code folding
-vmap <Leader>f zf
-vmap <Leader>F zo
 
 "cut copy paste
 vmap <Leader>y "+y
@@ -205,9 +227,6 @@ nmap <Leader>n :bp<CR>
 "close buffer
 nmap <Leader>d :bd<CR>
 
-"open file under cursor
-nmap <Leader>o gf
-
 "next tab   
 nmap <Leader>M :tabNext<CR>
 
@@ -234,12 +253,6 @@ nmap s <Plug>(easymotion-s)
 imap jk <esc>
 imap kj <esc>
 vmap q <esc>
-
-"move to end of line
-nmap E $
-
-"move to begining of line
-nmap B ^
 
 "page up
 nmap <C-k> <C-u>
@@ -310,13 +323,14 @@ if exists("g:loaded_webdevicons")
     call webdevicons#refresh()
 end
 
-nmap <Leader>c :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+"for finding syntax of word under cursor:theme
+"nmap <Leader>c :call <SID>SynStack()<CR>
+"function! <SID>SynStack()
+  "if !exists("*synstack")
+    "return
+  "endif
+  "echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+"endfunc
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
@@ -349,8 +363,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 set backspace=indent,eol,start
 
-let g:vimrubocop_keymap = 0
-nmap <Leader>0 :RuboCop<CR>
+"let g:vimrubocop_keymap = 0
+"nmap <Leader>0 :RuboCop<CR>
 
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
@@ -360,3 +374,17 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|sv
 "let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 autocmd FileType javascript set formatprg=prettier\ --stdin
+
+
+"vim-jedi python plugin keybindings
+let g:jedi#completions_command = "<C-N>"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#goto_command = ""
+let g:jedi#goto_assignments_command = ""
+let g:jedi#documentation_command = ""
+let g:jedi#completions_command = ""
+let g:jedi#rename_command = ""
+
+"disable airline keymaps
+let g:airline#extensions#keymap#enabled = 0
