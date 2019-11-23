@@ -2,100 +2,121 @@
 " ===========
 set nocompatible
 
-"Setup Vundle For Package Management
-"Vundle begins here, turn off filetype temporarily
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
 
 " Plugins 
 " ==============
 
-Plugin 'gmarik/vundle'
-Plugin 'bling/vim-airline'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'marcweber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'ervandew/supertab'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'elzr/vim-json'
-Plugin 'Yggdroot/indentLine'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'szw/vim-tags'
-Plugin 'ryanoasis/vim-webdevicons'
-"Plugin 'guns/xterm-color-table.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'junegunn/limelight.vim'
-Plugin 'terryma/vim-expand-region'
-Plugin 'tpope/vim-endwise'
-Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'leafgarland/typescript-vim'
-"Plugin 'icholy/typescript-tools.git'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'mxw/vim-jsx'
-Plugin 'solarnz/thrift.vim'
-"Plugin 'elixir-lang/vim-elixir'
-"Plugin 'salomvary/vim-eslint-compiler'
-"Plugin 'itchyny/lightline.vim'
-"Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'edkolev/tmuxline.vim'
-"Plugin 'digitaltoad/vim-jade'
-"Plugin 'skammer/vim-css-color'
-"Plugin 'chrisgillis/vim-bootstrap3-snippets'
-"Plugin 'hail2u/vim-css3-syntax'
-"Plugin 'chase/vim-ansible-yaml'
+"plugin
+Plug 'gmarik/vundle'
+
+"airline
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"autocomplete
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'lifepillar/vim-mucomplete'
+Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
+
+"explorer
+Plug 'scrooloose/nerdtree'
+Plug 'Lokaltog/vim-easymotion'
+
+"utils
+Plug 'marcweber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Yggdroot/indentLine'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+
+"snippets
+"Plug 'garbas/vim-snipmate'
+"Plug 'honza/vim-snippets'
+
+"syntax
+"Plug 'scrooloose/syntastic'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'elzr/vim-json'
+Plug 'ryanoasis/vim-webdevicons'
+Plug 'mxw/vim-jsx'
+
+"git
+Plug 'tpope/vim-fugitive'
+
+"language
+"typescript
+Plug 'Quramy/tsuquyomi'
+
+"reasonml native
+Plug 'jordwalke/vim-reasonml'
+
+"Plugin 'reasonml-editor/vim-reason-plus'
+
+"format
+Plug 'prettier/vim-prettier', {
+            \ 'do': 'yarn install',
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+
+"colorschemes
+Plug 'morhetz/gruvbox'
+
+"tmp
+
+call plug#end()
+
+"let g:mucomplete#enable_auto_at_startup = 1
+"let g:mucomplete#chains = {'default': ['omni']}
+
+"let g:LanguageClient_serverCommands = {
+            "\ 'reason': ['/Users/shuttl/bin/rls-macos/reason-language-server'],
+            "\ }
+
+
 "
-Plugin 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-call vundle#end()
-"Vundle ended so reenable filetypes
 filetype plugin indent on
 
-" Appearance
-" ==========
 "Syntax highlighting
-" ==============
 syntax on
 syntax enable
-"set term=xterm
-"set term=xterm-256color
-let g:webdevicons_enable = 1
-"colorscheme material
-colorscheme interstellar1
-let g:airline_theme="atomic"
-set t_Co=256
+"set t_Co=256
+"set termguicolors     " enable true colors support
 
-"set textwidth=80
-"set columns=100
-"let &colorcolumn="120,".join(range(120,335),",")
+let g:gruvbox_bold = '1'
+let g:gruvbox_contrast_dark = "hard"
+let g:webdevicons_enable = 1
+colorscheme gruvbox
 
 
 "Colorscheme custom
 " ==============
 "hi Normal ctermbg=NONE ctermfg=NONE
-"hi LineNr ctermfg=grey ctermbg=NONE
 "hi CursorLineNr ctermfg=grey ctermbg=235
 "hi VertSplit ctermfg=237 ctermbg=NONE
-"hi nonText ctermbg=NONE
+"hi NonText ctermbg=NONE
+hi NonText ctermfg=bg
 "hi Folded ctermfg=238 ctermbg=NONE
+
+"custom theme
+"hi LineNr ctermfg=grey ctermbg=NONE
+"hi vimContinue ctermbg=bg
+"hi Pmenu
+"hi PmenuSel
+"hi PmenuSbar
+"hi PmenuThumb
 
 " General Config
 " ==============
@@ -145,7 +166,12 @@ if has('persistent_undo')
     set undofile
 endif
 
+"ctrl-j and ctrl-k bindings to the up and down arrow keys
+"inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+"inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
+"disable easymotion mappings
+let g:EasyMotion_do_mapping=0
 
 "set leader key as space
 let mapleader = "\<Space>"
@@ -154,14 +180,10 @@ let maplocalleader = ","
 "refresh vimrc
 nmap <Leader>[ :so $MYVIMRC<CR>
 
-nmap <Leader>o <C-]>
 nmap <Leader>t <C-t>
 
+"write file
 nmap <Leader>w :w<CR>
-
-"code folding
-vmap <Leader>f zf
-vmap <Leader>F zo
 
 "cut copy paste
 vmap <Leader>y "+y
@@ -170,9 +192,6 @@ vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
-
-"easy motion Leaderkey binding
-map <Leader>e <Plug>(easymotion-prefix)
 
 "quote word under cursor
 nmap <Leader>" ciw"<C-r>""
@@ -184,17 +203,14 @@ nmap <Leader><Leader> V
 "switch split pane
 nmap <Leader>s <C-w><C-w>
 
-"correct indentation
-vmap <Leader>i =
-
 "select all
 nmap <Leader>a ggVG
 
 "open nerd tree
 nmap <Leader>k :NERDTreeToggle<CR>
 
-"open CtrlP
-nmap <Leader>j :CtrlP<CR>
+"open fuzzy search
+nmap <Leader>j :FZF<CR>
 
 "next buffer
 nmap <Leader>m :bn<CR>
@@ -205,23 +221,8 @@ nmap <Leader>n :bp<CR>
 "close buffer
 nmap <Leader>d :bd<CR>
 
-"open file under cursor
-nmap <Leader>o gf
-
-"next tab   
-nmap <Leader>M :tabNext<CR>
-
-"previous tab
-nmap <Leader>N :tabprevious<CR>
-
-"close tab
-nmap <Leader>D :tabclose<CR>
-
 "open config file
-nmap <leader>r :e ~/.vimrc<CR>
-
-"Vim + Ctags + Ctrlp
-"nmap <leader>. :CtrlPTag<CR>
+nmap <leader>r :e $MYVIMRC<CR>
 
 "Toggle QuickFix
 nmap <leader>q :call QuickfixToggle()<CR>
@@ -229,17 +230,12 @@ nmap <leader>q :call QuickfixToggle()<CR>
 "git status
 nmap <leader>g :Gstatus\|only<CR>
 
+"easymotion
 nmap s <Plug>(easymotion-s)
 
 imap jk <esc>
 imap kj <esc>
 vmap q <esc>
-
-"move to end of line
-nmap E $
-
-"move to begining of line
-nmap B ^
 
 "page up
 nmap <C-k> <C-u>
@@ -250,86 +246,26 @@ nmap <C-j> <C-d>
 imap hh <C-y>,
 
 "tabbing visual selection
-vmap <Tab> >gv
-vmap <S-Tab> <gv
+"vmap <Tab> >gv
+"vmap <S-Tab> <gv
 
-"nnoremap <C-n> :call NumberToggle()<cr>
-
-" remap arrow keys
-nnoremap <Left> :tabnext<CR>
-nnoremap <Right> :tabprev<CR>
-
-"nnoremap L :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" ==============
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
 "airline
 set laststatus=2
-
-"airline tabline
+let g:airline_theme="base16_grayscale"
 let g:airline#extensions#tabline#enabled = 1
-
-"airline theme
-"let g:airline_theme="bubblegum"
-
-"airline separator
-"
-"
-"
 let g:airline#extensions#whitespace#enabled = 0
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-"let g:airline_symbols.branch = '⭠'
 
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
-
-"snipmate trigger key
-imap kk <Plug>snipMateNextOrTrigger
-imap KK <Plug>snipMateBack 
 
 "indentation lines
-let g:indentLine_color_term = 236
 let g:indentLine_char = '|'
 
 "vertical spit symbol
 set fillchars=vert:\│
 
-"NERDTree custom glyph/icon 
-let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
-"Issues after re-sourcing vimrc
-if exists("g:loaded_webdevicons")
-    call webdevicons#refresh()
-end
-
-nmap <Leader>c :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-
-au BufRead,BufNewFile *.ts  setlocal filetype=typescript
-
-if !exists("g:ycm_semantic_triggers")
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-set completeopt-=preview
-
-
+"open quickfix
 let g:quickfix_is_open = 0
 function! QuickfixToggle()
     if g:quickfix_is_open
@@ -341,22 +277,66 @@ function! QuickfixToggle()
     endif
 endfunction
 
-let g:NERDTreeWinSize=40
-
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
-let g:syntastic_javascript_checkers = ['eslint']
 
 set backspace=indent,eol,start
 
-let g:vimrubocop_keymap = 0
-nmap <Leader>0 :RuboCop<CR>
-
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
-"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(DS_Storegit|hg|svn|optimized|compiled|node_modules)$'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|node_modules)$'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
+"format on save
 autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd BufWritePre *.re ReasonPrettyPrint
+
+"NERDTree
+let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeWinSize=30
+
+"Issues after re-sourcing vimrc
+"if exists("g:loaded_webdevicons")
+    "call webdevicons#refresh()
+"end
+
+"hi NERDTreePart            ctermfg=bg
+"hi NERDTreePartFile        ctermfg=bg
+hi NERDTreeDirSlash        ctermfg=bg
+"hi NERDTreeFile            ctermfg=bg
+hi NERDTreeDir             ctermfg=fg
+hi NERDTreeOpenable        ctermfg=bg
+hi NERDTreeClosable        ctermfg=bg
+"hi NERDTreeUp              ctermfg=250
+"hi NERDTreeHelpKey         ctermfg=250
+"hi NERDTreeHelpTitle       ctermfg=250
+"hi NERDTreeHelpCommand     ctermfg=250
+hi NERDTreeHelp            ctermfg=bg
+"hi NERDTreeRO              ctermfg=250
+"hi NERDTreeExecFile        ctermfg=250
+"hi NERDTreeLink            ctermfg=250
+"hi NERDTreeLinkDir         ctermfg=250
+hi NERDTreeCWD             ctermfg=fg
+"hi NERDTreeCurrentNode     ctermfg=1     ctermbg=1               
+hi NERDTreeFlags           ctermfg=fg
+
+"for finding syntax of word under cursor:theme
+nmap <Leader>c :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+"python config
+let g:jedi#auto_initialization = 0
+let g:jedi#completions_enabled = 0
+
+"start autocomple engine
+let g:deoplete#enable_at_startup = 1
+imap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
