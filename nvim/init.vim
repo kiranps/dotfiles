@@ -18,10 +18,16 @@ Plug 'vim-airline/vim-airline-themes'
 "autocomplete
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'lifepillar/vim-mucomplete'
 Plug 'davidhalter/jedi-vim'
 Plug 'deoplete-plugins/deoplete-jedi'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 "explorer
 Plug 'scrooloose/nerdtree'
@@ -41,7 +47,7 @@ Plug 'mattn/gist-vim'
 "Plug 'honza/vim-snippets'
 
 "syntax
-"Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -56,12 +62,10 @@ Plug 'tpope/vim-fugitive'
 "typescript
 Plug 'Quramy/tsuquyomi'
 
-"reasonml native
-Plug 'jordwalke/vim-reasonml'
-
-"Plugin 'reasonml-editor/vim-reason-plus'
+Plug 'reasonml-editor/vim-reason-plus'
 
 "format
+Plug 'psf/black'
 Plug 'prettier/vim-prettier', {
             \ 'do': 'yarn install',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -78,12 +82,11 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-"let g:mucomplete#enable_auto_at_startup = 1
-"let g:mucomplete#chains = {'default': ['omni']}
 
-"let g:LanguageClient_serverCommands = {
-            "\ 'reason': ['/Users/shuttl/bin/rls-macos/reason-language-server'],
-            "\ }
+"reason languge server
+let g:LanguageClient_serverCommands = {
+            \ 'reason': ['/Users/shuttl/bin/rls-macos/reason-language-server'],
+            \ }
 
 
 "
@@ -179,8 +182,6 @@ let maplocalleader = ","
 
 "refresh vimrc
 nmap <Leader>[ :so $MYVIMRC<CR>
-
-nmap <Leader>t <C-t>
 
 "write file
 nmap <Leader>w :w<CR>
@@ -288,7 +289,7 @@ autocmd FileType html,css EmmetInstall
 
 "format on save
 autocmd FileType javascript set formatprg=prettier\ --stdin
-autocmd BufWritePre *.re ReasonPrettyPrint
+"autocmd BufWritePre *.re ReasonPrettyPrint
 
 "NERDTree
 let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
@@ -333,10 +334,17 @@ endfunc
 "python config
 let g:jedi#auto_initialization = 0
 let g:jedi#completions_enabled = 0
+let g:syntastic_python_checkers=['mypy']
+
+nnoremap <Leader>8 :call jedi#goto_definitions()<cr>
+nnoremap <Leader>u :call jedi#usages()<cr>
+
+
 
 "start autocomple engine
 let g:deoplete#enable_at_startup = 1
 imap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd CompleteDone * silent! pclose!
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
