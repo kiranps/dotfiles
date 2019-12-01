@@ -19,8 +19,8 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 # Path to your zsh folder
 export ZSH=$HOME/.zsh
 
-# Enable 256 color for xterm
-export TERM=xterm-256color
+# Enable 257 color for xterm
+export TERM=screen-256color
 
 # Shell prompt
 autoload -U colors && colors
@@ -63,3 +63,13 @@ eval $(dircolors ~/.dircolors)
 #eval $(thefuck --alias)
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#export PATH="/home/kiran/.pyenv/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH="${HOME}/.local/bin:$PATH"
