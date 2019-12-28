@@ -1,0 +1,18 @@
+{
+  "python.jediEnabled": false,
+  "python.linting.mypyEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.mypyPath": "~/.pyenv/shims/mypy",
+  "reason_language_server.show_module_path_on_hover": false,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.pyenv/shims/black",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "css",
+    "json"
+  ]
+}
