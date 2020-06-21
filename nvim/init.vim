@@ -48,6 +48,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+"
 Plug 'mileszs/ack.vim'
 
 "colorschemes
@@ -55,11 +56,28 @@ Plug 'morhetz/gruvbox'
 
 "live scratchpad
 Plug 'metakirby5/codi.vim'
+Plug 'jpalardy/vim-slime'
+
+Plug 'isene/hyperlist.vim'
+
+"fold
+Plug 'pseewald/vim-anyfold'
+
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+"Plug 'neovimhaskell/haskell-vim'
+
+
+
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['reason'] }
+"Plug 'lifepillar/vim-mucomplete', {'for': ['reason']}
+"Plug 'jordwalke/vim-reasonml', {'for': ['reason']}
+"Plug 'reasonml-editor/vim-reason-plus'
 
 call plug#end()
 
 "coc language servers
-let g:coc_global_extensions = ["coc-json", "coc-tsserver", "coc-python", "coc-css", "coc-yaml", "coc-reason", "coc-highlight", "coc-prettier"]
+let g:coc_global_extensions = ["coc-json", "coc-tsserver", "coc-python", "coc-css", "coc-yaml", "coc-highlight", "coc-prettier", "coc-clangd", "coc-go"]
 
 
 filetype plugin indent on
@@ -81,7 +99,7 @@ set number "line numbers relative
 set relativenumber "line numbers relative
 set showcmd " Show incomplete cmds down the bottom
 set autoread " Reload files changed outside vim
-set scrolloff=3 " Start scrolling three lines before horizontal border of window.
+set scrolloff=30 " Start scrolling three lines before horizontal border of window.
 set ttyfast " Send more characters at a given time.
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set nolist " list disables linebreak
@@ -117,7 +135,7 @@ set tabstop=4
 set expandtab
 
 " Better display for messages
-set cmdheight=2
+"set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -127,6 +145,9 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+autocmd FileType nerdtree setlocal signcolumn=no
+
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -174,6 +195,9 @@ nmap <Leader>k :NERDTreeToggle<CR>
 "open fuzzy search
 nmap <Leader>j :FZF<CR>
 
+"open ag
+nmap <Leader>l :Ag<CR>
+
 "next buffer
 nmap <Leader>m :bn<CR>
 
@@ -192,8 +216,13 @@ nmap <leader>q :call QuickfixToggle()<CR>
 "git status
 nmap <leader>g :Gstatus\|only<CR>
 
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
 "easymotion
 nmap s <Plug>(easymotion-s)
+
+" bind K to grep word under cursor
 
 imap jk <esc>
 imap kj <esc>
@@ -214,6 +243,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+
 
 
 "indentation lines
@@ -269,6 +299,11 @@ hi NERDTreeCWD             ctermfg=fg
 "hi NERDTreeCurrentNode     ctermfg=1     ctermbg=1               
 hi NERDTreeFlags           ctermfg=fg
 
+"hi! EndOfBuffer ctermbg=22  ctermfg=2 guibg=22 guifg=2
+
+
+"hi EndOfBuffer ctermfg=3  ctermfg=3
+
 "for finding syntax of word under cursor:theme
 nmap <Leader>c :call <SID>SynStack()<CR>
 function! <SID>SynStack()
@@ -304,6 +339,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+
+
 "coc show doc
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -322,3 +359,34 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "debug nvim
 let $NVIM_NODE_LOG_FILE='nvim-node.log'
+
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+
+
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+
+" Fugitive Conflict Resolution
+"nnoremap <leader>gd :Gvdiff<CR>
+"nnoremap gdh :diffget //2<CR>
+"nnoremap gdl :diffget //3<CR>
+
+
+"autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+"command! IntlTag :s/>/>{t("/g | :s/<\//")}<\/
+"command! IntlTag :'<,'>!sed -n 's/>\(.*\)<\//>{t("\1")}<\//p'
+
+"let g:mucomplete#can_complete = {}
+"let g:mucomplete#enable_auto_at_startup = 1
+"let g:mucomplete#chains = {'default': ['omni']}
+
+let g:deoplete#enable_at_startup = 1
+
+
+set timeoutlen=500

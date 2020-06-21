@@ -2,17 +2,41 @@
   "python.jediEnabled": false,
   "python.linting.mypyEnabled": true,
   "python.linting.enabled": true,
+  "python.linting.pep8Enabled": true,
+  "python.sortImports.path": "isort",
   "python.linting.mypyPath": "~/.pyenv/shims/mypy",
-  "reason_language_server.show_module_path_on_hover": false,
+  "python.linting.pep8Path": "~/.pyenv/shims/pep8",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "~/.pyenv/shims/black",
   "coc.preferences.formatOnSaveFiletypes": [
+    "c",
     "python",
     "typescript",
     "typescriptreact",
     "javascript",
     "javascriptreact",
     "css",
-    "json"
-  ]
+    "scss",
+    "json",
+    "reason",
+    "haskell"
+  ],
+  "languageserver": {
+    "ocaml": {
+      "command": "ocaml-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["ocaml", "reason"]
+    },
+    "haskell": {
+      "command": "hie-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["stack.yaml", "cabal.config", "package.yaml"],
+      "filetypes": ["hs", "lhs", "haskell"],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": true
+        }
+      }
+    }
+  }
 }
