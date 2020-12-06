@@ -1,42 +1,16 @@
-# Export PATH
-#
-export SCALA_HOME=/usr/local/share/scala
-export GOPATH="/opt/gopkg" 
-export GOROOT="/opt/go"
-
-export PATH=$HOME/bin:/usr/local/bin:/opt/jdk1.8.0_65/bin:/opt/VSCode-linux-x64:$SCALA_HOME/bin:$PATH
-
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin 
-
-#export ANDROID_HOME=/opt/google/android-sdk-linux/
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-
-export ANDROID_HOME=/d/android/android-sdk-linux/
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # Path to your zsh folder
 export ZSH=$HOME/.zsh
-
-# Enable 257 color for xterm
-export TERM=screen-256color
+export GPG_TTY=$(tty)
 
 # Shell prompt
-autoload -U colors && colors
-#PROMPT=$'\n'"%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}"$'\n$ '
-source $ZSH/prompt.zsh
-
-# Blinking line cursor
-# echo -e -n "\x1b[\x35 q"
-
-# Save history
-HISTFILE=$HOME/.zhistory # where the file will be saved
-HISTSIZE=100000000000 # the size in bytes it can grow up to
-SAVEHIST=100000000000 # thr maximum number of commands to save I guess
+#source $ZSH/prompt.zsh
 
 # Zsh Plugins
-plugins=(git ruby rvm aws)
+plugins=(git autojump docker-compose)
 
 # Run zsh configurations
 source $ZSH/zsh.sh
@@ -48,28 +22,35 @@ bindkey 'jk' vi-cmd-mode
 [[ $- != *i* ]] && return
 [[ -z "$TMUX" ]] && exec tmux -u -2 
 
-# Set colors for ls
-eval $(dircolors ~/.dircolors)
-
-# export nvm
-. ~/.nvm/nvm.sh
-
-# setup tmuxifier
-#eval "$(tmuxifier init -)"
-
-# setup autojump
-. /usr/share/autojump/autojump.zsh
-
-#eval $(thefuck --alias)
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#export PATH="/home/kiran/.pyenv/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+eval "$(starship init zsh)"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH="${HOME}/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home"
+
+export LC_ALL=en_US.UTF-8
+
+ZSH_THEME="gruvbox"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=/opt/apache-maven-3.6.3/bin:$PATH
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools

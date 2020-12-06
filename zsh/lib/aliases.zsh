@@ -20,9 +20,13 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 
+# tmux rename window to current folder
+alias trw='tmux rename-window "$(basename `pwd`)"'
+
 # open vim
-alias v='vim'
-alias e='emacs -nw'
+alias v='basename "$PWD" | trw &&~/bin/nvimbeta/bin/nvim'
+#alias v='basename "$PWD" | trw && nvim'
+#alias e='emacs -nw'
 
 # google-chrome
 alias g="google-chrome"
@@ -39,7 +43,7 @@ alias c='clear'
 alias l='ls'
 
 # Colorize the ls output #
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
 
 # Use a long listing format #
 alias ll='ls -la'
@@ -89,4 +93,7 @@ alias r='ranger'
 # go docker 
 alias go='docker run golang go'
 
-# tmux rename window to current folder
+alias ctags="`brew --prefix`/bin/ctags"
+
+alias common_db='pgcli postgres://shuttl_user:shuttl_user@0.0.0.0:9221'
+alias dockup='docker-compose up --no-deps --build'
