@@ -91,6 +91,8 @@
           local lspconf = require 'lspconfig'
           local servers = { 'clangd', 'pyright', 'tsserver' }
 
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
           for _, lsp in ipairs(servers) do
             lspconf[lsp].setup {
               capabilities = capabilities,
@@ -98,6 +100,7 @@
           end
         '';
       }
+      lspsaga-nvim-original
       {
         plugin = telescope-nvim;
         type = "lua";
