@@ -54,6 +54,12 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
+      # UI
+      vim-startify
+      indentLine
+      vim-airline-themes
+      nvim-web-devicons
+
       {
         plugin = gruvbox-nvim;
         type = "lua";
@@ -62,6 +68,7 @@
           vim.cmd([[colorscheme gruvbox]])
         '';
       }
+
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -81,6 +88,7 @@
           vim.g['airline#extensions#tabline#enabled'] = 1
         '';
       }
+
       #LSP
       fidget-nvim
       nvim-cmp
@@ -187,7 +195,16 @@
 
         '';
       }
-      lspsaga-nvim-original
+      {
+        plugin = lsp_signature-nvim;
+        type = "lua";
+        config = ''
+          require "lsp_signature".setup()
+        '';
+      }
+
+      # Fuzzy finder
+      telescope-fzf-native-nvim
       {
         plugin = telescope-nvim;
         type = "lua";
@@ -205,18 +222,32 @@
           require('telescope').load_extension('fzf')
           	'';
       }
+
+      # Git
       fugitive
-      nerdcommenter
-      indentLine
-      telescope-fzf-native-nvim
-      vim-airline-themes
-      nvim-web-devicons
-      rust-vim
-      fidget-nvim
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = ''
+          require('gitsigns').setup()
+        '';
+      }
+
       {
         plugin = neoformat;
         config = ''
           let g:neoformat_enabled_python = ['black']
+        '';
+      }
+      nerdcommenter
+
+      rust-vim
+
+      {
+        plugin = fidget-nvim;
+        type = "lua";
+        config = ''
+          require"fidget".setup{}
         '';
       }
       {
@@ -234,6 +265,16 @@
               signcolumn = "no"
             }
           }
+        '';
+      }
+
+      # Project management
+      {
+        plugin = project-nvim;
+        type = "lua";
+        config = ''
+          require("project_nvim").setup {}
+          require('telescope').load_extension('projects')
         '';
       }
     ];

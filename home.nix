@@ -23,7 +23,7 @@
     fonts = with pkgs;
       [
         (nerdfonts.override {
-          fonts = [ "inconsolata" "Iosevka" "VictorMono" ];
+          fonts = [ "Inconsolata" "Iosevka" "VictorMono" ];
         })
       ];
   };
