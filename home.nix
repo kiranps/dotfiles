@@ -88,7 +88,7 @@
         set-option -g automatic-rename-format '#{b:pane_current_path}'
 
         set-option -sg escape-time 10
-        set-option -sa terminal-overrides ',screen-256color:RGB'
+        set-option -sa terminal-overrides ',alacritty:RGB'
 
         set -g pane-border-style fg='colour236'
         set -g pane-active-border-style bg=default,fg='colour236'

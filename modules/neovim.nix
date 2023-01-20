@@ -66,12 +66,12 @@
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = ''
-            require'nvim-treesitter.configs'.setup {
-                sync_install = false,
-                highlight = {
-                    enable = true
-                }
-            }
+          require'nvim-treesitter.configs'.setup {
+              sync_install = false,
+              highlight = {
+                  enable = true
+              }
+          }
         '';
       }
       {
@@ -81,8 +81,11 @@
           vim.g['airline#extensions#tabline#enabled'] = 1
         '';
       }
+      #LSP
+      fidget-nvim
       nvim-cmp
       cmp-nvim-lsp
+      luasnip
       cmp_luasnip
       {
         plugin = nvim-lspconfig;
@@ -96,8 +99,92 @@
           for _, lsp in ipairs(servers) do
             lspconf[lsp].setup {
               capabilities = capabilities,
+              onattach = onattach,
             }
           end
+
+          -- luasnip setup
+          local luasnip = require 'luasnip'
+
+          -- nvim-cmp setup
+          local cmp = require 'cmp'
+          cmp.setup {
+            snippet = {
+              expand = function(args)
+                luasnip.lsp_expand(args.body)
+              end,
+            },
+            mapping = cmp.mapping.preset.insert({
+              ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+              ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+              -- C-b (back) C-f (forward) for snippet placeholder navigation.
+              ['<C-Space>'] = cmp.mapping.complete(),
+              ['<CR>'] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true,
+              },
+              ['<Tab>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+                else
+                  fallback()
+                end
+              end, { 'i', 's' }),
+              ['<S-Tab>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                  cmp.select_prev_item()
+                elseif luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+                else
+                  fallback()
+                end
+              end, { 'i', 's' }),
+            }),
+            sources = {
+              { name = 'nvim_lsp' },
+              { name = 'luasnip' },
+            },
+          }
+        '';
+      }
+      {
+        plugin = lspsaga-nvim-original;
+        type = "lua";
+        config = ''
+          local keymap = vim.keymap.set
+          local saga = require('lspsaga')
+
+          saga.init_lsp_saga()
+
+          keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+          keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+          keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+          -- keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
+          keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>",{ silent = true })
+
+          keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+          keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
+          keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+          keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+          keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+          keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+          keymap("n", "[E", function()
+            require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+          end, { silent = true })
+          keymap("n", "]E", function()
+            require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+          end, { silent = true })
+
+          lightbulb = {
+            enable = true,
+            enable_in_insert = true,
+            sign = true,
+            sign_priority = 40,
+            virtual_text = true,
+          },
+
         '';
       }
       lspsaga-nvim-original
