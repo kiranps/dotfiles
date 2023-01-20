@@ -27,6 +27,7 @@
       window_opacity_duration = "0.1";
       active_window_opacity = "1.0";
       normal_window_opacity = "1.0";
+      window_border_radius = 0;
 
       # mouse
       mouse_modifier = "cmd";

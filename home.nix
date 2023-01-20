@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  system.stateVersion = 4;
-
   users.users.kiranps = {
     name = "kiranps";
     home = "/Users/kiranps";
@@ -21,7 +19,7 @@
   networking.hostName = "skynet";
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     fonts = with pkgs; [ nerdfonts ];
   };
 
@@ -35,8 +33,11 @@
 
   home-manager.users.kiranps = { pkgs, ... }: {
     programs.home-manager.enable = true;
+    home.stateVersion = "22.05";
     programs.fzf.enable = true;
-    programs.ssh.enable = true;
+    programs.ssh = {
+        enable = true;
+    };
     programs.autojump.enable = true;
     programs.fzf.enableZshIntegration = true;
 
@@ -49,7 +50,7 @@
 
       shellAliases = {
         v = "nvim";
-        lsl = "ls -ltrh";
+        lsl = "exa --long --sort=mod --icons";
       };
 
       initExtra = ''
@@ -59,6 +60,7 @@
 
         	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
         	gpgconf --launch gpg-agent
+            export PATH=~/bin:$HOME/.npm-global/bin:$PATH
               '';
     };
 
@@ -104,6 +106,12 @@
         setw -g window-status-separator " "
         setw -g window-status-format '#[fg=colour235,bg=colour243] #I #[fg=colour245,bg=colour238] #W '
         setw -g window-status-current-format '#[fg=colour246,bg=colour238] #I #[fg=colour235,bg=colour244] #W '
+
+        set-option -g update-environment "DIRENV_DIFF DIRENV_DIR DIRENV_WATCHES"
+        set-environment -gu DIRENV_DIFF
+        set-environment -gu DIRENV_DIR
+        set-environment -gu DIRENV_WATCHES
+        set-environment -gu DIRENV_LAYOUT
           '';
     };
 
@@ -163,7 +171,6 @@
 
     home.packages = with pkgs; [
       jq
-      neovim
       wget
       skhd
       keybase
@@ -179,10 +186,23 @@
       gh
       poetry
       inetutils
-      nomad
-      vault
       mozjpeg
       geos
-    ];
+      ssm-session-manager-plugin
+      nomad
+      bat
+      exa
+      fd
+      htop
+      ffmpeg
+      libheif
+      imagemagick
+      hey
+      pgcli
+      postgresql
+      drone-cli
+      go_1_18
+
+    ] ++ [(import ./modules/python-packages.nix { pkgs = pkgs; })];
   };
 }
