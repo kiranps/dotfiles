@@ -20,7 +20,12 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ nerdfonts ];
+    fonts = with pkgs;
+      [
+        (nerdfonts.override {
+          fonts = [ "inconsolata" "Iosevka" "VictorMono" ];
+        })
+      ];
   };
 
   home-manager.useGlobalPkgs = true;
@@ -35,9 +40,7 @@
     programs.home-manager.enable = true;
     home.stateVersion = "22.05";
     programs.fzf.enable = true;
-    programs.ssh = {
-        enable = true;
-    };
+    programs.ssh = { enable = true; };
     programs.autojump.enable = true;
     programs.fzf.enableZshIntegration = true;
 
@@ -61,7 +64,7 @@
         	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
         	gpgconf --launch gpg-agent
             export PATH=~/bin:$HOME/.npm-global/bin:$PATH
-              '';
+      '';
     };
 
     programs.tmux = {
@@ -112,7 +115,7 @@
         set-environment -gu DIRENV_DIR
         set-environment -gu DIRENV_WATCHES
         set-environment -gu DIRENV_LAYOUT
-          '';
+      '';
     };
 
     programs.git = {
@@ -141,10 +144,10 @@
         use_thin_strokes = true;
 
         font = {
-          size = 18;
-          normal.family = "Inconsolata Nerd Font Mono";
-          bold.family = "Inconsolata Nerd Font Mono";
-          italic.family = "Inconsolata Nerd Font Mono";
+          size = 16;
+          normal.family = "VictorMono Nerd Font";
+          bold.family = "VictorMono Nerd Font";
+          italic.family = "VictorMono Nerd Font";
         };
 
         colors = {
@@ -169,40 +172,41 @@
       };
     };
 
-    home.packages = with pkgs; [
-      jq
-      wget
-      skhd
-      keybase
-      kbfs
-      tldr
-      openvpn
-      gnupg
-      awscli2
-      fx
-      pinentry-curses
-      nodejs
-      ripgrep
-      gh
-      poetry
-      inetutils
-      mozjpeg
-      geos
-      ssm-session-manager-plugin
-      nomad
-      bat
-      exa
-      fd
-      htop
-      ffmpeg
-      libheif
-      imagemagick
-      hey
-      pgcli
-      postgresql
-      drone-cli
-      go_1_18
+    home.packages = with pkgs;
+      [
+        jq
+        wget
+        skhd
+        keybase
+        kbfs
+        tldr
+        openvpn
+        gnupg
+        awscli2
+        fx
+        pinentry-curses
+        nodejs
+        ripgrep
+        gh
+        poetry
+        inetutils
+        mozjpeg
+        geos
+        ssm-session-manager-plugin
+        nomad
+        bat
+        exa
+        fd
+        htop
+        ffmpeg
+        libheif
+        imagemagick
+        hey
+        pgcli
+        postgresql
+        drone-cli
+        go_1_18
 
-    ] ++ [(import ./modules/python-packages.nix { pkgs = pkgs; })];
+      ] ++ [ (import ./modules/python-packages.nix { pkgs = pkgs; }) ];
   };
 }
