@@ -18,6 +18,7 @@
           ./modules/yabai.nix
           ./modules/homebrew.nix
           ./modules/neovim.nix
+          ./modules/database.nix
         ];
       };
     };

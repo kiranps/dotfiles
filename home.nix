@@ -203,9 +203,10 @@
         imagemagick
         hey
         pgcli
-        postgresql
+        postgresql_11
         drone-cli
         go_1_18
+        vscode
 
       ] ++ [ (import ./modules/python-packages.nix { pkgs = pkgs; }) ];
   };

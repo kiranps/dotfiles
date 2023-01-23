@@ -1,6 +1,21 @@
 { pkgs, home-manager, ... }:
 
-{
+let
+  nvim-dev-container = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-dev-container";
+    src = pkgs.fetchgit {
+      url = /Users/kiranps/code/github/nvim-dev-container;
+      rev = "b5d37032398299fe34bc15f790e03c8f8cfa49ad";
+      sha256 = "sha256-/G1MsJ7r+17VxS3bDee/Pv4I1e7Ha5OmlOOM2vVNe/8=";
+    };
+    #src = pkgs.fetchFromGitHub {
+    #owner = "esensar";
+    #repo = "nvim-dev-container";
+    #rev = "master";
+    #hash = "sha256-nBz627vWdXZMhFvkIxmncqYFsQbrFTROO4P4JMRPpQU=";
+    #};
+  };
+in {
   home-manager.users.kiranps.programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -275,6 +290,14 @@
         config = ''
           require("project_nvim").setup {}
           require('telescope').load_extension('projects')
+        '';
+      }
+
+      {
+        plugin = nvim-dev-container;
+        type = "lua";
+        config = ''
+          require("devcontainer").setup{}
         '';
       }
     ];
