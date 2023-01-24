@@ -203,7 +203,7 @@
         imagemagick
         hey
         pgcli
-        postgresql_11
+        postgresql
         drone-cli
         go_1_18
         vscode

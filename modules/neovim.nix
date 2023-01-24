@@ -1,21 +1,6 @@
 { pkgs, home-manager, ... }:
 
-let
-  nvim-dev-container = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "nvim-dev-container";
-    src = pkgs.fetchgit {
-      url = /Users/kiranps/code/github/nvim-dev-container;
-      rev = "b5d37032398299fe34bc15f790e03c8f8cfa49ad";
-      sha256 = "sha256-/G1MsJ7r+17VxS3bDee/Pv4I1e7Ha5OmlOOM2vVNe/8=";
-    };
-    #src = pkgs.fetchFromGitHub {
-    #owner = "esensar";
-    #repo = "nvim-dev-container";
-    #rev = "master";
-    #hash = "sha256-nBz627vWdXZMhFvkIxmncqYFsQbrFTROO4P4JMRPpQU=";
-    #};
-  };
-in {
+{
   home-manager.users.kiranps.programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -72,18 +57,33 @@ in {
       # UI
       vim-startify
       indentLine
-      vim-airline-themes
       nvim-web-devicons
-
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = ''
+          require('lualine').setup {
+             theme = "gruvbox",
+             options = {
+                component_separators = { left = '|', right = '|'},
+                section_separators = { left = "", right = ""},
+             },
+             tabline = {
+                 lualine_a = {
+                   'buffers'
+                 }
+             }
+          }
+        '';
+      }
       {
         plugin = gruvbox-nvim;
         type = "lua";
         config = ''
           vim.opt.termguicolors = true
-          vim.cmd([[colorscheme gruvbox]])
+          vim.cmd.colorscheme "gruvbox"
         '';
       }
-
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -94,13 +94,6 @@ in {
                   enable = true
               }
           }
-        '';
-      }
-      {
-        plugin = vim-airline;
-        type = "lua";
-        config = ''
-          vim.g['airline#extensions#tabline#enabled'] = 1
         '';
       }
 
@@ -115,7 +108,7 @@ in {
         type = "lua";
         config = ''
           local lspconf = require 'lspconfig'
-          local servers = { 'clangd', 'pyright', 'tsserver' }
+          local servers = { 'clangd', 'pyright', 'tsserver', 'sumneko_lua', 'rnix' }
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -293,13 +286,7 @@ in {
         '';
       }
 
-      {
-        plugin = nvim-dev-container;
-        type = "lua";
-        config = ''
-          require("devcontainer").setup{}
-        '';
-      }
+      vim-which-key
     ];
 
     extraPackages = with pkgs; [
@@ -307,6 +294,8 @@ in {
       rnix-lsp
       nixfmt
       tree-sitter
+      rnix-lsp
+      sumneko-lua-language-server
       python3Packages.black
       nodePackages.pyright
     ];
