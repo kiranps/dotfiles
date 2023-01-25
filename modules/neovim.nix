@@ -13,6 +13,7 @@
       lua << EOF
         vim.o.number = true
         vim.g.mapleader = ' '
+        vim.opt.termguicolors = true
 
         vim.cmd([[
 
@@ -55,15 +56,40 @@
 
     plugins = with pkgs.vimPlugins; [
       # UI
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = ''
+          require'nvim-treesitter.configs'.setup {
+              sync_install = false,
+              highlight = {
+                  enable = true
+              }
+          }
+        '';
+      }
       vim-startify
-      indentLine
+      {
+        plugin = indent-blankline-nvim;
+        type = "lua";
+        config = ''
+          vim.cmd [[highlight IndentBlanklineChar guifg=#383838 gui=nocombine]]
+        '';
+      }
       nvim-web-devicons
+      {
+        plugin = gruvbox-nvim;
+        type = "lua";
+        config = ''
+          vim.cmd.colorscheme "gruvbox"
+        '';
+      }
       {
         plugin = lualine-nvim;
         type = "lua";
         config = ''
           require('lualine').setup {
-             theme = "gruvbox",
+             theme = "auto",
              options = {
                 component_separators = { left = '|', right = '|'},
                 section_separators = { left = "", right = ""},
@@ -77,28 +103,16 @@
         '';
       }
       {
-        plugin = gruvbox-nvim;
+        plugin = trouble-nvim;
         type = "lua";
         config = ''
-          vim.opt.termguicolors = true
-          vim.cmd.colorscheme "gruvbox"
-        '';
-      }
-      {
-        plugin = nvim-treesitter.withAllGrammars;
-        type = "lua";
-        config = ''
-          require'nvim-treesitter.configs'.setup {
-              sync_install = false,
-              highlight = {
-                  enable = true
-              }
+          require("trouble").setup {
+            mode = "document_diagnostics"
           }
         '';
       }
 
       #LSP
-      fidget-nvim
       nvim-cmp
       cmp-nvim-lsp
       luasnip
@@ -203,6 +217,7 @@
 
         '';
       }
+
       {
         plugin = lsp_signature-nvim;
         type = "lua";
@@ -228,7 +243,7 @@
               }
           }
           require('telescope').load_extension('fzf')
-          	'';
+        '';
       }
 
       # Git
@@ -240,7 +255,6 @@
           require('gitsigns').setup()
         '';
       }
-
       {
         plugin = neoformat;
         config = ''
@@ -285,8 +299,6 @@
           require('telescope').load_extension('projects')
         '';
       }
-
-      vim-which-key
     ];
 
     extraPackages = with pkgs; [
