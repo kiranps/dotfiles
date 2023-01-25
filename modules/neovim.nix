@@ -1,6 +1,16 @@
 { pkgs, home-manager, ... }:
 
-{
+let
+  barbecue-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "barbecue-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "utilyre";
+      repo = "barbecue.nvim";
+      rev = "daeb536b21eae4ba224c6b8f8b2899b5e5770393";
+      hash = "sha256-+F+ENGyuChDEOVkHTpN/psMONn7KgGQyHny7wOCUUlE=";
+    };
+  };
+in {
   home-manager.users.kiranps.programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -100,6 +110,18 @@
                  }
              }
           }
+        '';
+      }
+      nvim-navic
+      {
+        plugin = barbecue-nvim;
+        type = "lua";
+        config = ''
+          require("barbecue").setup({
+              symbols = {
+                separator = "",
+              }
+          })
         '';
       }
       {
