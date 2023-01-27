@@ -39,17 +39,39 @@
   home-manager.users.kiranps = { pkgs, ... }: {
     programs.home-manager.enable = true;
     home.stateVersion = "22.05";
-    programs.fzf.enable = true;
     programs.ssh = { enable = true; };
     programs.autojump.enable = true;
-    programs.fzf.enableZshIntegration = true;
 
-    programs.direnv.enable = true;
-    programs.direnv.nix-direnv.enable = true;
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      colors = {
+        fg = "#ebdbb2";
+        bg = "#282828";
+        hl = "#fabd2f";
+        "fg+" = "#ebdbb2";
+        "bg+" = "#3c3836";
+        "hl+" = "#fabd2f";
+        info = "#83a598";
+        prompt = "#bdae93";
+        spinner = "#fabd2f";
+        pointer = "#83a598";
+        marker = "#fe8019";
+        header = "#665c54";
+      };
+    };
 
     programs.zsh = {
       enable = true;
-      oh-my-zsh.enable = true;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "vi-mode" ];
+      };
 
       shellAliases = {
         v = "nvim";
@@ -57,13 +79,12 @@
       };
 
       initExtra = ''
-              	bindkey 'jk' vi-cmd-mode
+        bindkey 'jk' vi-cmd-mode
+        eval "$(starship init zsh)"
 
-        	eval "$(starship init zsh)"
-
-        	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        	gpgconf --launch gpg-agent
-            export PATH=~/bin:$HOME/.npm-global/bin:$PATH
+        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+        gpgconf --launch gpg-agent
+        export PATH=~/bin:$HOME/.npm-global/bin:$PATH
       '';
     };
 

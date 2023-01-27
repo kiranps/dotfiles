@@ -27,23 +27,20 @@ in {
 
         vim.cmd([[
 
-          nmap <Leader>w :w<CR>
           imap jk <ESC>
           imap kj <ESC>
 
+          nmap <Leader>w :w<CR>
           vmap <Leader>y "+y
           nmap <Leader>y "+y
           nmap <Leader>p "+p
           nmap <Leader>P "+P
           vmap <Leader>p "+p
-
           nmap <Leader><Leader> V
           nmap <Leader>a ggVG
-
           nmap <Leader>n :bp<CR>
           nmap <Leader>m :bn<CR>
           nmap <Leader>d :bd<CR>
-
           nmap <Leader>g :Git<CR>
 
           set autoindent

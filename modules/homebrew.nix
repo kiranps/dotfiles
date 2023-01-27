@@ -20,5 +20,5 @@
     "gimp"
   ];
   homebrew.brews =
-    [ "starship" "openssl" "opam" "terraform" "libpq" "goaccess" "zenith" "geos" ];
+    [ "openssl" "opam" "terraform" "goaccess" "zenith" "starship" ];
 }
