@@ -58,7 +58,7 @@
   };
 
   services.spacebar = {
-    enable = true;
+    enable = false;
     package = pkgs.spacebar;
     config = {
       position = "top";
@@ -131,7 +131,7 @@
       shift + alt - 5 : yabai -m window --space 5
       shift + alt - 6 : yabai -m window --space 6
       shift + alt - 7 : yabai -m window --space 7
-      shift + alt - 8 : yabai -m window --space 8
+      shift + alt - 8 : yabai -m window --space 
 
       # float / unfloat window and center on screen
       # cmd - t : yabai -m window --toggle float;\

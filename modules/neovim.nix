@@ -203,9 +203,6 @@ in {
         type = "lua";
         config = ''
           local keymap = vim.keymap.set
-          local saga = require('lspsaga')
-
-          saga.init_lsp_saga()
 
           keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
           keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })

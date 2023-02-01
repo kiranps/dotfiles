@@ -228,7 +228,10 @@
         drone-cli
         go_1_18
         vscode
-
+        diskonaut
+        sketchybar
       ] ++ [ (import ./modules/python-packages.nix { pkgs = pkgs; }) ];
+
+      #xdg.configFile."sketchybar/sketchybarrc".text = "hello";
   };
 }

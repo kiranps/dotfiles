@@ -19,6 +19,7 @@
           ./modules/homebrew.nix
           ./modules/neovim.nix
           ./modules/database.nix
+          ./modules/sketchybar
         ];
       };
     };
