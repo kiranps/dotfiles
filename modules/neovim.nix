@@ -1,4 +1,4 @@
-{ pkgs, home-manager, ... }:
+{ pkgs, ... }:
 
 let
   barbecue-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -11,7 +11,7 @@ let
     };
   };
 in {
-  home-manager.users.kiranps.programs.neovim = {
+  programs.neovim = {
     enable = true;
     vimAlias = true;
     vimdiffAlias = true;

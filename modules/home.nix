@@ -35,6 +35,7 @@
 
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.enableSSHSupport = true;
+  home-manage.users.kiranps.import = [./neovim.nix];
 
   home-manager.users.kiranps = { pkgs, ... }: {
     programs.home-manager.enable = true;
