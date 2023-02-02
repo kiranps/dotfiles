@@ -13,13 +13,14 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.home-manager
-          ./configuration.nix
-          ./home.nix
+          ./modules/configuration.nix
+          ./modules/home.nix
           ./modules/yabai.nix
+          ./modules/skhd.nix
           ./modules/homebrew.nix
           ./modules/neovim.nix
           ./modules/database.nix
-          ./modules/sketchybar
+          #./modules/sketchybar
         ];
       };
     };

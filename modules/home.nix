@@ -230,7 +230,7 @@
         vscode
         diskonaut
         sketchybar
-      ] ++ [ (import ./modules/python-packages.nix { pkgs = pkgs; }) ];
+      ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 
       #xdg.configFile."sketchybar/sketchybarrc".text = "hello";
   };
