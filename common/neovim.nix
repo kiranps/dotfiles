@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   barbecue-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
