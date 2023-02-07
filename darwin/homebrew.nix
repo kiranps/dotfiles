@@ -1,15 +1,32 @@
-{ config, lib, pkgs, ... }: {
-  homebrew.onActivation.enable = true;
-  homebrew.onActivation.autoUpdate = true;
-  homebrew.onActivation.upgrade = true;
-  homebrew.onActivation.cleanup = true;
-  homebrew.global.brewfile = true;
-  homebrew.global.lockfiles = true;
+{ config, lib, pkgs, ... }:
 
-  homebrew.taps = [ "homebrew/core" "homebrew/cask" "homebrew/cask-drivers" ];
+let
+  inherit (lib) mkIf;
+  caskPresent = cask: lib.any (x: x.name == cask) config.homebrew.casks;
+  brewEnabled = config.homebrew.enable;
+
+in {
+  environment.shellInit = mkIf brewEnabled ''
+    eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
+  '';
+
+  homebrew.enable = true;
+  homebrew.onActivation.autoUpdate = true;
+  homebrew.onActivation.cleanup = "zap";
+  homebrew.global.brewfile = true;
+
+  homebrew.taps = [
+    "homebrew/cask"
+    "homebrew/cask-drivers"
+    "homebrew/cask-fonts"
+    "homebrew/cask-versions"
+    "homebrew/core"
+    "homebrew/services"
+    "nrlquaker/createzap"
+  ];
+
   homebrew.casks = [
     "google-chrome"
-    "slack"
     "firefox"
     "transmission"
     "tor-browser"
@@ -17,8 +34,9 @@
     "docker"
     "android-file-transfer"
     "keybase"
-    "gimp"
+    "slack"
   ];
+
   homebrew.brews =
     [ "openssl" "opam" "terraform" "goaccess" "zenith" "starship" ];
 }

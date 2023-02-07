@@ -12,7 +12,7 @@
       macbook_pro_m1 = darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         system = "aarch64-darwin";
-        modules = [ home-manager.darwinModule ./common ./darwin ];
+        modules = [ home-manager.darwinModules.home-manager ./common ./darwin ];
       };
     };
   };

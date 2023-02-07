@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ sketchybar ];
+  home.packages = with pkgs; [ skhd ];
 }

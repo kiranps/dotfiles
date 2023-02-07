@@ -5,7 +5,7 @@
 
     skhdConfig = ''
       # open terminal
-      cmd - return : alacritty msg create-window
+      cmd - return : /etc/profiles/per-user/kiranps/bin/alacritty
 
       # focus window
       cmd - j : yabai -m window --focus west

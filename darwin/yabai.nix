@@ -52,8 +52,9 @@
       yabai -m rule --add app='System Preferences' manage=off
       yabai -m rule --add app='Activity Monitor' manage=off
 
-      yabai -m rule --add app='alacritty' 
+      yabai -m rule --add app='alacritty' manage=on space=1
       yabai -m rule --add app='Google Chrome' manage=on space=2
+      yabai -m rule --add app='Slack' manage=on space=3
     '';
   };
 
