@@ -6,21 +6,23 @@ get_battery() {
   BATTERY_LABEL="${battery%\%*}"
   BATTERY_LABEL="${BATTERY_LABEL##*	}"
   read -r _ _ _ status _ <<< "$battery"
-  BATTERY_HIGHLIGHT="off"
-  if [ "$status" = "'AC" ]
-  then
-    BATTERY_ICON="􀢋"
+  if [ "$status" = "AC" ]; then
+    BATTERY_ICON="󰁽"
   else
-    if [ "$BATTERY_LABEL" -le 25 ]
-    then
-      BATTERY_ICON="􀛩"
-      BATTERY_HIGHLIGHT="on"
+    if [ "$battery_percentage" -gt 80 ]; then
+    BATTERY_ICON="󰂁"
+    elif [ "$battery_percentage" -gt 60 ]; then
+    BATTERY_ICON="󰁿"
+    elif [ "$battery_percentage" -gt 40 ]; then
+    BATTERY_ICON="󰁽"
+    elif [ "$battery_percentage" -gt 20 ]; then
+    BATTERY_ICON="󰁽"
     else
-      BATTERY_ICON="􀛨"
+    BATTERY_ICON="󰁽"
     fi
   fi
 }
 
 get_battery
 
-sketchybar -m --set battery icon="$BATTERY_ICON" icon.highlight="$BATTERY_HIGHLIGHT" label="${BATTERY_LABEL}%"
+sketchybar -m --set battery icon="$BATTERY_ICON" label="${BATTERY_LABEL}%"

@@ -42,5 +42,6 @@
       go_1_18
       vscode
       diskonaut
+      android-tools
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

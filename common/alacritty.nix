@@ -4,16 +4,17 @@
     settings = {
       window = {
         padding = {
-          x = 4;
+          x = 0;
           y = 0;
         };
-        decorations = "buttonless";
+        decorations = "none";
       };
       scrolling.history = 100000;
       live_config_reload = true;
       selection.save_to_clipboard = true;
       mouse.hide_when_typing = true;
       use_thin_strokes = true;
+      scale_with_dpi = true;
 
       font = {
         size = 16;

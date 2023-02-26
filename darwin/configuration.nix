@@ -13,6 +13,9 @@
   programs.gnupg.agent.enableSSHSupport = true;
 
   nix.package = pkgs.nixFlakes;
+  nix.settings.trusted-users = [ "root" "kiranps" ];
+
+  services.activate-system.enable = true;
 
   nix.extraOptions = ''
     system = aarch64-darwin
