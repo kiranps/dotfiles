@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ../modules/sketchybar
     ./configuration.nix
+    ./homebrew.nix
+    ../modules/sketchybar
     ./yabai.nix
     ./skhd.nix
-    ./homebrew.nix
     ./sketchybar
   ];
 

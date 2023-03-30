@@ -43,5 +43,6 @@
       vscode
       diskonaut
       android-tools
+      dive
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }
