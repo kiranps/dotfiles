@@ -141,7 +141,7 @@ in {
         type = "lua";
         config = ''
           local lspconf = require 'lspconfig'
-          local servers = { 'clangd', 'pyright', 'tsserver', 'sumneko_lua', 'rnix' }
+          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'rnix' }
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 

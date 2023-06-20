@@ -44,5 +44,7 @@
       diskonaut
       android-tools
       dive
+      pgadmin4
+      redis
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

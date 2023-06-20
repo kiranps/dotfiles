@@ -35,8 +35,9 @@ in {
     "android-file-transfer"
     "keybase"
     "slack"
+    "hashicorp/tap/hashicorp-vagrant"
   ];
 
   homebrew.brews =
-    [ "openssl" "opam" "terraform" "goaccess" "zenith" "starship" ];
+    [ "openssl" "opam" "terraform" "goaccess" "zenith" "starship" "ntfs-3g" ];
 }
