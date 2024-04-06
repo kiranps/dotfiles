@@ -15,7 +15,6 @@
       keybase
       kbfs
       tldr
-      openvpn
       gnupg
       awscli2
       fx
@@ -30,7 +29,7 @@
       ssm-session-manager-plugin
       nomad
       bat
-      exa
+      eza
       fd
       htop
       ffmpeg
@@ -39,12 +38,23 @@
       pgcli
       postgresql
       drone-cli
-      go_1_18
-      vscode
+      #go_1_18
       diskonaut
       android-tools
       dive
-      pgadmin4
+      damon
+      qpdf
+      poppler_utils
+      ansible_2_14
+      jenkins
+      qemu
+      sshpass
+      packer
+      nodePackages.pm2
+      mysql80
+      toybox
+      certbot
       redis
+      opentelemetry-collector
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

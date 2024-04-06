@@ -13,14 +13,21 @@
       live_config_reload = true;
       selection.save_to_clipboard = true;
       mouse.hide_when_typing = true;
-      use_thin_strokes = true;
-      scale_with_dpi = true;
 
       font = {
         size = 16;
-        normal.family = "VictorMono Nerd Font";
-        bold.family = "VictorMono Nerd Font";
-        italic.family = "VictorMono Nerd Font";
+        normal = {
+            family = "VictorMono Nerd Font";
+            style = "Regular";
+        };
+        bold = {
+            family = "VictorMono Nerd Font";
+            style = "Bold";
+        };
+        italic = {
+            family = "VictorMono Nerd Font";
+            style = "Italic";
+        };
       };
 
       colors = {

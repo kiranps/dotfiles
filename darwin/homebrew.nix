@@ -16,11 +16,11 @@ in {
   homebrew.global.brewfile = true;
 
   homebrew.taps = [
-    "homebrew/cask"
+    #"homebrew/cask"
     "homebrew/cask-drivers"
     "homebrew/cask-fonts"
     "homebrew/cask-versions"
-    "homebrew/core"
+    #"homebrew/core"
     "homebrew/services"
     "nrlquaker/createzap"
   ];
@@ -35,9 +35,8 @@ in {
     "android-file-transfer"
     "keybase"
     "slack"
-    "hashicorp/tap/hashicorp-vagrant"
   ];
 
   homebrew.brews =
-    [ "openssl" "opam" "terraform" "goaccess" "zenith" "starship" "ntfs-3g" ];
+    [ "openssl" "opam" "terraform" "goaccess" "zenith" "starship" ];
 }

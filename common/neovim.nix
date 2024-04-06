@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  barbecue-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  barbecue-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "barbecue-nvim";
     src = pkgs.fetchFromGitHub {
       owner = "utilyre";
@@ -141,7 +141,7 @@ in {
         type = "lua";
         config = ''
           local lspconf = require 'lspconfig'
-          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'rnix' }
+          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'rnix', 'groovyls', 'terraformls'}
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -151,6 +151,13 @@ in {
               onattach = onattach,
             }
           end
+
+          vim.api.nvim_create_autocmd({"BufWritePre"}, {
+            pattern = {"*.tf", "*.tfvars"},
+            callback = function()
+              vim.lsp.buf.format()
+            end,
+          })
 
           -- luasnip setup
           local luasnip = require 'luasnip'
@@ -199,7 +206,7 @@ in {
         '';
       }
       {
-        plugin = lspsaga-nvim-original;
+        plugin = lspsaga-nvim;
         type = "lua";
         config = ''
           local keymap = vim.keymap.set
@@ -315,6 +322,7 @@ in {
           require('telescope').load_extension('projects')
         '';
       }
+      vim-rhubarb
     ];
 
     extraPackages = with pkgs; [
@@ -326,6 +334,7 @@ in {
       sumneko-lua-language-server
       python3Packages.black
       nodePackages.pyright
+      terraform-ls
     ];
   };
 }
