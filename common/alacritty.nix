@@ -15,7 +15,7 @@
       mouse.hide_when_typing = true;
 
       font = {
-        size = 16;
+        size = 12;
         normal = {
             family = "VictorMono Nerd Font";
             style = "Regular";

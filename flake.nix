@@ -15,5 +15,12 @@
         modules = [ ./darwin home-manager.darwinModules.home-manager ./common ];
       };
     };
+
+    nixosConfigurations = {
+      thinkpad_e480 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./nixos home-manager.nixosModules.home-manager ];
+      };
+    };
   };
 }

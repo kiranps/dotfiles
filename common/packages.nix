@@ -32,7 +32,7 @@
       ssm-session-manager-plugin
       nomad
       bat
-      eza
+      #eza
       fd
       htop
       ffmpeg
@@ -61,6 +61,6 @@
       opentelemetry-collector
       minikube
       maven
-      rubyPackages_3_2.rails
+      #rubyPackages_3_2.rails
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }
