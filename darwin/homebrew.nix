@@ -16,11 +16,11 @@ in {
   homebrew.global.brewfile = true;
 
   homebrew.taps = [
-    "homebrew/cask"
+    #"homebrew/cask"
     "homebrew/cask-drivers"
     "homebrew/cask-fonts"
     "homebrew/cask-versions"
-    "homebrew/core"
+    #"homebrew/core"
     "homebrew/services"
     "nrlquaker/createzap"
   ];
@@ -35,6 +35,7 @@ in {
     "android-file-transfer"
     "keybase"
     "slack"
+    "wireshark"
   ];
 
   homebrew.brews =

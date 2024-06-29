@@ -8,6 +8,9 @@
     nix-direnv.enable = true;
   };
 
+  programs.java.enable = true;
+  programs.java.package = pkgs.jdk19;
+
   home.packages = with pkgs;
     [
       jq
@@ -15,7 +18,6 @@
       keybase
       kbfs
       tldr
-      openvpn
       gnupg
       awscli2
       fx
@@ -30,7 +32,7 @@
       ssm-session-manager-plugin
       nomad
       bat
-      exa
+      #eza
       fd
       htop
       ffmpeg
@@ -39,9 +41,26 @@
       pgcli
       postgresql
       drone-cli
-      go_1_18
-      vscode
+      #go_1_18
       diskonaut
       android-tools
+      dive
+      damon
+      qpdf
+      poppler_utils
+      ansible_2_14
+      jenkins
+      qemu
+      sshpass
+      packer
+      nodePackages.pm2
+      mysql80
+      toybox
+      certbot
+      redis
+      opentelemetry-collector
+      minikube
+      maven
+      #rubyPackages_3_2.rails
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

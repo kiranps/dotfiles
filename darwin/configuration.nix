@@ -12,6 +12,7 @@
   programs.gnupg.agent.enable = true;
   programs.gnupg.agent.enableSSHSupport = true;
 
+
   nix.package = pkgs.nixFlakes;
   nix.settings.trusted-users = [ "root" "kiranps" ];
 
