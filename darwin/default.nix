@@ -4,7 +4,6 @@
   imports = [
     ./configuration.nix
     ./homebrew.nix
-    #../modules/sketchybar
     ./yabai.nix
     ./skhd.nix
     ./sketchybar

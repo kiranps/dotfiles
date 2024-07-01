@@ -35,6 +35,7 @@ in {
     "android-file-transfer"
     "keybase"
     "slack"
+    "wireshark"
   ];
 
   homebrew.brews =

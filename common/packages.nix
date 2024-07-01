@@ -8,6 +8,9 @@
     nix-direnv.enable = true;
   };
 
+  programs.java.enable = true;
+  programs.java.package = pkgs.jdk19;
+
   home.packages = with pkgs;
     [
       jq
@@ -56,5 +59,8 @@
       certbot
       redis
       opentelemetry-collector
+      minikube
+      maven
+      rubyPackages_3_2.rails
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }
