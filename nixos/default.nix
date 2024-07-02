@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -6,6 +6,5 @@
     ./hardware-configuration.nix
     ./home.nix
     ./fonts.nix
-    ./awesome
   ];
 }
