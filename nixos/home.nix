@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.kiran = { home.stateVersion = "22.05"; };
@@ -10,6 +10,7 @@
     ../common/packages.nix
     ../common/tmux.nix
     ../common/zsh.nix
+    ./awesome
     ./packages.nix
     ./starship.nix
   ];
