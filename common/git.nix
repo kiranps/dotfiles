@@ -9,7 +9,7 @@
       core.editor = "vim";
       github.user = "kiranps";
       pull.ff = "only";
-      url."ssh://git@github.com/".insteadOf = "https://github.com/";
+      #url."ssh://git@github.com/".insteadOf = "https://github.com/";
       push.default = "current";
     };
   };

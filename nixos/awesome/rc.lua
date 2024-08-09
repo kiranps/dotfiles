@@ -1,7 +1,11 @@
+pcall(require, "luarocks.loader")
 require("awful.autofocus")
-
 require("constants")
+require("startup")
+require("theme")
 require("layouts")
+require("panel")
 require("keys")
+require("network")
 require("rules")
 require("signals")

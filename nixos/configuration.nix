@@ -34,13 +34,16 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
     displayManager.lightdm.enable = true;
     desktopManager.xfce.enable = true;
     windowManager.awesome = {
       enable = true;
-      luaModules = with pkgs.luaPackages; [ luarocks luadbi-mysql ];
+      luaModules = with pkgs.luaPackages; [
+        luarocks
+        luadbi-mysql
+      ];
     };
   };
 
@@ -72,15 +75,17 @@
     isNormalUser = true;
     description = "kiran";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
+    #shell = pkgs.zsh;
   };
 
+  programs.zsh.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ bluez xorg.xwininfo ];
   environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -93,7 +98,16 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   system.stateVersion = "22.11";
+
+  #services.xserver.videoDrivers = [ "intel" ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
 }

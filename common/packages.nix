@@ -8,15 +8,15 @@
     nix-direnv.enable = true;
   };
 
-  programs.java.enable = true;
-  programs.java.package = pkgs.jdk19;
+  #programs.java.enable = true;
+  #programs.java.package = pkgs.jdk19;
 
   home.packages = with pkgs;
     [
       jq
       wget
-      keybase
-      kbfs
+      #keybase
+      #kbfs
       tldr
       gnupg
       awscli2
@@ -27,10 +27,10 @@
       gh
       poetry
       inetutils
-      mozjpeg
-      geos
+      #mozjpeg
+      #geos
       ssm-session-manager-plugin
-      nomad
+      #nomad
       bat
       #eza
       fd
@@ -39,28 +39,34 @@
       libheif
       imagemagick
       pgcli
-      postgresql
-      drone-cli
+      #postgresql
+      #drone-cli
       #go_1_18
       diskonaut
       android-tools
+      adbtuifm # tui adb file manager
       dive
       damon
-      qpdf
-      poppler_utils
-      ansible_2_14
-      jenkins
-      qemu
+      #qpdf
+      #poppler_utils
+      #ansible_2_14
+      #jenkins
+      #qemu
       sshpass
-      packer
+      #packer
       nodePackages.pm2
-      mysql80
+      #mysql80
       toybox
-      certbot
+      #certbot
       redis
-      opentelemetry-collector
-      minikube
-      maven
+      #opentelemetry-collector
+      #minikube
+      #maven
+      unzip
+      eza
       #rubyPackages_3_2.rails
+      # FileManagers
+      ranger
+      nnn
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

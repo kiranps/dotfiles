@@ -9,7 +9,7 @@
 
     shellAliases = {
       v = "nvim";
-      lsl = "exa --long --sort=mod --icons";
+      lsl = "eza --long --sort=mod --icons";
     };
 
     initExtra = ''
