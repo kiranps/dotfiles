@@ -16,6 +16,8 @@
     ./packages.nix
     ./tmux.nix
     ./zsh.nix
+    ./feh.nix
+    #./gpg-agent.nix
   ];
 
 }

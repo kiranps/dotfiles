@@ -3,7 +3,7 @@
     enable = true;
     userName = "Kiran PS";
     userEmail = "pskirann@gmail.com";
-    signing.key = "7DCD9B6055EC67328B11479C98F39D21572A62F5";
+    signing.key = "D427467DD7929EF0A44CC93653080CE17F7DEA45";
     signing.signByDefault = true;
     extraConfig = {
       core.editor = "vim";

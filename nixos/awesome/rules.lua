@@ -18,7 +18,7 @@ clientbuttons = gears.table.join(
 
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
-    { rule = { },
+    { rule = {},
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
@@ -28,5 +28,13 @@ awful.rules.rules = {
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
+    },
+    --{
+        --rule_any = { class = { "Alacritty" } },
+        --properties = { screen = 1 }
+    --},
+    {
+        rule_any = { class = { "Godot_ProjectList" } },
+        properties = { screen = 2, tag = "4" }
     },
 }

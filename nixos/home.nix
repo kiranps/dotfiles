@@ -13,5 +13,6 @@
     ./awesome
     ./packages.nix
     ./starship.nix
+    ./rofi.nix
   ];
 }

@@ -141,7 +141,7 @@ in {
         type = "lua";
         config = ''
           local lspconf = require 'lspconfig'
-          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'rnix', 'groovyls', 'terraformls'}
+          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'nil_ls', 'groovyls', 'terraformls', 'gdscript'}
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -201,6 +201,7 @@ in {
             sources = {
               { name = 'nvim_lsp' },
               { name = 'luasnip' },
+              { name = 'buffer' },
             },
           }
         '';
@@ -327,13 +328,12 @@ in {
 
     extraPackages = with pkgs; [
       gcc
-      rnix-lsp
-      nixfmt
+      #rnix-lsp
+      nixfmt-classic
       tree-sitter
-      rnix-lsp
       sumneko-lua-language-server
       python3Packages.black
-      nodePackages.pyright
+      #nodePackages.pyright
       terraform-ls
     ];
   };
