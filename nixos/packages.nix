@@ -12,8 +12,8 @@
     blender
     sxiv
     libreoffice
-    tor-browser
-    transmission_4
+    #tor-browser
+    #transmission_4
     inkscape-with-extensions
     gimp
   ];

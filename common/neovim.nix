@@ -329,7 +329,7 @@ in {
     extraPackages = with pkgs; [
       gcc
       #rnix-lsp
-      nixfmt-classic
+      #nixfmt-classic
       tree-sitter
       sumneko-lua-language-server
       python3Packages.black

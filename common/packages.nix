@@ -43,7 +43,7 @@
       #go_1_18
       diskonaut
       android-tools
-      adbtuifm # tui adb file manager
+      #adbtuifm # tui adb file manager
       dive
       damon
       #qpdf
@@ -62,7 +62,7 @@
       #minikube
       #maven
       unzip
-      eza
+      #eza
       #rubyPackages_3_2.rails
       # FileManagers
       ranger

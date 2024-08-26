@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs;
+  fonts.fonts = with pkgs;
     [
       (nerdfonts.override { fonts = [ "Inconsolata" "Iosevka" "VictorMono" ]; })
     ];

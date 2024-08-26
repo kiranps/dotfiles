@@ -34,8 +34,10 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    xkb.layout = "us";
-    xkb.variant = "";
+    #xkb.layout = "us";
+    #xkb.variant = "";
+    #layout = "us";
+    #variant = "";
     displayManager.lightdm.enable = true;
     desktopManager.xfce.enable = true;
     windowManager.awesome = {
@@ -107,10 +109,11 @@
 
   services.xserver.videoDrivers = [ "intel" ];
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
+  #programs.steam = {
+    #enable = true;
+    #remotePlay.openFirewall = true;
+    #dedicatedServer.openFirewall = true;
+    #localNetworkGameTransfers.openFirewall = true;
+  #};
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
