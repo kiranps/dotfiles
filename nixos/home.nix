@@ -10,6 +10,8 @@
     ../common/packages.nix
     ../common/tmux.nix
     ../common/zsh.nix
+    ../common/feh.nix
+    ../common/gpg-agent.nix
     ./awesome
     ./packages.nix
     ./starship.nix

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Bootloader.
@@ -44,11 +44,17 @@
     };
   };
 
+  #services.displayManager.ly.enable = lib.mkDefault true;
+  #services.displayManager.ly.settings = {
+    #load = true;
+    #save = true;
+  #};
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  #sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -99,7 +105,7 @@
 
   system.stateVersion = "22.11";
 
-  #services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.videoDrivers = [ "intel" ];
 
   programs.steam = {
     enable = true;

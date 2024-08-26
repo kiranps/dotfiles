@@ -17,7 +17,7 @@
       eval "$(starship init zsh)"
 
       ### use ssh key from gpg
-      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
       ###
 

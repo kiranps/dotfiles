@@ -53,11 +53,11 @@
       #qemu
       sshpass
       #packer
-      nodePackages.pm2
+      #nodePackages.pm2
       #mysql80
       toybox
       #certbot
-      redis
+      #redis
       #opentelemetry-collector
       #minikube
       #maven
@@ -67,5 +67,6 @@
       # FileManagers
       ranger
       nnn
+      filezilla
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

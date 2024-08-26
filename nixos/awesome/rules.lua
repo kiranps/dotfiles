@@ -33,8 +33,8 @@ awful.rules.rules = {
         --rule_any = { class = { "Alacritty" } },
         --properties = { screen = 1 }
     --},
-    {
-        rule_any = { class = { "Godot_ProjectList" } },
-        properties = { screen = 2, tag = "4" }
-    },
+    --{
+        --rule_any = { class = { "Godot_ProjectList" } },
+        --properties = { screen = 2, tag = "4" }
+    --},
 }
