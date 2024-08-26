@@ -38,7 +38,7 @@
     #xkb.variant = "";
     #layout = "us";
     #variant = "";
-    displayManager.lightdm.enable = true;
+    #displayManager.lightdm.enable = true;
     desktopManager.xfce.enable = true;
     windowManager.awesome = {
       enable = true;
@@ -46,11 +46,11 @@
     };
   };
 
-  #services.displayManager.ly.enable = lib.mkDefault true;
-  #services.displayManager.ly.settings = {
-    #load = true;
-    #save = true;
-  #};
+  services.displayManager.ly.enable = lib.mkDefault true;
+  services.displayManager.ly.settings = {
+    load = true;
+    save = true;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
