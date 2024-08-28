@@ -7,6 +7,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
+  boot.loader.timeout = 10; 
 
   networking.hostName = "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -46,6 +47,7 @@
     };
   };
 
+  #services.greetd.enable = true;
   services.displayManager.ly.enable = lib.mkDefault true;
   services.displayManager.ly.settings = {
     load = true;
