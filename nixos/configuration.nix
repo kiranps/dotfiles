@@ -7,9 +7,10 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
-  boot.loader.timeout = 10; 
+  boot.loader.timeout = 10;
 
-  networking.hostName = "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName =
+    "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -112,10 +113,10 @@
   services.xserver.videoDrivers = [ "intel" ];
 
   #programs.steam = {
-    #enable = true;
-    #remotePlay.openFirewall = true;
-    #dedicatedServer.openFirewall = true;
-    #localNetworkGameTransfers.openFirewall = true;
+  #enable = true;
+  #remotePlay.openFirewall = true;
+  #dedicatedServer.openFirewall = true;
+  #localNetworkGameTransfers.openFirewall = true;
   #};
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

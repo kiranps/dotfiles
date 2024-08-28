@@ -141,7 +141,7 @@ in {
         type = "lua";
         config = ''
           local lspconf = require 'lspconfig'
-          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'nil_ls', 'groovyls', 'terraformls', 'gdscript'}
+          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript'}
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -328,8 +328,9 @@ in {
 
     extraPackages = with pkgs; [
       gcc
+      nixd
       #rnix-lsp
-      #nixfmt-classic
+      nixfmt-classic
       tree-sitter
       sumneko-lua-language-server
       python3Packages.black
