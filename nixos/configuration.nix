@@ -8,6 +8,7 @@
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
   boot.loader.timeout = 10;
+  #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
 
   networking.hostName =
     "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,6 +35,7 @@
   };
 
   # Configure keymap in X11
+  services.xserver.videoDrivers = [ "intel" ];
   services.xserver = {
     enable = true;
     #xkb.layout = "us";
@@ -49,6 +51,26 @@
   };
 
   #services.greetd.enable = true;
+
+  #services.xserver.xrandrHeads = [
+  #{
+  #output = "eDP1";
+  #primary = false;
+  ##monitorConfig = ''
+  ##Option "PreferredMode" "auto"
+  ##'';
+  #}
+  #{
+  #output = "HDMI1";
+  #primary = true;
+  ##monitorConfig = ''
+  ##Option "PreferredMode" "auto"
+  ##Option "RightOf" "eDP1"
+  ##'';
+  #}
+  #];
+  services.xserver.exportConfiguration = true;
+
   services.displayManager.ly.enable = lib.mkDefault true;
   services.displayManager.ly.settings = {
     load = true;
@@ -110,8 +132,6 @@
 
   system.stateVersion = "22.11";
 
-  services.xserver.videoDrivers = [ "intel" ];
-
   #programs.steam = {
   #enable = true;
   #remotePlay.openFirewall = true;
@@ -119,4 +139,11 @@
   #localNetworkGameTransfers.openFirewall = true;
   #};
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  systemd.services.NetworkManager-wait-online.enable = false;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 53317 8081 ];
+    allowedUDPPorts = [ 53317 ];
+  };
 }

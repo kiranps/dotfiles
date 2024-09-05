@@ -16,5 +16,6 @@
     ./packages.nix
     ./starship.nix
     ./rofi.nix
+    ./grobi.nix
   ];
 }
