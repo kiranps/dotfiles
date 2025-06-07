@@ -3,6 +3,7 @@
   home-manager.useUserPackages = true;
   home-manager.users.kiran = { home.stateVersion = "22.05"; };
   home-manager.users.kiran.imports = [
+    ./services.nix
     ../common/alacritty.nix
     ../common/zsh.nix
     ../common/fzf.nix

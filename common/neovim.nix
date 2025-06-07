@@ -136,12 +136,21 @@ in {
       cmp-nvim-lsp
       luasnip
       cmp_luasnip
+      plenary-nvim
+      typescript-tools-nvim
+      {
+        plugin = typescript-tools-nvim;
+        type = "lua";
+        config = ''
+          require("typescript-tools").setup({})
+        '';
+      }
       {
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
           local lspconf = require 'lspconfig'
-          local servers = { 'clangd', 'pyright', 'tsserver', 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript'}
+          local servers = { 'clangd', 'pyright', 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript', 'gopls'}
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -210,15 +219,28 @@ in {
         plugin = lspsaga-nvim;
         type = "lua";
         config = ''
+          require('lspsaga').setup({
+              lightbulb = {
+                enable = true,
+                enable_in_insert = true,
+                sign = true,
+                sign_priority = 40,
+                virtual_text = true,
+              },
+              hover = {
+                auto_open = false,
+              }
+          })
+
           local keymap = vim.keymap.set
 
           keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
           keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-          keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
-          -- keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>")
+          -- keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+          keymap("n","gd", "<cmd>Lspsaga goto_definition<CR>", { silent = true})
           keymap("n","<leader>o", "<cmd>Lspsaga outline<CR>",{ silent = true })
 
-          keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+          keymap({"n","v"}, "gC", "<cmd>Lspsaga code_action<CR>", { silent = true })
           keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
           keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
           keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
@@ -230,14 +252,6 @@ in {
           keymap("n", "]E", function()
             require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
           end, { silent = true })
-
-          lightbulb = {
-            enable = true,
-            enable_in_insert = true,
-            sign = true,
-            sign_priority = 40,
-            virtual_text = true,
-          },
 
         '';
       }
@@ -283,6 +297,7 @@ in {
         plugin = neoformat;
         config = ''
           let g:neoformat_enabled_python = ['black']
+          let g:neoformat_enabled_typescript = ['prettier']
         '';
       }
       nerdcommenter
@@ -334,8 +349,12 @@ in {
       tree-sitter
       sumneko-lua-language-server
       python3Packages.black
-      #nodePackages.pyright
+      nodePackages.prettier
+      pyright
       terraform-ls
+      gopls
+      typescript
+      typescript-language-server
     ];
   };
 }

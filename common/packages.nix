@@ -31,16 +31,41 @@
       libheif
       imagemagick
       pgcli
+      litecli
       diskonaut
-      android-tools
       dive
       damon
       sshpass
-      toybox
+      #toybox
       unzip
       eza
       ranger
       nnn
       grobi
+      steam-run
+      scons
+      pkg-config
+      gcc
+      cmake
+      udev
+      xorg.libX11
+      fontconfig
+      wineWowPackages.unstableFull
+      psmisc
+      vlc
+      filezilla
+      python312Packages.twisted
+      jstest-gtk
+      ntfs3g
+      exfatprogs
+      lsof
+      llama-cpp
+      docker-compose
+      ollama
+      qpdf
+      ripmime
+      xfce.thunar-archive-plugin
+      postman
+      chromium
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
 }

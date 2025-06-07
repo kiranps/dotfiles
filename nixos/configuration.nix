@@ -7,7 +7,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
-  boot.loader.timeout = 10;
+  boot.loader.timeout = 1;
   #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
 
   networking.hostName =
@@ -104,16 +104,21 @@
   users.users.kiran = {
     isNormalUser = true;
     description = "kiran";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
     #shell = pkgs.zsh;
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ stdenv.cc.cc.lib ];
+  };
+  programs.adb.enable = true;
   programs.zsh.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ bluez xorg.xwininfo ];
+  environment.systemPackages = with pkgs; [ bluez xorg.xwininfo glibc_multi ];
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
 
@@ -138,12 +143,36 @@
   #dedicatedServer.openFirewall = true;
   #localNetworkGameTransfers.openFirewall = true;
   #};
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   systemd.services.NetworkManager-wait-online.enable = false;
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 53317 8081 ];
-    allowedUDPPorts = [ 53317 ];
+    allowedTCPPorts = [ 53317 1716 6007 9091 ];
+    allowedUDPPorts = [ 53317 1716 1717 1764 6007 ];
   };
+
+  virtualisation.docker.enable = true;
+
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+
+    configText = ''
+      [global]
+      security = user
+      map to guest = bad user
+
+      [guest_share]
+          path = /home/kiran/Downloads/Movies/
+          browseable = yes
+          public = yes
+          guest ok = yes
+          printable = no
+          force user = kiran
+          force group = users
+    '';
+  };
+
 }

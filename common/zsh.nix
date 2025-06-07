@@ -9,7 +9,10 @@
 
     shellAliases = {
       v = "nvim";
+      tmux = "tmux -u";
       lsl = "eza --long --sort=mod --icons";
+      copy2clip = "xsel --clipboard";
+      clipsend = "kdeconnect-cli -d $(kdeconnect-cli -a --id-only) --send-clipboard";
     };
 
     initExtra = ''
