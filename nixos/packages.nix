@@ -13,7 +13,7 @@
     xsel
     godot_4
     arandr
-    blender
+    #blender
     sxiv
     libreoffice
     tor-browser
@@ -23,10 +23,10 @@
     flameshot
     localsend
     android-studio
-    genymotion
+    #genymotion
     #xorg.libxkbfile
-    aseprite
-    spacedrive
+    #aseprite
+    #spacedrive
     playonlinux
     python3Packages.pygobject3
     dxvk

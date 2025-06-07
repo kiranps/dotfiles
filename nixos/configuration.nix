@@ -6,7 +6,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
-  boot.kernelPackages = pkgs-stable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.timeout = 1;
   #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
 
@@ -82,7 +82,7 @@
 
   # Enable sound with pipewire.
   #sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -159,20 +159,20 @@
     enable = true;
     openFirewall = true;
 
-    configText = ''
-      [global]
-      security = user
-      map to guest = bad user
-
-      [guest_share]
-          path = /home/kiran/Downloads/Movies/
-          browseable = yes
-          public = yes
-          guest ok = yes
-          printable = no
-          force user = kiran
-          force group = users
-    '';
+    settings = {
+      global = {
+        security = "user";
+        "map to guest" = "bad user";
+      };
+      guest_share = {
+        path = "/home/kiran/Downloads/Movies/";
+        browseable = true;
+        "public" = true;
+        "guest ok" = true;
+        "printable" = false;
+        "force user" = "kiran";
+        "force group" = "users";
+      };
+    };
   };
-
 }

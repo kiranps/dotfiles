@@ -15,7 +15,7 @@
       clipsend = "kdeconnect-cli -d $(kdeconnect-cli -a --id-only) --send-clipboard";
     };
 
-    initExtra = ''
+    initContent = ''
       bindkey 'jk' vi-cmd-mode
       eval "$(starship init zsh)"
 

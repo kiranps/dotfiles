@@ -32,7 +32,7 @@
       imagemagick
       pgcli
       litecli
-      diskonaut
+      #diskonaut
       dive
       damon
       sshpass
