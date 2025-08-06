@@ -1,15 +1,11 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   #myOverlays = [ (import ../nixos/overlays/ollama.nix) ];
-
   #pkgsWithOverlay = import pkgs.path {
-    #inherit (pkgs) system;
-    #overlays = myOverlays;
+  #inherit (pkgs) system;
+  #overlays = myOverlays;
   #};
-
 in {
-  programs.ssh = { enable = true; };
+  programs.ssh = {enable = true;};
   programs.autojump.enable = true;
   programs.direnv = {
     enable = true;
@@ -26,7 +22,6 @@ in {
       tldr
       awscli2
       fx
-      pinentry
       nodejs
       ripgrep
       gh
@@ -81,6 +76,7 @@ in {
       mupdf
       terraform
       warp-terminal
-    ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
-    #++ [ pkgsWithOverlay.ollama ];
+    ]
+    ++ [(import ./python-packages.nix {pkgs = pkgs;})];
+  #++ [ pkgsWithOverlay.ollama ];
 }

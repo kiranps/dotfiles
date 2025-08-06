@@ -1,9 +1,11 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
+  programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
-    defaultCacheTtl = 2592000;
-    defaultCacheTtlSsh = 2592000;
-    maxCacheTtl = 2592000;
-    sshKeys = [ "DBB64E60684B1FF08B52E085B292DDE55E020F25" ];
+    enableSshSupport = true;
+    defaultCacheTtl = 30 * 24 * 60 * 60; # 30 days
+    defaultCacheTtlSsh = 30 * 24 * 60 * 60; # 30 days
+    sshKeys = ["DBB64E60684B1FF08B52E085B292DDE55E020F25"];
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 }

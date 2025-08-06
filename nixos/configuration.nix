@@ -1,17 +1,20 @@
-{ config, lib, pkgs, pkgs-stable, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
   boot.loader.timeout = 1;
   #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
 
-  networking.hostName =
-    "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -35,7 +38,7 @@
   };
 
   # Configure keymap in X11
-  services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.videoDrivers = ["intel"];
   services.xserver = {
     enable = true;
     #xkb.layout = "us";
@@ -46,7 +49,7 @@
     desktopManager.xfce.enable = true;
     windowManager.awesome = {
       enable = true;
-      luaModules = with pkgs.luaPackages; [ luarocks luadbi-mysql ];
+      luaModules = with pkgs.luaPackages; [luarocks luadbi-mysql];
     };
   };
 
@@ -104,13 +107,13 @@
   users.users.kiran = {
     isNormalUser = true;
     description = "kiran";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "adbusers" "docker"];
     #shell = pkgs.zsh;
   };
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [ stdenv.cc.cc.lib ];
+    libraries = with pkgs; [stdenv.cc.cc.lib];
   };
   programs.adb.enable = true;
   programs.zsh.enable = true;
@@ -125,16 +128,18 @@
     podman
     podman-compose
   ];
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  #programs.gnupg.agent = {
+  #enable = true;
+  #enableSSHSupport = true;
+  #defaultCacheTtl = 2592000; # 30 days
+  #maxCacheTtl = 2592000; # 30 days
+  #};
 
   # List services that you want to enable:
 
@@ -150,13 +155,13 @@
   #localNetworkGameTransfers.openFirewall = true;
   #};
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   systemd.services.NetworkManager-wait-online.enable = false;
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 53317 1716 6007 9091 ];
-    allowedUDPPorts = [ 53317 1716 1717 1764 6007 ];
+    allowedTCPPorts = [53317 1716 6007 9091];
+    allowedUDPPorts = [53317 1716 1717 1764 6007];
   };
 
   #virtualisation.docker.enable = true;
