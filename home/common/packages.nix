@@ -1,6 +1,14 @@
 { pkgs, ... }:
 
-{
+let
+  #myOverlays = [ (import ../nixos/overlays/ollama.nix) ];
+
+  #pkgsWithOverlay = import pkgs.path {
+    #inherit (pkgs) system;
+    #overlays = myOverlays;
+  #};
+
+in {
   programs.ssh = { enable = true; };
   programs.autojump.enable = true;
   programs.direnv = {
@@ -42,7 +50,7 @@
       ranger
       nnn
       grobi
-      steam-run
+      #steam-run
       scons
       pkg-config
       gcc
@@ -50,22 +58,29 @@
       udev
       xorg.libX11
       fontconfig
-      wineWowPackages.unstableFull
+      #wineWowPackages.unstableFull
       psmisc
       vlc
-      filezilla
+      #filezilla
       python312Packages.twisted
+      python312Packages.pdfminer-six
       jstest-gtk
       ntfs3g
       exfatprogs
       lsof
       llama-cpp
       docker-compose
-      ollama
       qpdf
       ripmime
-      xfce.thunar-archive-plugin
+      #xfce.thunar-archive-plugin
       postman
       chromium
+      micromamba
+      uv
+      gdu
+      mupdf
+      terraform
+      warp-terminal
     ] ++ [ (import ./python-packages.nix { pkgs = pkgs; }) ];
+    #++ [ pkgsWithOverlay.ollama ];
 }

@@ -19,5 +19,4 @@
     ./feh.nix
     #./gpg-agent.nix
   ];
-
 }

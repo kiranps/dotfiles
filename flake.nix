@@ -8,7 +8,18 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, darwin, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, nixpkgs-stable, darwin, home-manager, ... }@inputs: 
+    let
+      system = "x86_64-linux";
+      overlays = [
+        (import ./overlays/uvnvim.nix)
+      ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
+    in {
+
     darwinConfigurations = {
       macbook_pro_m1 = darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
@@ -26,7 +37,14 @@
             config.allowUnfree = true;
           };
         };
-        modules = [ ./nixos home-manager.nixosModules.home-manager ];
+        modules = [ ./nixos ];
+      };
+    };
+
+    homeConfigurations = {
+      kiran = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home/kiran ];
       };
     };
   };

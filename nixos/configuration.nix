@@ -6,7 +6,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs-stable.linuxPackages_latest;
   boot.loader.timeout = 1;
   #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
 
@@ -118,7 +118,13 @@
   nixpkgs.config.allowUnfree = true;
 
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ bluez xorg.xwininfo glibc_multi ];
+  environment.systemPackages = with pkgs; [
+    bluez
+    xorg.xwininfo
+    glibc_multi
+    podman
+    podman-compose
+  ];
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
 
@@ -153,7 +159,14 @@
     allowedUDPPorts = [ 53317 1716 1717 1764 6007 ];
   };
 
-  virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true;
+
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true; # enables `docker` alias for podman
+    defaultNetwork.settings.dns_enabled = true; # optional but useful
+  };
 
   services.samba = {
     enable = true;

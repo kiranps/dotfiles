@@ -6,8 +6,6 @@
   config = lib.mkIf config.bootOptimization.enable {
     # Disable unnecessary services
     services = {
-      acpid.enable = false;
-      bluetooth.enable = false;
       printing.enable = false;
     };
     systemd.services."ModemManager".enable = false;

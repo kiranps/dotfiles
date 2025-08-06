@@ -10,7 +10,7 @@
         decorations = "none";
       };
       scrolling.history = 100000;
-      live_config_reload = true;
+      general.live_config_reload = true;
       selection.save_to_clipboard = true;
       mouse.hide_when_typing = true;
 

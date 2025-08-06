@@ -9,6 +9,7 @@
 
     shellAliases = {
       v = "nvim";
+      q = "exit";
       tmux = "tmux -u";
       lsl = "eza --long --sort=mod --icons";
       copy2clip = "xsel --clipboard";
@@ -25,6 +26,16 @@
       ###
 
       export PATH=~/bin:$HOME/.npm-global/bin:$PATH
+
+      # Fix completions for uv run.
+      _uv_run_mod() {
+          if [[ "$words[2]" == "run" && "$words[CURRENT]" != -* ]]; then
+              _arguments '*:filename:_files'
+          else
+              _uv "$@"
+          fi
+      }
+      compdef _uv_run_mod uv
     '';
   };
 

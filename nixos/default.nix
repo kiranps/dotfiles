@@ -3,9 +3,9 @@
 {
   imports = [
     ./configuration.nix
-    ./systemd.nix
-    ./hardware-configuration.nix
-    ./home.nix
+    ./services.nix
+    ./hardware_configuration.nix
+    ./boot_optimisation.nix
     ./fonts.nix
   ];
 }

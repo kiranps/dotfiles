@@ -1,9 +1,10 @@
-{ config, pkgs, ... }: {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.kiran = { home.stateVersion = "22.05"; };
-  home-manager.users.kiran.imports = [
-    ./services.nix
+{ config, pkgs, ... }:
+{
+  home.username = "kiran";
+  home.homeDirectory = "/home/kiran";
+  home.stateVersion = "22.05";
+  programs.home-manager.enable = true;
+  imports = [
     ../common/alacritty.nix
     ../common/zsh.nix
     ../common/fzf.nix
@@ -13,9 +14,9 @@
     ../common/tmux.nix
     ../common/feh.nix
     ../common/gpg-agent.nix
-    ./awesome
     ./packages.nix
     ./starship.nix
+    ./awesome
     ./rofi.nix
     ./grobi.nix
   ];

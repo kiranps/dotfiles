@@ -12,5 +12,6 @@ in {
     ".config/awesome/constants.lua".source = link ./constants.lua;
     ".config/awesome/startup.lua".source = link ./startup.lua;
     ".config/awesome/network.lua".source = link ./network.lua;
+    ".config/awesome/battery.lua".source = link ./battery.lua;
   };
 }
