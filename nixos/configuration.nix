@@ -11,8 +11,34 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
-  boot.loader.timeout = 1;
+  boot.loader.timeout = 10;
   #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
+
+  # Optimize kernel boot options
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    #"init_on_alloc=0"
+    #"init_on_free=0"
+    #"noautogroup"
+    #"zswap.enabled=1"
+    #"zswap.compressor=zstd"
+    #"zswap.max_pool_percent=20"
+  ];
+
+  #systemd.extraConfig = ''
+  #DefaultTimeoutStartSec=5s
+  #DefaultTimeoutStopSec=5s
+  #DefaultDependencies=no
+  #'';
+
+  # Optimize initramfs
+  boot.initrd.kernelModules = ["lz4"];
+  boot.initrd.systemd.enable = true;
+
+  #fileSystems."/" = {
+  #options = ["noatime" "discard=async"];
+  #};
 
   networking.hostName = "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -21,9 +47,8 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
+  i18n.defaultLocale = "en_US.UTF-8"; # safer than en_IN
+  i18n.extraLocales = ["en_US.UTF-8/UTF-8"];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IN";
@@ -38,47 +63,36 @@
   };
 
   # Configure keymap in X11
-  services.xserver.videoDrivers = ["intel"];
   services.xserver = {
     enable = true;
-    #xkb.layout = "us";
-    #xkb.variant = "";
-    #layout = "us";
-    #variant = "";
-    #displayManager.lightdm.enable = true;
-    desktopManager.xfce.enable = true;
-    windowManager.awesome = {
-      enable = true;
-      luaModules = with pkgs.luaPackages; [luarocks luadbi-mysql];
+    videoDrivers = ["intel"];
+    #windowManager.awesome = {
+    #enable = true;
+    #luaModules = with pkgs.luaPackages; [luarocks luadbi-mysql];
+    #};
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+        user = "kiran"; # greetd runs greeters as this user
+      };
     };
   };
 
-  #services.greetd.enable = true;
+  #services.xserver.exportConfiguration = true;
 
-  #services.xserver.xrandrHeads = [
-  #{
-  #output = "eDP1";
-  #primary = false;
-  ##monitorConfig = ''
-  ##Option "PreferredMode" "auto"
-  ##'';
-  #}
-  #{
-  #output = "HDMI1";
-  #primary = true;
-  ##monitorConfig = ''
-  ##Option "PreferredMode" "auto"
-  ##Option "RightOf" "eDP1"
-  ##'';
-  #}
-  #];
-  services.xserver.exportConfiguration = true;
+  #services.displayManager.ly.enable = lib.mkDefault true;
+  #services.displayManager.ly.settings = {
+  #load = true;
+  #save = true;
+  #};
 
-  services.displayManager.ly.enable = lib.mkDefault true;
-  services.displayManager.ly.settings = {
-    load = true;
-    save = true;
-  };
+  #services.gnome.gnome-keyring.enable = true;
+  #security.pam.services.login.enableGnomeKeyring = true;
+  #security.pam.services.ly.enableGnomeKeyring = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -100,6 +114,8 @@
     #media-session.enable = true;
   };
 
+  security.polkit.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -107,9 +123,10 @@
   users.users.kiran = {
     isNormalUser = true;
     description = "kiran";
-    extraGroups = ["networkmanager" "wheel" "adbusers" "docker"];
+    extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video"];
     #shell = pkgs.zsh;
   };
+  programs.light.enable = true;
 
   programs.nix-ld = {
     enable = true;
@@ -131,29 +148,7 @@
   environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  #programs.gnupg.agent = {
-  #enable = true;
-  #enableSSHSupport = true;
-  #defaultCacheTtl = 2592000; # 30 days
-  #maxCacheTtl = 2592000; # 30 days
-  #};
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   system.stateVersion = "22.11";
-
-  #programs.steam = {
-  #enable = true;
-  #remotePlay.openFirewall = true;
-  #dedicatedServer.openFirewall = true;
-  #localNetworkGameTransfers.openFirewall = true;
-  #};
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -162,9 +157,19 @@
     enable = true;
     allowedTCPPorts = [53317 1716 6007 9091];
     allowedUDPPorts = [53317 1716 1717 1764 6007];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
   };
-
-  #virtualisation.docker.enable = true;
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {

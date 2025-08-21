@@ -6,25 +6,28 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, darwin, home-manager, ... }@inputs: 
-    let
-      system = "x86_64-linux";
-      overlays = [
-        (import ./overlays/uvnvim.nix)
-      ];
-      pkgs = import nixpkgs {
-        inherit system overlays;
-        config.allowUnfree = true;
-      };
-    in {
-
+  outputs = {
+    nixpkgs,
+    nixpkgs-stable,
+    darwin,
+    nix-colors,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in {
     darwinConfigurations = {
       macbook_pro_m1 = darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
         system = "aarch64-darwin";
-        modules = [ ./darwin home-manager.darwinModules.home-manager ./common ];
+        modules = [./darwin home-manager.darwinModules.home-manager ./common];
       };
     };
 
@@ -37,14 +40,15 @@
             config.allowUnfree = true;
           };
         };
-        modules = [ ./nixos ];
+        modules = [./nixos];
       };
     };
 
     homeConfigurations = {
       kiran = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home/kiran ];
+        extraSpecialArgs = {inherit nix-colors;};
+        modules = [./home/kiran];
       };
     };
   };

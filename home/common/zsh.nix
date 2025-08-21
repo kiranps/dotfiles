@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
 
@@ -20,8 +19,11 @@
       bindkey 'jk' vi-cmd-mode
       eval "$(starship init zsh)"
 
+      export SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt;
+
       ### use ssh key from gpg
-      # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      export GPG_TTY=$(tty)
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
       ###
 
@@ -38,5 +40,4 @@
       compdef _uv_run_mod uv
     '';
   };
-
 }

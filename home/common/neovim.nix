@@ -80,8 +80,11 @@
           require("avante_lib").load()
           require("avante").setup({
               provider = "copilot",
-              copilot = {
+              providers = {
+                copilot = {
                   enabled = true,
+                  model = "gpt-4.1"
+                },
               },
               suggestion = {
                 debounce = 5000,

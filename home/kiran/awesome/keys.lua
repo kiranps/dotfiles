@@ -10,8 +10,8 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey }, "space", function () awful.spawn("rofi -show run") end,
-              {description = "show rofi run", group = "launcher"}),
+    --awful.key({ modkey }, "space", function () awful.spawn("rofi -show run") end,
+              --{description = "show rofi run", group = "launcher"}),
     awful.key({}, "Print", function () awful.spawn("flameshot gui -p /home/kiran/Pictures/ScreenShots/") end,
           {description = "Take a screenshot", group = "hotkeys"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
