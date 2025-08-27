@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.java = {
     enable = true;
     package = pkgs.jdk17;
@@ -35,5 +33,8 @@
     zoom-us
     usbutils
     libnotify
+    wf-recorder
+    xdg-desktop-portal-wlr
+    luminance
   ];
 }

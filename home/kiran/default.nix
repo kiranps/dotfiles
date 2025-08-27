@@ -19,7 +19,8 @@
     ./packages.nix
     ./starship.nix
     ./wayland
-    ./rofi.nix
+    ./services.nix
+    ./gaming.nix
     ../common/alacritty.nix
     ../common/zsh.nix
     ../common/fzf.nix

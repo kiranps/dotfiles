@@ -14,8 +14,9 @@ in {
       modifier = "${mod4}";
       terminal = "alacritty";
       keybindings = mkOptionDefault {
-        "${mod4}+space" = "exec ${rofi}/bin/rofi -show drun";
+        "${mod4}+space" = "exec ${wofi}/bin/wofi --show drun";
         "${mod4}+f" = "exec firefox";
+        "${mod4}+c" = "exec ${cliphist}/bin/cliphist list | ${wofi}/bin/wofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy";
       };
       bars = [];
       window = {

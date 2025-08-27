@@ -76,7 +76,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --cmd sway";
         user = "kiran"; # greetd runs greeters as this user
       };
     };
@@ -106,8 +106,9 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    audio.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -123,7 +124,7 @@
   users.users.kiran = {
     isNormalUser = true;
     description = "kiran";
-    extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video"];
+    extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video" "i2c"];
     #shell = pkgs.zsh;
   };
   programs.light.enable = true;
@@ -137,14 +138,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    bluez
-    xorg.xwininfo
-    glibc_multi
-    podman
-    podman-compose
-  ];
   environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
