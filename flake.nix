@@ -40,7 +40,18 @@
             config.allowUnfree = true;
           };
         };
-        modules = [./nixos];
+        modules = [./nixos/thinkpad_e480];
+      };
+
+      ideapad_gaming = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        specialArgs = {
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        };
+        modules = [./nixos/ideapad_gaming];
       };
     };
 

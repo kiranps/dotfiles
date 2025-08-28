@@ -9,40 +9,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
   boot.loader.timeout = 10;
-  #boot.kernelParams = [ "video=HDMI1:2560x1080@60" "quiet" ];
 
   # Optimize kernel boot options
   boot.kernelParams = [
     "quiet"
     "splash"
-    #"init_on_alloc=0"
-    #"init_on_free=0"
-    #"noautogroup"
-    #"zswap.enabled=1"
-    #"zswap.compressor=zstd"
-    #"zswap.max_pool_percent=20"
   ];
-
-  #systemd.extraConfig = ''
-  #DefaultTimeoutStartSec=5s
-  #DefaultTimeoutStopSec=5s
-  #DefaultDependencies=no
-  #'';
 
   # Optimize initramfs
   boot.initrd.kernelModules = ["lz4"];
   boot.initrd.systemd.enable = true;
 
-  #fileSystems."/" = {
-  #options = ["noatime" "discard=async"];
-  #};
+  networking.hostName = "nixos";
 
-  networking.hostName = "nixos"; # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -63,14 +44,10 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["intel"];
-    #windowManager.awesome = {
-    #enable = true;
-    #luaModules = with pkgs.luaPackages; [luarocks luadbi-mysql];
-    #};
-  };
+  #services.xserver = {
+  #enable = true;
+  #videoDrivers = ["intel"];
+  #};
 
   services.greetd = {
     enable = true;
@@ -82,23 +59,8 @@
     };
   };
 
-  #services.xserver.exportConfiguration = true;
-
-  #services.displayManager.ly.enable = lib.mkDefault true;
-  #services.displayManager.ly.settings = {
-  #load = true;
-  #save = true;
-  #};
-
-  #services.gnome.gnome-keyring.enable = true;
-  #security.pam.services.login.enableGnomeKeyring = true;
-  #security.pam.services.ly.enableGnomeKeyring = true;
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  #sound.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -107,18 +69,10 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     audio.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   security.polkit.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kiran = {
@@ -137,12 +91,9 @@
   programs.zsh.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
   environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
-
   system.stateVersion = "22.11";
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
   systemd.services.NetworkManager-wait-online.enable = false;
 
