@@ -12,9 +12,9 @@
   imports = [
     ./packages.nix
     ./starship.nix
-    ./wayland
     ./services.nix
     ./gaming.nix
+    ../common/wayland
     ../common/alacritty.nix
     ../common/zsh.nix
     ../common/fzf.nix

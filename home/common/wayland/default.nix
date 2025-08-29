@@ -4,5 +4,6 @@
     ./waybar.nix
     ./wofi.nix
     ./services.nix
+    ./packages.nix
   ];
 }

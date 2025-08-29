@@ -29,8 +29,13 @@ in {
     jstest-gtk # Joystick testing tool for gamepads
     mupdf # Lightweight PDF viewer
     nautilus # GNOME file manager
-    gnome-disk-utility # Disk management utility
-    parted # Partition editor
+    localsend # Local file sharing app
+    firefox # Web browser
+    gimp # Image editor
+    libreoffice # Office suite
+    tor-browser # Secure browser with Tor network
+    transmission_4-gtk # BitTorrent client
+    localsend # Local file sharing app
 
     # =======================
     # CLI Tools
@@ -74,6 +79,8 @@ in {
     udisks2
     arp-scan
     pciutils
+    starship # Prompt theming for terminal
+    usbutils # USB device utilities
 
     # =======================
     # Build/Development Tools
