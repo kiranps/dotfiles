@@ -73,6 +73,7 @@ in {
     popsicle # iso image burner for USB sticks
     udisks2
     arp-scan
+    pciutils
 
     # =======================
     # Build/Development Tools

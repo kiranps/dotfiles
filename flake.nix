@@ -61,6 +61,11 @@
         extraSpecialArgs = {inherit nix-colors;};
         modules = [./home/kiran];
       };
+      makhang = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit nix-colors;};
+        modules = [./home/makhang];
+      };
     };
   };
 }

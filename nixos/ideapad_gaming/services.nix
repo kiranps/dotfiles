@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   services.greetd = {
     enable = true;
     settings = {
@@ -23,5 +23,6 @@
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
   '';
 
+  services.openssh.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 }

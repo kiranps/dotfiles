@@ -73,26 +73,26 @@
           vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
         '';
       }
-      {
-        plugin = avante-nvim;
-        type = "lua";
-        config = ''
-          require("avante_lib").load()
-          require("avante").setup({
-              provider = "copilot",
-              providers = {
-                copilot = {
-                  enabled = true,
-                  model = "gpt-4.1"
-                },
-              },
-              suggestion = {
-                debounce = 5000,
-                throttle = 5000,
-              },
-          })
-        '';
-      }
+      #{
+        #plugin = avante-nvim;
+        #type = "lua";
+        #config = ''
+          #require("avante_lib").load()
+          #require("avante").setup({
+              #provider = "copilot",
+              #providers = {
+                #copilot = {
+                  #enabled = true,
+                  #model = "gpt-4.1"
+                #},
+              #},
+              #suggestion = {
+                #debounce = 5000,
+                #throttle = 5000,
+              #},
+          #})
+        #'';
+      #}
       {
         plugin = neo-tree-nvim;
         type = "lua";
