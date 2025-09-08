@@ -106,6 +106,10 @@
         from = 1714;
         to = 1764;
       }
+      {
+        from = 5000;
+        to = 5100;
+      }
     ];
     allowedUDPPortRanges = [
       {

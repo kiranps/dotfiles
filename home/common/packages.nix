@@ -36,6 +36,7 @@ in {
     tor-browser # Secure browser with Tor network
     transmission_4-gtk # BitTorrent client
     localsend # Local file sharing app
+    kdePackages.kdenlive
 
     # =======================
     # CLI Tools
@@ -81,6 +82,8 @@ in {
     pciutils
     starship # Prompt theming for terminal
     usbutils # USB device utilities
+    libva-utils
+    net-tools
 
     # =======================
     # Build/Development Tools
