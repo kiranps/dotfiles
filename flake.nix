@@ -4,7 +4,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -22,6 +22,10 @@
       inherit system;
       config.allowUnfree = true;
     };
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     darwinConfigurations = {
       macbook_pro_m1 = darwin.lib.darwinSystem {
@@ -35,10 +39,7 @@
       thinkpad_e480 = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = {
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          inherit pkgs-stable;
         };
         modules = [./nixos/thinkpad_e480];
       };
@@ -46,10 +47,7 @@
       ideapad_gaming = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = {
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          inherit pkgs-stable;
         };
         modules = [./nixos/ideapad_gaming];
       };

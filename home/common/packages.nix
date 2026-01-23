@@ -5,7 +5,10 @@
   #overlays = myOverlays;
   #};
 in {
-  programs.ssh = {enable = true;};
+  programs.ssh = {
+    enableDefaultConfig = false;
+    enable = true;
+  };
   programs.autojump.enable = true;
   programs.direnv = {
     enable = true;
@@ -23,9 +26,10 @@ in {
     # =======================
     # GUI Applications
     # =======================
+    python315
     vlc # Multimedia player
     chromium # Open-source web browser
-    vscode # Visual Studio Code editor
+    #vscode # Visual Studio Code editor
     jstest-gtk # Joystick testing tool for gamepads
     mupdf # Lightweight PDF viewer
     nautilus # GNOME file manager
@@ -47,6 +51,7 @@ in {
     tldr # Simplified man pages
     fx # Command-line JSON processor
     nodejs # JavaScript runtime environment & CLI
+    pnpm # Fast, disk space efficient package manager for Node.js
     ripgrep # Fast text searcher (rg)
     gh # GitHub CLI tool
     inetutils # Common network utilities (ping, ifconfig, etc)
@@ -56,6 +61,7 @@ in {
     ffmpeg # Command-line multimedia processing tool
     libheif # HEIF image format support
     imagemagick # Image manipulation CLI tool
+    loupe
     litecli # Command-line SQLite client
     unzip # ZIP file extractor
     eza # Modern replacement for ls
@@ -66,7 +72,7 @@ in {
     gdu # Disk usage analyzer
     dua # Disk usage analyzer (interactive CLI)
     dtrx # Extract archives easily ("Do The Right Extraction")
-    pinentry # Secure PIN or passphrase entry (required by GPG)
+    pinentry-gnome3 # Secure PIN or passphrase entry (required by GPG)
     nix-search-cli # Command-line tool for searching Nix packages
     tor # Anonymity network client
     wl-clipboard # Clipboard utilities for Wayland
@@ -94,7 +100,20 @@ in {
     cmake # Build system generator
     gnumake # GNU Make build automation tool
     llama-cpp # C++ library and tools for LLaMA models
-    terraform # Infrastructure as code tool (DevOps)
+    #terraform # Infrastructure as code tool (DevOps)
     nixos-generators # Generate NixOS images (ISO, VM, cloud)
+    pnpm
+    mongosh
+    rustc
+    cargo
+    lld
+    packet
+    gvfs
+    android-file-transfer
+    jmtpfs
+    kdePackages.dolphin
+    exiftool
+    libexif
+    pgcli
   ];
 }

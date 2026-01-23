@@ -10,17 +10,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs-stable.linuxPackages_latest;
-  boot.loader.timeout = 10;
+  boot.loader.timeout = 3;
 
   # Optimize kernel boot options
   boot.kernelParams = [
     "quiet"
     "splash"
   ];
-
-  # Optimize initramfs
-  boot.initrd.kernelModules = ["lz4"];
-  boot.initrd.systemd.enable = true;
 
   networking.hostName = "nixos";
 
@@ -99,8 +95,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [53317 1716 6007 9091];
-    allowedUDPPorts = [53317 1716 1717 1764 6007];
+    allowedTCPPorts = [53317 6007 9091 9300 39087 8081];
+    allowedUDPPorts = [53317 6007 9300 39087 8081];
     allowedTCPPortRanges = [
       {
         from = 1714;

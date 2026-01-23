@@ -5,5 +5,7 @@
     bluez
     glibc_multi
     ddcutil
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
   ];
 }

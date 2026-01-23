@@ -8,11 +8,6 @@
   home.stateVersion = "22.05";
   news.display = "silent";
 
-  home.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-  };
-
   programs.home-manager.enable = true;
 
   imports = [
@@ -30,5 +25,6 @@
     ../common/tmux.nix
     ../common/feh.nix
     ../common/gpg-agent.nix
+    ../common/android.nix
   ];
 }

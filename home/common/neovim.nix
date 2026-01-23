@@ -65,34 +65,37 @@
 
     plugins = with pkgs.vimPlugins; [
       # LLM
-      {
-        plugin = copilot-vim;
-        type = "lua";
-        config = ''
-          vim.g.copilot_no_tab_map = true
-          vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-        '';
-      }
-      {
-        plugin = avante-nvim;
-        type = "lua";
-        config = ''
-          require("avante_lib").load()
-          require("avante").setup({
-              provider = "copilot",
-              providers = {
-                copilot = {
-                  enabled = true,
-                  model = "gpt-4.1"
-                },
-              },
-              suggestion = {
-                debounce = 5000,
-                throttle = 5000,
-              },
-          })
-        '';
-      }
+      #{
+      #plugin = copilot-vim;
+      #type = "lua";
+      #config = ''
+      #vim.g.copilot_no_tab_map = true
+      #vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      #'';
+      #}
+      #{
+      #plugin = avante-nvim;
+      #type = "lua";
+      #config = ''
+      #require("avante_lib").load()
+      #require("avante").setup({
+      #provider = "copilot",
+      #providers = {
+      #copilot = {
+      #enabled = true,
+      #model = "gpt-4.1"
+      #},
+      #},
+      #suggestion = {
+      #debounce = 5000,
+      #throttle = 5000,
+      #},
+      #windows = {
+      #width = 50,
+      #},
+      #})
+      #'';
+      #}
       {
         plugin = neo-tree-nvim;
         type = "lua";
@@ -207,7 +210,7 @@
           local cmp = require 'cmp'
           local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-          local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript', 'gopls'}
+          local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript', 'gopls', 'tsserver', 'rust_analyzer'}
           local capabilities = cmp_nvim_lsp.default_capabilities()
 
           for _, lsp in ipairs(servers) do
@@ -274,10 +277,12 @@
             formatters_by_ft = {
               python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
               typescript = { "prettier" },
+              typescriptreact = { "prettier" },
               javascript = { "prettier" },
               go = { "gofumpt" },
               terraform = { "terraform_fmt" },
-              nix = { "alejandra" }
+              nix = { "alejandra" },
+              rust = { "rustfmt", lsp_format = "fallback" },
             }
           })
 
@@ -404,14 +409,14 @@
       #}
 
       # Project management
-      {
-        plugin = project-nvim;
-        type = "lua";
-        config = ''
-          require("project_nvim").setup {}
-          require('telescope').load_extension('projects')
-        '';
-      }
+      #{
+      #plugin = project-nvim;
+      #type = "lua";
+      #config = ''
+      #require("project_nvim").setup {}
+      #require('telescope').load_extension('projects')
+      #'';
+      #}
       vim-rhubarb
     ];
 
@@ -421,7 +426,7 @@
       #rnix-lsp
       nixfmt-classic
       tree-sitter
-      sumneko-lua-language-server
+      lua-language-server
       nodePackages.prettier
       pyright
       terraform-ls
@@ -430,6 +435,8 @@
       typescript-language-server
       alejandra
       ruff
+      rust-analyzer
+      rustfmt
     ];
   };
 }

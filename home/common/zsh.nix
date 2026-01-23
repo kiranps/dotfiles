@@ -29,6 +29,10 @@
 
       export PATH=~/bin:$HOME/.npm-global/bin:$PATH
 
+      if [ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
+        source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+      fi
+
       # Fix completions for uv run.
       _uv_run_mod() {
           if [[ "$words[2]" == "run" && "$words[CURRENT]" != -* ]]; then

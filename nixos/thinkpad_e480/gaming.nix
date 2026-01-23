@@ -15,16 +15,12 @@
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      vaapiIntel
       intel-vaapi-driver
       intel-media-driver
-      vaapiVdpau
       libvdpau-va-gl
       intel-gpu-tools
     ];
   };
-
-  hardware.xone.enable = true;
 
   environment.systemPackages = with pkgs; [
     wineWowPackages.stable
