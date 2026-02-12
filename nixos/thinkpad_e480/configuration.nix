@@ -81,9 +81,9 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [stdenv.cc.cc.lib];
+    libraries = with pkgs; [stdenv.cc.cc.lib glib nspr nss dbus atk cups cairo gtk3 pango xorg.libX11 xorg.libXcomposite xorg.libXcursor xorg.libXcursor xorg.libXdamage xorg.libXext xorg.libXfixes xorg.libXi xorg.libXrender xorg.libXtst xorg.libXrandr mesa];
   };
-  programs.adb.enable = true;
+  #programs.adb.enable = true;
   programs.zsh.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -95,8 +95,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [53317 6007 9091 9300 39087 8081];
-    allowedUDPPorts = [53317 6007 9300 39087 8081];
+    allowedTCPPorts = [53317 6007 9091 9300 39087 8081 5037 5555 8080];
+    allowedUDPPorts = [53317 6007 9300 39087 8081 5037 5555 8080];
     allowedTCPPortRanges = [
       {
         from = 1714;

@@ -65,37 +65,37 @@
 
     plugins = with pkgs.vimPlugins; [
       # LLM
-      #{
-      #plugin = copilot-vim;
-      #type = "lua";
-      #config = ''
-      #vim.g.copilot_no_tab_map = true
-      #vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-      #'';
-      #}
-      #{
-      #plugin = avante-nvim;
-      #type = "lua";
-      #config = ''
-      #require("avante_lib").load()
-      #require("avante").setup({
-      #provider = "copilot",
-      #providers = {
-      #copilot = {
-      #enabled = true,
-      #model = "gpt-4.1"
-      #},
-      #},
-      #suggestion = {
-      #debounce = 5000,
-      #throttle = 5000,
-      #},
-      #windows = {
-      #width = 50,
-      #},
-      #})
-      #'';
-      #}
+      {
+        plugin = copilot-vim;
+        type = "lua";
+        config = ''
+          vim.g.copilot_no_tab_map = true
+          vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+        '';
+      }
+      {
+        plugin = avante-nvim;
+        type = "lua";
+        config = ''
+          require("avante_lib").load()
+          require("avante").setup({
+          provider = "copilot",
+          providers = {
+          copilot = {
+          enabled = true,
+          model = "gpt-5-mini"
+          },
+          },
+          suggestion = {
+          debounce = 5000,
+          throttle = 5000,
+          },
+          windows = {
+          width = 50,
+          },
+          })
+        '';
+      }
       {
         plugin = neo-tree-nvim;
         type = "lua";
@@ -140,7 +140,7 @@
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = ''
-          require'nvim-treesitter.configs'.setup {
+          require'nvim-treesitter'.setup {
               sync_install = false,
               highlight = {
                   enable = true
@@ -203,6 +203,7 @@
       cmp-buffer
       cmp-path
       cmp-treesitter
+      rustaceanvim
       {
         plugin = nvim-cmp;
         type = "lua";
@@ -210,7 +211,7 @@
           local cmp = require 'cmp'
           local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-          local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript', 'gopls', 'tsserver', 'rust_analyzer'}
+          local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript', 'gopls', 'tsserver'}
           local capabilities = cmp_nvim_lsp.default_capabilities()
 
           for _, lsp in ipairs(servers) do
@@ -380,9 +381,6 @@
         '';
       }
       nerdcommenter
-
-      rust-vim
-
       {
         plugin = fidget-nvim;
         type = "lua";
@@ -424,7 +422,7 @@
       gcc
       nixd
       #rnix-lsp
-      nixfmt-classic
+      nixfmt
       tree-sitter
       lua-language-server
       nodePackages.prettier
@@ -435,7 +433,6 @@
       typescript-language-server
       alejandra
       ruff
-      rust-analyzer
       rustfmt
     ];
   };

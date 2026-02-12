@@ -13,6 +13,7 @@
       lsl = "eza --long --sort=mod --icons";
       copy2clip = "xsel --clipboard";
       clipsend = "kdeconnect-cli -d $(kdeconnect-cli -a --id-only) --send-clipboard";
+      "studio.sh" = "android-studio";
     };
 
     initContent = ''

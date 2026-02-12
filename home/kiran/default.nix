@@ -15,6 +15,7 @@
     ./starship.nix
     ./services.nix
     ./gaming.nix
+    ./session.nix
     ../common/wayland
     ../common/alacritty.nix
     ../common/zsh.nix

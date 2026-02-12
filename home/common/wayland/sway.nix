@@ -17,6 +17,7 @@ in {
         "${mod4}+space" = "exec ${wofi}/bin/wofi --show drun";
         "${mod4}+f" = "exec firefox";
         "${mod4}+c" = "exec ${cliphist}/bin/cliphist list | ${wofi}/bin/wofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy";
+        "Print" = "exec ${grim}/bin/grim ~/Pictures/full-$(date +'%Y-%m-%d_%H-%M-%S').png";
       };
       bars = [];
       window = {
@@ -32,5 +33,8 @@ in {
           workspace = toString n;
         }) (lib.range 6 9));
     };
+    extraConfig = ''
+      bindcode 164 nop
+    '';
   };
 }

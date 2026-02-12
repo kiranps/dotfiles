@@ -104,8 +104,10 @@ in {
     nixos-generators # Generate NixOS images (ISO, VM, cloud)
     pnpm
     mongosh
+    #rustup
     rustc
     cargo
+    rust-analyzer
     lld
     packet
     gvfs
@@ -114,6 +116,11 @@ in {
     kdePackages.dolphin
     exiftool
     libexif
+    watchman
     pgcli
+    nix-index
+    webdav
+    dufs
+    bun
   ];
 }
