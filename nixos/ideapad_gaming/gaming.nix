@@ -1,8 +1,25 @@
 {pkgs, ...}: {
-  programs.steam = {
-    enable = true;
+  programs = {
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
   };
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiIntel
+      intel-vaapi-driver
+      intel-media-driver
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-gpu-tools
+    ];
+  };
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["nvidia" "intel"];
 

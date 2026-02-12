@@ -39,11 +39,26 @@
     extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video" "i2c"];
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [stdenv.cc.cc.lib];
+  };
+
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
   environment.shells = with pkgs; [zsh];
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      {
+        from = 5000;
+        to = 5100;
+      }
+    ];
+  };
   system.stateVersion = "25.05";
 }
