@@ -1,7 +1,7 @@
 {...}: {
   services = {
-    kdeconnect = {
-      enable = true;
-    };
+    #kdeconnect = {
+    #enable = true;
+    #};
   };
 }

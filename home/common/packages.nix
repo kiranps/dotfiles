@@ -122,5 +122,7 @@ in {
     webdav
     dufs
     bun
+    podman
+    podman-compose
   ];
 }

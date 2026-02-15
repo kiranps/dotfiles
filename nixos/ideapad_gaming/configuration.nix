@@ -60,5 +60,17 @@
       }
     ];
   };
+
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true; # enables `docker` alias for podman
+    defaultNetwork.settings.dns_enabled = true; # optional but useful
+  };
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
+
   system.stateVersion = "25.05";
 }

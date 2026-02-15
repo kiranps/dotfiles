@@ -10,6 +10,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./session.nix
     ./packages.nix
     ./starship.nix
     ./services.nix
