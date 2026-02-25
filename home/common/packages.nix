@@ -30,17 +30,16 @@ in {
     vlc # Multimedia player
     chromium # Open-source web browser
     #vscode # Visual Studio Code editor
-    jstest-gtk # Joystick testing tool for gamepads
-    mupdf # Lightweight PDF viewer
+    #jstest-gtk # Joystick testing tool for gamepads
+    #mupdf # Lightweight PDF viewer
     nautilus # GNOME file manager
-    localsend # Local file sharing app
+    #localsend # Local file sharing app
     firefox # Web browser
-    gimp # Image editor
+    #gimp # Image editor
     libreoffice # Office suite
     tor-browser # Secure browser with Tor network
     transmission_4-gtk # BitTorrent client
-    localsend # Local file sharing app
-    kdePackages.kdenlive
+    #kdePackages.kdenlive
 
     # =======================
     # CLI Tools
@@ -104,10 +103,10 @@ in {
     nixos-generators # Generate NixOS images (ISO, VM, cloud)
     pnpm
     mongosh
-    #rustup
-    rustc
-    cargo
-    rust-analyzer
+    rustup
+    #rustc
+    #cargo
+    #rust-analyzer
     lld
     packet
     gvfs
@@ -124,5 +123,7 @@ in {
     bun
     podman
     podman-compose
+    btop
+    lazygit
   ];
 }

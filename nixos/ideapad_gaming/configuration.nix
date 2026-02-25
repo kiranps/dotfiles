@@ -41,7 +41,28 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [stdenv.cc.cc.lib];
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      # for android-studio
+      zlib
+      glib
+      xorg.libXext
+      xorg.libX11
+      xorg.libXext
+      xorg.libXi
+      xorg.libXrender
+      xorg.libXtst
+      xorg.libXrandr
+      xorg.libXcursor
+      xorg.libXfixes
+      freetype
+      fontconfig
+      libGL
+      gtk3
+      libpulseaudio
+      alsa-lib
+      libcxx
+    ];
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -53,6 +74,7 @@
 
   networking.firewall = {
     enable = true;
+    allowedTCPPorts = [8081];
     allowedTCPPortRanges = [
       {
         from = 5000;
@@ -60,6 +82,8 @@
       }
     ];
   };
+
+  #8081 - Metro Bundler
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
@@ -69,7 +93,7 @@
   };
   zramSwap = {
     enable = true;
-    memoryPercent = 50;
+    memoryPercent = 80;
   };
 
   system.stateVersion = "25.05";

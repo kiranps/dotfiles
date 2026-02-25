@@ -1,11 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
-    android-studio
+    #android-studio
     watchman
     openjdk17
     gradle
   ];
   home.sessionVariables = {
-    ANDROID_HOME = "/home/kiran/Android/sdk";
+    ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
   };
 }

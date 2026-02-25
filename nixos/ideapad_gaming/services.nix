@@ -25,5 +25,11 @@
   '';
 
   services.openssh.enable = true;
+  services.gvfs.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 5; # percent
+    freeSwapThreshold = 5;
+  };
 }

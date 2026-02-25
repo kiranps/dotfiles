@@ -25,5 +25,6 @@
     ../common/tmux.nix
     ../common/feh.nix
     ../common/gpg-agent.nix
+    ../common/android.nix
   ];
 }
