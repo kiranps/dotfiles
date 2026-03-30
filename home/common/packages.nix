@@ -1,10 +1,4 @@
-{pkgs, ...}: let
-  #myOverlays = [ (import ../nixos/overlays/ollama.nix) ];
-  #pkgsWithOverlay = import pkgs.path {
-  #inherit (pkgs) system;
-  #overlays = myOverlays;
-  #};
-in {
+{pkgs, ...}: {
   programs.ssh = {
     enableDefaultConfig = false;
     enable = true;
@@ -14,9 +8,6 @@ in {
     enable = true;
     nix-direnv.enable = true;
   };
-
-  #programs.java.enable = true;
-  #programs.java.package = pkgs.jdk19;
 
   home.sessionVariables = {
     SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
@@ -29,17 +20,11 @@ in {
     python315
     vlc # Multimedia player
     chromium # Open-source web browser
-    #vscode # Visual Studio Code editor
-    #jstest-gtk # Joystick testing tool for gamepads
-    #mupdf # Lightweight PDF viewer
     nautilus # GNOME file manager
-    #localsend # Local file sharing app
     firefox # Web browser
-    #gimp # Image editor
     libreoffice # Office suite
     tor-browser # Secure browser with Tor network
     transmission_4-gtk # BitTorrent client
-    #kdePackages.kdenlive
 
     # =======================
     # CLI Tools
@@ -86,7 +71,7 @@ in {
     arp-scan
     pciutils
     starship # Prompt theming for terminal
-    usbutils # USB device utilities
+    usbutils
     libva-utils
     net-tools
 
@@ -98,14 +83,9 @@ in {
     cmake # Build system generator
     gnumake # GNU Make build automation tool
     llama-cpp # C++ library and tools for LLaMA models
-    #terraform # Infrastructure as code tool (DevOps)
     nixos-generators # Generate NixOS images (ISO, VM, cloud)
-    pnpm
     mongosh
     rustup
-    #rustc
-    #cargo
-    #rust-analyzer
     lld
     packet
     gvfs
@@ -114,7 +94,6 @@ in {
     kdePackages.dolphin
     exiftool
     libexif
-    watchman
     pgcli
     nix-index
     webdav
@@ -124,13 +103,11 @@ in {
     podman-compose
     btop
     lazygit
-    bun
     libxml2
     file
     biome
     cloudflared
     openssl
     pkg-config
-    gh
   ];
 }

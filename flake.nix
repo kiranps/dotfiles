@@ -6,14 +6,12 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
     nixpkgs,
     nixpkgs-stable,
     darwin,
-    nix-colors,
     home-manager,
     ...
   } @ inputs: let
@@ -56,12 +54,10 @@
     homeConfigurations = {
       kiran = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit nix-colors;};
         modules = [./home/kiran];
       };
       makhang = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit nix-colors;};
         modules = [./home/makhang];
       };
     };

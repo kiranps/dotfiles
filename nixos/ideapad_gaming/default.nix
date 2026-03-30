@@ -6,7 +6,7 @@
   imports = [
     ./configuration.nix
     ./services.nix
-    ./fonts.nix
+    ../common/fonts.nix
     ./packages.nix
     ./gaming.nix
     ./security.nix

@@ -7,7 +7,7 @@
     ./configuration.nix
     ./services.nix
     ./hardware_configuration.nix
-    ./fonts.nix
+    ../common/fonts.nix
     ./packages.nix
     ./gaming.nix
   ];
