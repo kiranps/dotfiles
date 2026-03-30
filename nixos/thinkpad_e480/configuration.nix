@@ -18,7 +18,7 @@
     "splash"
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "thinkpad_e480";
 
   networking.networkmanager.enable = true;
 
@@ -104,7 +104,7 @@
       }
       {
         from = 5000;
-        to = 5100;
+        to = 6000;
       }
     ];
     allowedUDPPortRanges = [
@@ -120,6 +120,17 @@
     enable = true;
     dockerCompat = true; # enables `docker` alias for podman
     defaultNetwork.settings.dns_enabled = true; # optional but useful
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
+    };
   };
 
   services.samba = {

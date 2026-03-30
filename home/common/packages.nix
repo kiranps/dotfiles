@@ -94,7 +94,6 @@ in {
     # Build/Development Tools
     # =======================
     scons # Software construction tool (build system)
-    pkg-config # Manage compile/link flags for libraries
     gcc # GNU Compiler Collection (C/C++ compiler)
     cmake # Build system generator
     gnumake # GNU Make build automation tool
@@ -125,5 +124,13 @@ in {
     podman-compose
     btop
     lazygit
+    bun
+    libxml2
+    file
+    biome
+    cloudflared
+    openssl
+    pkg-config
+    gh
   ];
 }

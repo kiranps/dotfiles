@@ -135,7 +135,7 @@
           providers = {
           copilot = {
           enabled = true,
-          model = "gpt-5-mini"
+          model = "gpt-4.1"
           },
           },
           suggestion = {
@@ -263,7 +263,7 @@
           local cmp = require 'cmp'
           local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-          local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'groovyls', 'terraformls', 'gdscript', 'gopls', 'tsserver'}
+          local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'terraformls', 'gopls', 'tsserver'}
           local capabilities = cmp_nvim_lsp.default_capabilities()
 
           for _, lsp in ipairs(servers) do
@@ -329,14 +329,20 @@
           require('conform').setup({
             formatters_by_ft = {
               python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
-              typescript = { "prettier" },
-              typescriptreact = { "prettier" },
-              javascript = { "prettier" },
+              javascript = { "biome" },
+              typescript = { "biome" },
+              javascriptreact = { "biome" },
+              typescriptreact = { "biome" },
+              json = { "biome" },
+              jsonc = { "biome" },
               go = { "gofumpt" },
               terraform = { "terraform_fmt" },
               nix = { "alejandra" },
               rust = { "rustfmt", lsp_format = "fallback" },
               xml = { "xmllint" },
+            },
+            format_on_save = {
+              timeout_ms = 5000
             }
           })
 
