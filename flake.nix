@@ -6,6 +6,8 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    unikraft-cli.url = "path:./pkgs/unikraft-cli";
+    unikraft-cli.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -13,6 +15,7 @@
     nixpkgs-stable,
     darwin,
     home-manager,
+    unikraft-cli,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -54,6 +57,9 @@
     homeConfigurations = {
       kiran = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          unikraft-cli = unikraft-cli.packages.${system}.default;
+        };
         modules = [./home/kiran];
       };
       makhang = home-manager.lib.homeManagerConfiguration {

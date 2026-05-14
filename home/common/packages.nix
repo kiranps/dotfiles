@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, unikraft-cli, ...}: {
   programs.ssh = {
     enableDefaultConfig = false;
     enable = true;
@@ -119,5 +119,6 @@
     firectl
     flintlock
     kraft
+    unikraft-cli
   ];
 }

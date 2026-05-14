@@ -78,8 +78,25 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable",
+        "unikraft-cli": "unikraft-cli"
       }
+    },
+    "unikraft-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./pkgs/unikraft-cli",
+        "type": "path"
+      },
+      "original": {
+        "path": "./pkgs/unikraft-cli",
+        "type": "path"
+      },
+      "parent": []
     }
   },
   "root": "root",
