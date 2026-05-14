@@ -11,6 +11,7 @@
   services.gvfs.enable = true;
   services.devmon.enable = true;
   services.udisks2.enable = true;
+  services.tailscale.enable = true;
   #services.dbus.enable = true;
   #systemd.services.systemd-user-sessions = {
   #before = [ "resolvconf.service" ];

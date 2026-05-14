@@ -34,7 +34,7 @@ in {
         }) (lib.range 6 9));
     };
     extraConfig = ''
-      bindcode 164 nop
+      bindcode 127 Escape
     '';
   };
 }

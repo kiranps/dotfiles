@@ -74,7 +74,7 @@
   users.users.kiran = {
     isNormalUser = true;
     description = "kiran";
-    extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video" "i2c"];
+    extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video" "i2c" "kvm" "libvirtd"];
     #shell = pkgs.zsh;
   };
   programs.light.enable = true;
@@ -104,7 +104,7 @@
       }
       {
         from = 5000;
-        to = 6000;
+        to = 9500;
       }
     ];
     allowedUDPPortRanges = [
@@ -121,6 +121,8 @@
     dockerCompat = true; # enables `docker` alias for podman
     defaultNetwork.settings.dns_enabled = true; # optional but useful
   };
+  virtualisation.libvirtd.enable = true;
+  virtualisation.kvmgt.enable = true;
 
   services.avahi = {
     enable = true;

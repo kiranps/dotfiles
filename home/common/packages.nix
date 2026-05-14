@@ -20,6 +20,7 @@
     python315
     vlc # Multimedia player
     chromium # Open-source web browser
+    brave
     nautilus # GNOME file manager
     firefox # Web browser
     libreoffice # Office suite
@@ -45,6 +46,8 @@
     ffmpeg # Command-line multimedia processing tool
     libheif # HEIF image format support
     imagemagick # Image manipulation CLI tool
+    libjpeg
+    libpng
     loupe
     litecli # Command-line SQLite client
     unzip # ZIP file extractor
@@ -109,5 +112,12 @@
     cloudflared
     openssl
     pkg-config
+    terraform
+    awscli2
+    zig
+    zip
+    firectl
+    flintlock
+    kraft
   ];
 }

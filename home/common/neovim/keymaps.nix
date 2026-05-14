@@ -1,11 +1,10 @@
 {pkgs, ...}: {
   programs.neovim.extraConfig = ''
     lua << EOF
-      vim.keymap.set("n", "<leader>tt", function()
-        vim.cmd("botright 10split | terminal")
-        vim.cmd("startinsert")
-      end, { desc = "Open terminal at bottom" })
-      vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+      vim.o.number = true
+      vim.g.mapleader = ' '
+      vim.opt.termguicolors = true
+      vim.opt.laststatus = 3
 
       vim.cmd([[
         imap jk <ESC>
