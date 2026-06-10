@@ -1,4 +1,8 @@
-{pkgs, unikraft-cli, ...}: {
+{
+  pkgs,
+  localPkgs,
+  ...
+}: {
   programs.ssh = {
     enableDefaultConfig = false;
     enable = true;
@@ -111,7 +115,6 @@
     biome
     cloudflared
     openssl
-    pkg-config
     terraform
     awscli2
     zig
@@ -119,6 +122,14 @@
     firectl
     flintlock
     kraft
-    unikraft-cli
+    localPkgs.unikraft-cli
+    localPkgs.gogcli
+    gnome-keyring
+    libsecret
+    seahorse
+    diesel-cli
+    postgresql
+    libpq
+    pkg-config
   ];
 }

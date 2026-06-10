@@ -53,28 +53,28 @@
     }
 
     # avante AI assistant
-    {
-      plugin = avante-nvim;
-      type = "lua";
-      config = ''
-        require("avante_lib").load()
-        require("avante").setup({
-        provider = "copilot",
-        providers = {
-        copilot = {
-        enabled = true,
-        model = "gpt-4.1"
-        },
-        },
-        suggestion = {
-        debounce = 5000,
-        throttle = 5000,
-        },
-        windows = {
-        width = 50,
-        },
-        })
-      '';
-    }
+    #{
+    #plugin = avante-nvim;
+    #type = "lua";
+    #config = ''
+    #require("avante_lib").load()
+    #require("avante").setup({
+    #provider = "copilot",
+    #providers = {
+    #copilot = {
+    #enabled = true,
+    #model = "gpt-4.1"
+    #},
+    #},
+    #suggestion = {
+    #debounce = 5000,
+    #throttle = 5000,
+    #},
+    #windows = {
+    #width = 50,
+    #},
+    #})
+    #'';
+    #}
   ];
 }

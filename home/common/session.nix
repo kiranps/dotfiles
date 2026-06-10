@@ -7,7 +7,8 @@
     LD_LIBRARY_PATH = "${pkgs.glib}/lib:$LD_LIBRARY_PATH";
     PNPM_HOME = "$HOME/.local/share/pnpm";
     NODE_OPTIONS = "--max-old-space-size=512";
-    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    #PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
     PATH =
       "$PATH:"
       + "${config.home.homeDirectory}/Android/Sdk/emulator:"

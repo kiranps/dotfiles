@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "gogcli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./pkgs/gogcli",
+        "type": "path"
+      },
+      "original": {
+        "path": "./pkgs/gogcli",
+        "type": "path"
+      },
+      "parent": []
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -76,6 +92,7 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
+        "gogcli": "gogcli",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",

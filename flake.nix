@@ -8,6 +8,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     unikraft-cli.url = "path:./pkgs/unikraft-cli";
     unikraft-cli.inputs.nixpkgs.follows = "nixpkgs";
+    gogcli.url = "path:./pkgs/gogcli";
+    gogcli.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -16,6 +18,7 @@
     darwin,
     home-manager,
     unikraft-cli,
+    gogcli,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -58,7 +61,12 @@
       kiran = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          unikraft-cli = unikraft-cli.packages.${system}.default;
+          # Generic attrset of all local packages from pkgs/.
+          # Add new pkgs/ flakes as inputs above and list them here.
+          localPkgs = {
+            unikraft-cli = unikraft-cli.packages.${system}.default;
+            gogcli = gogcli.packages.${system}.default;
+          };
         };
         modules = [./home/kiran];
       };
