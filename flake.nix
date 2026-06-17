@@ -72,6 +72,12 @@
       };
       makhang = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          localPkgs = {
+            unikraft-cli = unikraft-cli.packages.${system}.default;
+            gogcli = gogcli.packages.${system}.default;
+          };
+        };
         modules = [./home/makhang];
       };
     };
