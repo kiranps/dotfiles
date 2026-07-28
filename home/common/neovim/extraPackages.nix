@@ -5,7 +5,7 @@
     nixfmt
     tree-sitter
     lua-language-server
-    nodePackages.prettier
+    prettier
     pyright
     terraform-ls
     gopls
@@ -15,5 +15,9 @@
     ruff
     rustfmt
     libxml2
+  ];
+
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    vim-godot
   ];
 }

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
-    fugitive
+    vim-fugitive
     vim-rhubarb
     nerdcommenter
     {

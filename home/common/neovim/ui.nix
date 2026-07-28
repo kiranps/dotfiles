@@ -43,7 +43,22 @@
 
     # Syntax highlighting
     {
-      plugin = nvim-treesitter.withAllGrammars;
+      plugin = nvim-treesitter.withPlugins (p: [
+        p.tree-sitter-nix
+        p.tree-sitter-lua
+        p.tree-sitter-c
+        p.tree-sitter-python
+        p.tree-sitter-bash
+        p.tree-sitter-json
+        p.tree-sitter-yaml
+        p.tree-sitter-markdown
+        p.tree-sitter-html
+        p.tree-sitter-css
+        p.tree-sitter-javascript
+        p.tree-sitter-typescript
+        p.tree-sitter-rust
+        p.tree-sitter-go
+      ]);
       type = "lua";
       config = ''
         require'nvim-treesitter'.setup {

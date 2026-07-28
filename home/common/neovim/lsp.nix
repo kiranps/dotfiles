@@ -14,13 +14,19 @@
         local cmp = require 'cmp'
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'terraformls', 'gopls', 'tsserver'}
+        local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'terraformls', 'gopls', 'tsserver', 'gdscript', 'rust_analyzer'}
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
         for _, lsp in ipairs(servers) do
-          vim.lsp.config(lsp, {
-             capabilities = capabilities
-          })
+           vim.lsp.config(lsp, {
+             capabilities = capabilities,
+             settings = {
+               rust_analyzer = {
+                 procMacro = { enable = false },
+                 cargo = { buildScripts = { enable = false } },
+               },
+             },
+           })
           vim.lsp.enable(lsp)
         end
 
