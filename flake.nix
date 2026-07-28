@@ -4,7 +4,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     unikraft-cli.url = "path:./pkgs/unikraft-cli";
     unikraft-cli.inputs.nixpkgs.follows = "nixpkgs";
