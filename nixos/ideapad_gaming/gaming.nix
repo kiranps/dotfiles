@@ -1,16 +1,17 @@
 {pkgs, ...}: {
   programs = {
-    gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
+    #gamescope = {
+    #enable = true;
+    #capSysNice = true;
+    #};
+    #steam = {
+    #enable = true;
+    #gamescopeSession.enable = true;
+    #};
   };
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       intel-vaapi-driver
       intel-media-driver
@@ -37,7 +38,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wineWowPackages.stable
-    winetricks
+    #wineWow64Packages.full
+    protonup-qt
+    #winetricks
+    vulkan-tools
+    #dxvk
+    #lutris
+    umu-launcher
   ];
 }

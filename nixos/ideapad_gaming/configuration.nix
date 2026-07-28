@@ -8,8 +8,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  #boot.kernelPackages = pkgs-stable.linuxPackages_latest;
-  boot.kernelPackages = pkgs-stable.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   boot.loader.timeout = 10;
   boot.kernelParams = [
@@ -46,15 +45,13 @@
       # for android-studio
       zlib
       glib
-      xorg.libXext
-      xorg.libX11
-      xorg.libXext
-      xorg.libXi
-      xorg.libXrender
-      xorg.libXtst
-      xorg.libXrandr
-      xorg.libXcursor
-      xorg.libXfixes
+      libxext
+      libx11
+      libxi
+      libxtst
+      libxrandr
+      libxcursor
+      libxfixes
       freetype
       fontconfig
       libGL
@@ -74,11 +71,12 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [8081];
+    allowedTCPPorts = [53317 6007 9091 9300 39087 8081 5037 5555 8080 8081];
+    allowedUDPPorts = [53317 6007 9300 39087 8081 5037 5555 8080];
     allowedTCPPortRanges = [
       {
         from = 5000;
-        to = 5100;
+        to = 9000;
       }
     ];
   };
@@ -86,14 +84,36 @@
   #8081 - Metro Bundler
 
   virtualisation.containers.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true; # enables `docker` alias for podman
-    defaultNetwork.settings.dns_enabled = true; # optional but useful
-  };
+  virtualisation.docker.enable = true;
+  #virtualisation.podman = {
+  #enable = true;
+  #dockerCompat = true; # enables `docker` alias for podman
+  #defaultNetwork.settings.dns_enabled = true; # optional but useful
+  #};
   zramSwap = {
     enable = true;
     memoryPercent = 80;
+  };
+
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+
+    settings = {
+      global = {
+        security = "user";
+        "map to guest" = "bad user";
+      };
+      guest_share = {
+        path = "/home/makhang/Downloads/";
+        browseable = true;
+        "public" = true;
+        "guest ok" = true;
+        "printable" = false;
+        "force user" = "kiran";
+        "force group" = "users";
+      };
+    };
   };
 
   system.stateVersion = "25.05";

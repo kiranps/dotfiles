@@ -9,6 +9,8 @@
     };
   };
 
+  systemd.services.samba-nmbd.enable = false;
+  systemd.services.sambawinbindd = {enable = false;};
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -26,6 +28,7 @@
 
   services.openssh.enable = true;
   services.gvfs.enable = true;
+  services.tailscale.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
   services.earlyoom = {
     enable = true;
