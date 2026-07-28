@@ -115,13 +115,15 @@
     biome
     cloudflared
     openssl
-    terraform
+    #terraform
     awscli2
     zig
     zip
     firectl
     flintlock
     kraft
+    inotify-tools
+    rsync
     localPkgs.unikraft-cli
     localPkgs.gogcli
     gnome-keyring
@@ -131,5 +133,8 @@
     postgresql
     libpq
     pkg-config
+    godot
+    bind
+    jpeginfo
   ];
 }

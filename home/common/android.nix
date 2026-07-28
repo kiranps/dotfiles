@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    #android-studio
+    android-studio
     watchman
     openjdk17
     gradle
