@@ -10,6 +10,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./session.nix
     ./packages.nix
     ./gaming.nix
     ../common/android.nix
@@ -25,6 +26,5 @@
     ../common/gpg-agent.nix
     ../common/android.nix
     ../common/starship.nix
-    ../common/session.nix
   ];
 }

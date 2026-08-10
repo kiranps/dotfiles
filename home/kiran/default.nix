@@ -11,6 +11,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./session.nix
     ./services.nix
     ../common/wayland
     ../common/alacritty.nix
@@ -24,6 +25,5 @@
     ../common/gpg-agent.nix
     ../common/android.nix
     ../common/starship.nix
-    ../common/session.nix
   ];
 }
