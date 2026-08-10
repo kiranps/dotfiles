@@ -105,16 +105,21 @@
         "map to guest" = "bad user";
       };
       guest_share = {
-        path = "/home/makhang/Downloads/";
+        path = "/home/makhang/Downloads/Movies";
         browseable = true;
         "public" = true;
         "guest ok" = true;
         "printable" = false;
-        "force user" = "kiran";
+        "force user" = "makhang";
         "force group" = "users";
       };
     };
   };
+
+  #environment.variables = {
+  #HTTP_PROXY = "http://127.0.0.1:3128";
+  #HTTPS_PROXY = "http://127.0.0.1:3128";
+  #};
 
   system.stateVersion = "25.05";
 }

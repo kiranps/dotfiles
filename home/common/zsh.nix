@@ -11,7 +11,7 @@
       q = "exit";
       tmux = "tmux -u";
       lsl = "eza --long --sort=mod --icons";
-      copy2clip = "xsel --clipboard";
+      copy2clip = "wl-copy";
       clipsend = "kdeconnect-cli -d $(kdeconnect-cli -a --id-only) --send-clipboard";
       "studio.sh" = "android-studio";
     };

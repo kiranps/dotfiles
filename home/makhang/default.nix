@@ -12,6 +12,7 @@
   imports = [
     ./packages.nix
     ./gaming.nix
+    ../common/android.nix
     ../common/wayland
     ../common/alacritty.nix
     ../common/zsh.nix

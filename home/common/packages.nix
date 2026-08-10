@@ -41,6 +41,7 @@
     fx # Command-line JSON processor
     nodejs # JavaScript runtime environment & CLI
     pnpm # Fast, disk space efficient package manager for Node.js
+    yarn
     ripgrep # Fast text searcher (rg)
     gh # GitHub CLI tool
     inetutils # Common network utilities (ping, ifconfig, etc)
@@ -136,5 +137,10 @@
     godot
     bind
     jpeginfo
+    tcpdump
+    sing-box
+    nftables
+    mihomo
+    ollama
   ];
 }

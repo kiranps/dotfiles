@@ -162,7 +162,7 @@
     }
 
     # Language-specific LSP enhancements
-    rustaceanvim
+    #rustaceanvim
     {
       plugin = typescript-tools-nvim;
       type = "lua";
