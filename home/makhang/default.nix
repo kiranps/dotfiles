@@ -26,5 +26,6 @@
     ../common/gpg-agent.nix
     ../common/android.nix
     ../common/starship.nix
+    ../common/playwright.nix
   ];
 }

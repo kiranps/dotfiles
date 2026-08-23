@@ -37,9 +37,15 @@
     };
   };
 
+  #services.ollama = {
+  #enable = true;
+  #package = pkgs.ollama-cuda; #https://cache.nixos-cuda.org/
+  #models = "/d/ollama/models";
+  #};
+
   environment.systemPackages = with pkgs; [
     #wineWow64Packages.full
-    protonup-qt
+    #protonup-qt
     #winetricks
     vulkan-tools
     #dxvk

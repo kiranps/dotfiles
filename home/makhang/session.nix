@@ -4,12 +4,11 @@
   ...
 }: {
   home.sessionVariables = {
-    LD_LIBRARY_PATH = "${pkgs.glib}/lib:$LD_LIBRARY_PATH";
+    LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [pkgs.glib pkgs.libheif.lib pkgs.stdenv.cc.cc.lib]}:$LD_LIBRARY_PATH";
     PNPM_HOME = "$HOME/.local/share/pnpm";
     NODE_OPTIONS = "--max-old-space-size=512";
-    #PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-    PKG_CONFIG_PATH = "${config.home.profileDirectory}/lib/pkgconfig";
-    OLLAMA_MODELS = "/d/ollama/models";
+    PKG_CONFIG_PATH = "${pkgs.libheif.dev}/lib/pkgconfig:${config.home.profileDirectory}/lib/pkgconfig";
+
     PATH =
       "$PATH:"
       + "${config.home.homeDirectory}/Android/Sdk/emulator:"
@@ -17,7 +16,9 @@
       + "${config.home.homeDirectory}/Android/Sdk/platform-tools:"
       + "${config.home.homeDirectory}/Android/Sdk/cmdline-tools/latest/bin:"
       + "${config.home.homeDirectory}/.cargo/bin:"
+      + "${config.home.homeDirectory}/bin:"
       + "${config.home.homeDirectory}/.local/share/pnpm:"
-      + "${config.home.homeDirectory}/.bun/bin:";
+      + "${config.home.homeDirectory}/.bun/bin:"
+      + "${config.home.homeDirectory}/.local/share/mise/shims:";
   };
 }

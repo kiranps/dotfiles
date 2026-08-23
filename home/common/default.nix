@@ -15,5 +15,6 @@
     ./tmux.nix
     ./zsh.nix
     ./feh.nix
+    ./playwright.nix
   ];
 }

@@ -18,7 +18,7 @@
   #systemd.services.systemd-user-sessions = {
   #before = [ "resolvconf.service" ];
   #};
-  security.pam.services.ly.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
   services.udev.extraRules = ''
     KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
   '';

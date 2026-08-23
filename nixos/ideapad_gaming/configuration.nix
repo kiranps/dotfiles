@@ -18,6 +18,10 @@
   networking.hostName = "gamebox";
   networking.networkmanager.enable = true;
 
+  networking.extraHosts = ''
+    127.0.0.1 gamebox.local
+  '';
+
   time.timeZone = "Asia/Kolkata";
   i18n.defaultLocale = "en_US.UTF-8"; # safer than en_IN
   i18n.extraLocales = ["en_US.UTF-8/UTF-8"];

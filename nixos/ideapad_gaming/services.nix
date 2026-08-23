@@ -35,4 +35,7 @@
     freeMemThreshold = 5; # percent
     freeSwapThreshold = 5;
   };
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }

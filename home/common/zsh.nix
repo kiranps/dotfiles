@@ -19,6 +19,7 @@
     initContent = ''
       bindkey 'jk' vi-cmd-mode
       eval "$(starship init zsh)"
+      eval "$(mise activate zsh)"
 
       export SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt;
 
