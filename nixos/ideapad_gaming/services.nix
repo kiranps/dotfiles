@@ -28,7 +28,7 @@
 
   services.openssh.enable = true;
   services.gvfs.enable = true;
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
   services.earlyoom = {
     enable = true;

@@ -13,7 +13,6 @@
     typescript-language-server
     alejandra
     ruff
-    rustfmt
     libxml2
   ];
 

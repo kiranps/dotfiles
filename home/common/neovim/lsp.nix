@@ -14,7 +14,7 @@
         local cmp = require 'cmp'
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'terraformls', 'gopls', 'tsserver', 'gdscript', 'rust_analyzer', 'kotlin_lsp'}
+        local servers = { 'clangd', 'pyright', "ruff", 'lua_ls', 'nixd', 'terraformls', 'gopls', 'tsserver', 'gdscript', 'kotlin_lsp'}
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
         for _, lsp in ipairs(servers) do
@@ -23,12 +23,36 @@
              settings = {
                rust_analyzer = {
                  procMacro = { enable = false },
-                 cargo = { buildScripts = { enable = false } },
+                 cargo = {
+                     buildScripts = { enable = false },
+                     allFeatures = false,
+                 },
+                 checkOnSave = false
                },
              },
            })
           vim.lsp.enable(lsp)
         end
+
+        vim.lsp.config("rust_analyzer", {
+            capabilities = capabilities,
+            settings = {
+                ["rust-analyzer"] = {
+                    procMacro = {
+                        enable = false,
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = false,
+                        },
+                        allFeatures = false,
+                    },
+                    checkOnSave = false,
+                },
+            },
+        })
+
+        vim.lsp.enable("rust_analyzer")
 
         cmp.setup {
           mapping = cmp.mapping.preset.insert({

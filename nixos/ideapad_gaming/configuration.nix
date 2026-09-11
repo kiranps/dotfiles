@@ -15,6 +15,7 @@
     "quiet"
     "splash"
   ];
+  boot.tmp.cleanOnBoot = true;
   networking.hostName = "gamebox";
   networking.networkmanager.enable = true;
 

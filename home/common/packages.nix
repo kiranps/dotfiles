@@ -22,7 +22,7 @@
     # GUI Applications
     # =======================
     firefox # Web browser
-    brave # Privacy-focused Chromium-based browser
+    #brave # Privacy-focused Chromium-based browser
     chromium # Open-source web browser
     tor-browser # Browser routed through the Tor network
     vlc # Multimedia player
@@ -60,6 +60,7 @@
     file # Detect file types
     zip # Create ZIP archives
     unzip # Extract ZIP archives
+    unar
     dtrx # Extract archives of many types
     qpdf # PDF transformation and inspection
     ripmime # Extract MIME mail attachments
@@ -69,6 +70,7 @@
     # Network & Web
     # =======================
     wget # Command-line file downloader
+    rclone
     gh # GitHub CLI tool
     inetutils # Network utilities (ping, ifconfig, etc)
     net-tools # Legacy network utilities (netstat, route)
@@ -83,6 +85,8 @@
     tor # Anonymity network client
     packet # Network packet manipulation tool
     nmap
+    iperf3
+    iw
 
     # =======================
     # Multimedia & Image
