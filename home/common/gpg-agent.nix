@@ -7,6 +7,6 @@
     defaultCacheTtlSsh = 30 * 24 * 60 * 60; # 30 days
     maxCacheTtl = 60 * 24 * 60 * 60; # 60 days
     sshKeys = ["DBB64E60684B1FF08B52E085B292DDE55E020F25"];
-    pinentry.package = pkgs.pinentry-gtk2;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 }

@@ -109,7 +109,6 @@
     udisks2 # Disk management daemon
     udev # Hardware device manager
     gvfs # Virtual filesystem for desktop apps
-    jmtpfs # Mount MTP devices (Android)
     android-file-transfer # MTP file transfer for Android
     fontconfig # Font configuration and rendering
     pciutils # PCI device utilities (lspci)

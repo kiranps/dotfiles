@@ -60,6 +60,13 @@ home-manager switch --flake .#kiran
 home-manager switch --flake .#makhang
 ```
 
+** clean
+```sh
+nix-env --delete-generations old --profile ~/.local/state/nix/profiles/home-manager
+nix profile wipe-history
+nix-collect-garbage -d
+```
+
 **nix-darwin (macOS):**
 ```sh
 darwin-rebuild switch --flake .#macbook_pro_m1
@@ -86,6 +93,9 @@ nix build .#homeConfigurations.kiran.activationPackage
 ```sh
 nix flake update                  # update all inputs
 nix flake update nixpkgs          # update a single input
+nix flake lock --update-input nixpkgs
+nix flake lock --update-input nixpkgs-stable
+nix flake lock --update-input home-manager
 ```
 
 ## No Tests, No Linter, No CI
