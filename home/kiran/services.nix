@@ -4,4 +4,8 @@
   #enable = true;
   #};
   #};
+
+  services.netdata = {
+    enable = true;
+  };
 }

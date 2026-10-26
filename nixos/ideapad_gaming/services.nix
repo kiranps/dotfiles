@@ -36,6 +36,12 @@
     freeSwapThreshold = 5;
   };
 
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
+
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  programs.dconf.enable = true;
 }

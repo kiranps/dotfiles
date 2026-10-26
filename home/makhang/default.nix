@@ -13,6 +13,7 @@
     ./session.nix
     ./packages.nix
     ./gaming.nix
+    ./services.nix
     ../common/android.nix
     ../common/wayland
     ../common/alacritty.nix

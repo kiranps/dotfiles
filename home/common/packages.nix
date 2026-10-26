@@ -52,6 +52,10 @@
     fx # Interactive JSON viewer
     htop # Interactive process viewer
     btop # Resource monitor (modern htop)
+    perf
+    samply
+    atop
+    sysstat
     bottom # System monitor (btm)
     gdu # Disk usage analyzer
     dua # Interactive disk usage analyzer
@@ -65,6 +69,8 @@
     qpdf # PDF transformation and inspection
     ripmime # Extract MIME mail attachments
     inotify-tools # Filesystem event monitoring
+    steam-run
+    distrobox
 
     # =======================
     # Network & Web
@@ -143,7 +149,7 @@
     #nodejs # JavaScript runtime
     #pnpm # Fast, disk-efficient Node package manager
     #yarn # Alternative Node package manager
-    #terraform # Infrastructure as code
+    terraform # Infrastructure as code
 
     # =======================
     # Security & Keyring
@@ -178,6 +184,8 @@
     # Cloud & DevOps
     # =======================
     awscli2 # AWS command-line interface
+    google-cloud-sdk
+    firebase-tools
     rsync # Fast file synchronization
     mise # Multi-language version manager
     uv # Fast Python package and project manager

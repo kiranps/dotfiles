@@ -20,16 +20,6 @@
         for _, lsp in ipairs(servers) do
            vim.lsp.config(lsp, {
              capabilities = capabilities,
-             settings = {
-               rust_analyzer = {
-                 procMacro = { enable = false },
-                 cargo = {
-                     buildScripts = { enable = false },
-                     allFeatures = false,
-                 },
-                 checkOnSave = false
-               },
-             },
            })
           vim.lsp.enable(lsp)
         end

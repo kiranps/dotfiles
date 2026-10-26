@@ -89,12 +89,12 @@
   #8081 - Metro Bundler
 
   virtualisation.containers.enable = true;
-  virtualisation.docker.enable = true;
-  #virtualisation.podman = {
-  #enable = true;
-  #dockerCompat = true; # enables `docker` alias for podman
-  #defaultNetwork.settings.dns_enabled = true; # optional but useful
-  #};
+  #virtualisation.docker.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true; # enables `docker` alias for podman
+    defaultNetwork.settings.dns_enabled = true; # optional but useful
+  };
   zramSwap = {
     enable = true;
     memoryPercent = 80;
