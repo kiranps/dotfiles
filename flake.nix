@@ -53,7 +53,6 @@
           # Generic attrset of all local packages from pkgs/.
           # Add new pkgs/ flakes as inputs above and list them here.
           localPkgs = {
-            unikraft-cli = unikraft-cli.packages.${system}.default;
             gogcli = gogcli.packages.${system}.default;
           };
         };

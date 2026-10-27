@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.kernelPackages = pkgs-stable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
   boot.loader.timeout = 3;
 
   # Optimize kernel boot options
@@ -77,11 +77,29 @@
     extraGroups = ["networkmanager" "wheel" "adbusers" "docker" "video" "i2c" "kvm" "libvirtd"];
     #shell = pkgs.zsh;
   };
-  programs.light.enable = true;
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [stdenv.cc.cc.lib glib nspr nss dbus atk cups cairo gtk3 pango xorg.libX11 xorg.libXcomposite xorg.libXcursor xorg.libXcursor xorg.libXdamage xorg.libXext xorg.libXfixes xorg.libXi xorg.libXrender xorg.libXtst xorg.libXrandr mesa];
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      # for android-studio
+      zlib
+      glib
+      libxext
+      libx11
+      libxi
+      libxtst
+      libxrandr
+      libxcursor
+      libxfixes
+      freetype
+      fontconfig
+      libGL
+      gtk3
+      libpulseaudio
+      alsa-lib
+      libcxx
+    ];
   };
   #programs.adb.enable = true;
   programs.zsh.enable = true;
@@ -124,35 +142,5 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.kvmgt.enable = true;
 
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      workstation = true;
-    };
-  };
-
-  services.samba = {
-    enable = true;
-    openFirewall = true;
-
-    settings = {
-      global = {
-        security = "user";
-        "map to guest" = "bad user";
-      };
-      guest_share = {
-        path = "/home/kiran/Downloads/Movies/";
-        browseable = true;
-        "public" = true;
-        "guest ok" = true;
-        "printable" = false;
-        "force user" = "kiran";
-        "force group" = "users";
-      };
-    };
-  };
+  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
 }

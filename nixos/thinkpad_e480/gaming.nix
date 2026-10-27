@@ -1,14 +1,14 @@
 {pkgs, ...}: {
-  programs = {
-    gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
-  };
+  #programs = {
+  #gamescope = {
+  #enable = true;
+  #capSysNice = true;
+  #};
+  #steam = {
+  #enable = true;
+  #gamescopeSession.enable = true;
+  #};
+  #};
 
   services.xserver.videoDrivers = ["intel"];
 
@@ -19,13 +19,15 @@
       intel-media-driver
       libvdpau-va-gl
       intel-gpu-tools
+      intel-compute-runtime-legacy1
+      intel-ocl
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    wineWowPackages.stable
-    winetricks
-    lutris
-    mangohud
-  ];
+  #environment.systemPackages = with pkgs; [
+  #wineWowPackages.stable
+  #winetricks
+  #lutris
+  #mangohud
+  #];
 }

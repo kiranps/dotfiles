@@ -193,10 +193,10 @@
     # =======================
     # Unikraft & Specialized
     # =======================
-    kraft # Unikraft build and runtime tool
+    # kraft # Unikraft build and runtime tool
     flintlock # Unikernel microVM lifecycle manager
     firectl # Firecracker CLI
-    localPkgs.unikraft-cli # Local Unikraft CLI wrapper
+    # localPkgs.unikraft-cli # Local Unikraft CLI wrapper
     localPkgs.gogcli # Local Go-based CLI tool
   ];
 }

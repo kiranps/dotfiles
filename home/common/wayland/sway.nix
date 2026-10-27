@@ -18,6 +18,7 @@ in {
         "${mod4}+f" = "exec firefox";
         "${mod4}+c" = "exec ${cliphist}/bin/cliphist list | ${wofi}/bin/wofi -dmenu | ${cliphist}/bin/cliphist decode | ${wl-clipboard}/bin/wl-copy";
         "${mod4}+Shift+f" = "fullscreen toggle";
+        "F8" = "output HDMI-A-1 power toggle";
         "Print" = "exec ${grim}/bin/grim ~/Pictures/full-$(date +'%Y-%m-%d_%H-%M-%S').png";
         "Shift+Print" = "exec ${grim}/bin/grim -g \"$(${slurp}/bin/slurp)\" ~/Pictures/region-$(date +'%Y-%m-%d_%H-%M-%S').png";
         "k+l" = "exec ${grim}/bin/grim ~/Pictures/full-$(date +'%Y-%m-%d_%H-%M-%S').png";

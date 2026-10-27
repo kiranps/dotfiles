@@ -5,7 +5,7 @@
   #};
   #};
 
-  services.netdata = {
-    enable = true;
-  };
+  # services.netdata = {
+  #   enable = true;
+  # };
 }

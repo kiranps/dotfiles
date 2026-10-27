@@ -7,5 +7,7 @@
     ddcutil
     xdg-desktop-portal
     xdg-desktop-portal-wlr
+    brightnessctl
+    libva-utils
   ];
 }
